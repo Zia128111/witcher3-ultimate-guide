@@ -71,6 +71,16 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## Witchers' hall (Builds and Planner)
+- JS section "8o. WITCHERS' HALL" replaces the old `VIEWS.builds`, `libraryHtml` and `savedBuildsHtml`. Tabs: Witchers' hall (default) and Skill planner (`tab=planner`).
+- **Hall:**
+  - Four school banners select a recommended build (URL param `b`), each tinted by its dominant tree.
+  - The showcase has a points-by-tree split bar, stats (points, slotted skills, mutation AP), mutagen orbs with tooltips, and a constellation of all four trees drawn from `SKILL_TREES` coordinates. Allocated skills are lit by rank and equipped skills ringed, with a tooltip per node.
+  - It also has numbered playstyle steps, the kit, the mutation chain and "Load into planner" (existing `load-build` action).
+  - Saved builds below reuse the journal's `jnScrolls()`.
+- **Planner banner:** the current build name, a live read ("Alchemy-focused", "Hybrid", "An empty slate"), level, and four tree gauges scaled to the largest tree. Clicking a gauge switches the tree. The planner re-renders on every change, so the banner stays live.
+- Opening a build favourite or `openDetail("build")` now goes to the hall (`#/builds?b=<id>`) instead of a modal. `DETAIL.build` is unused.
+
 ## The witcher's tome (My Journal)
 - JS section "8n. THE WITCHER'S TOME" replaces the old journal view. It is a leather tome with ribbon-bookmark tabs (URL param `jt`).
 - **Chronicle:**
