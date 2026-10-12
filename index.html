@@ -537,6 +537,132 @@ ul.clean{margin:0;padding-left:1.1em;color:var(--text-2)} ul.clean li{margin-bot
   .cl-counts{grid-template-columns:1fr}
 }
 
+/* ---------- Expansion tales ---------- */
+.dl-hero{position:relative;min-height:260px;display:flex;align-items:flex-end;border-radius:var(--r-panel);overflow:hidden;isolation:isolate;border:1px solid #2a2d31;color:#ebe5d8;margin-bottom:16px}
+.dl-hero .img{position:absolute;inset:0;z-index:-2}
+.dl-hero .img img{width:100%;height:100%;object-fit:cover}
+.dl-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#0d0e0f 8%,rgba(13,14,15,.55) 55%,rgba(13,14,15,.15)),linear-gradient(90deg,rgba(13,14,15,.7),transparent 70%)}
+.dl-hero-copy{padding:22px;max-width:720px}
+.dl-hero-copy .label{color:#b3ad9f}
+.dl-hero-copy h2{font-size:clamp(2rem,4vw,2.8rem);color:#f4efe4;margin:4px 0 8px}
+.dl-hero-copy p{display:flex;gap:8px;align-items:flex-start;margin:0;color:#d9d2c3;font-size:.95rem}
+.dl-hero-copy p .ph{flex:none;margin-top:3px;color:#e8c675}
+.dl-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:16px;align-items:start}
+.dl-board{border:1px solid #2a2d31;border-radius:var(--r-panel);padding:20px;color:#ebe5d8;
+  background:radial-gradient(ellipse at 30% 0%,rgba(122,40,34,.12),transparent 55%),repeating-radial-gradient(circle at 20% 10%,transparent 0 46px,rgba(255,255,255,.014) 46px 47px),linear-gradient(180deg,#141517,#0d0e0f)}
+.dl-board .label,.dl-board .dim{color:#8a857a}
+.dl-board-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.dl-board-head h2{color:#ebe5d8;font-size:1.6rem}
+.dl-board .btn{background:#1d1f22;border-color:#3c4046;color:#ebe5d8}
+.dl-path{position:relative;display:flex;flex-direction:column;gap:12px;padding-left:4px}
+.dl-path::before{content:"";position:absolute;left:25px;top:10px;bottom:10px;border-left:2px solid #34373c}
+.dl-node{position:relative;display:flex;gap:14px;align-items:flex-start}
+.dl-seal{position:relative;z-index:1;flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:1.15rem;color:#8a857a;
+  background:radial-gradient(circle at 35% 28%,#3a3c40,#16171a 70%);border:2px solid #3c4046;box-shadow:0 4px 10px rgba(0,0,0,.5);transition:all .25s var(--ease)}
+.dl-seal.off{cursor:default;opacity:.7}
+.dl-seal input{position:absolute;opacity:0;width:1px;height:1px}
+.dl-seal:focus-within{outline:2px solid #f4efe4;outline-offset:3px}
+.dl-seal:hover:not(.off){border-color:#7a2822;color:#ebe5d8}
+.dl-node.done .dl-seal{color:#fbf6ee;border-color:#a8362c;background:radial-gradient(circle at 35% 28%,#b4483c,#5a1d18 72%);box-shadow:0 0 16px rgba(168,54,44,.45)}
+.dl-node-body{flex:1;min-width:0;padding:8px 12px 10px;border-radius:var(--r-panel);border:1px solid #24272b;background:rgba(0,0,0,.28)}
+.dl-qname{font:600 1.08rem var(--font-display);color:#ebe5d8;text-align:left}
+.dl-node.done .dl-qname{color:#8a857a}
+.dl-lvl{font-size:.74rem;color:#8a857a;padding:1px 6px;border:1px solid #34373c;border-radius:999px}
+.dl-miss{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;color:#d39b4a}
+.dl-node-body p{margin:4px 0 0;font-size:.84rem;color:#a39d90}
+.dl-par{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dl-par-note{margin:-4px 0 0 58px;font-size:.8rem;color:#8a857a}
+.dl-dec{position:relative;z-index:1;margin-left:4px;padding:14px;border-radius:var(--r-panel);border:1px dashed #6b5a33;background:linear-gradient(180deg,rgba(200,164,86,.08),transparent 70%),#111214}
+.dl-dec.made{border-style:solid;border-color:#4a3e30}
+.dl-dec.soft:not(.made){border-color:#3c4046}
+.dl-dec-head{display:flex;gap:10px;align-items:center}
+.dl-dec-head > .ph{font-size:1.4rem;color:#e8c675;transform:rotate(90deg)}
+.dl-dec-head b{display:block;font:600 1.15rem var(--font-display);color:#ebe5d8}
+.dl-dec-head span{font-size:.78rem;color:#8a857a}
+.dl-dec-note{margin:8px 0 0;font-size:.8rem;color:#8a857a}
+.dl-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:10px}
+.dl-opt{display:flex;flex-direction:column;gap:3px;text-align:left;padding:10px 12px;border-radius:var(--r-ctl);border:1px solid #34373c;background:#16171a;color:#ebe5d8;cursor:pointer;transition:all .2s}
+.dl-opt span{font-size:.8rem;color:#8a857a;line-height:1.35}
+.dl-opt:hover{border-color:#6b5a33}
+.dl-opt[aria-pressed="true"]{border-color:#c8a456;background:linear-gradient(180deg,rgba(200,164,86,.16),transparent),#16171a;box-shadow:0 0 18px rgba(200,164,86,.12)}
+.dl-opt[aria-pressed="true"] b{color:#e8c675}
+.dl-dec.made .dl-opt[aria-pressed="false"]{opacity:.55}
+.dl-wait{display:flex;align-items:center;gap:8px;margin-left:58px;font-size:.86rem;color:#b3ad9f}
+.dl-wait .ph{color:#e8c675}
+.dl-end{position:relative;z-index:1;display:flex;gap:14px;padding:16px;border-radius:var(--r-panel);border:1px solid #3c4046;background:#111214;animation:dlIn .45s var(--ease)}
+.dl-end > .ph{font-size:2rem;flex:none}
+.dl-end b{display:block;font:600 1.35rem var(--font-display);color:#f4efe4;margin:2px 0 4px}
+.dl-end p{margin:0;font-size:.88rem;color:#b3ad9f}
+.dl-end ul{margin:8px 0 0;padding-left:18px;font-size:.84rem;color:#d9d2c3}
+.dl-end.good{border-color:#c8a456;background:radial-gradient(ellipse at 0% 0%,rgba(200,164,86,.2),transparent 60%),#111214;box-shadow:0 0 28px rgba(200,164,86,.15)}
+.dl-end.good > .ph{color:#e8c675}
+.dl-end.dark{border-color:#7a2822;background:radial-gradient(ellipse at 0% 0%,rgba(168,54,44,.22),transparent 60%),#111214}
+.dl-end.dark > .ph{color:#d1573f}
+.dl-end.mid{border-color:#5a6470;background:radial-gradient(ellipse at 0% 0%,rgba(111,159,216,.14),transparent 60%),#111214}
+.dl-end.mid > .ph{color:#8fb0e0}
+.dl-end.unknown > .ph{color:#8a857a}
+@keyframes dlIn{from{opacity:0;transform:translateY(8px)}}
+.dl-side{display:flex;flex-direction:column;gap:14px;position:sticky;top:76px}
+.dl-endings,.dl-codex{padding:16px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface)}
+.dl-endings h3,.dl-codex h3{font-size:1.25rem;margin-bottom:4px}
+.dl-endings .dim{margin:0 0 10px;font-size:.82rem}
+.dl-endpick{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;padding:10px 12px;margin-top:8px;border-radius:var(--r-ctl);border:1px solid var(--line);border-left:4px solid #5d6168;background:var(--bg-2);color:var(--text);cursor:pointer;transition:all .2s}
+.dl-endpick span{font-size:.76rem;color:var(--text-3)}
+.dl-endpick.good{border-left-color:#c8a456}.dl-endpick.dark{border-left-color:#a8362c}.dl-endpick.mid{border-left-color:#6f9fd8}
+.dl-endpick.closed{opacity:.5}
+.dl-endpick.live{border-color:#c8a456;box-shadow:0 0 0 1px #c8a456 inset}
+.dl-endpick:hover{transform:translateX(2px)}
+.dl-unknown{display:flex;gap:8px;margin:10px 0 0;font-size:.8rem;color:var(--text-2)}
+.dl-codex ul{font-size:.88rem}
+.dl-foes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.dl-foe{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 3px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);color:var(--text);font-size:.8rem;cursor:pointer}
+.dl-foe.plain{cursor:default;color:var(--text-2)}
+.dl-foe:not(.plain):hover{border-color:#7a2822}
+.dl-foe-pic{position:relative;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#0d0e0f;color:#5d6168;font-size:.85rem}
+.dl-foe-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.dl-foe-pic img.ok{opacity:1}
+.ng-gate{display:flex;gap:18px;align-items:center;padding:18px;border-radius:var(--r-panel);border:1px solid #2a2d31;color:#ebe5d8;background:radial-gradient(ellipse at 0% 50%,rgba(90,134,201,.12),transparent 55%),linear-gradient(180deg,#141517,#0d0e0f)}
+.ng-gate .label{color:#8a857a}.ng-gate p{margin:4px 0 0;color:#d9d2c3}
+.ng-ring{flex:none;width:96px;height:96px;border-radius:50%;display:grid;place-content:center;text-align:center;
+  background:radial-gradient(closest-side,#111214 80%,transparent 81%),conic-gradient(#8fb0e0 calc(var(--p)*1%),#24272b 0)}
+.ng-ring span{font-size:1.3rem;font-weight:700}.ng-ring small{font-size:.7rem;color:#8a857a}
+.ng-cross{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:16px;border-radius:var(--r-panel);overflow:hidden;border:1px solid #2a2d31;color:#ebe5d8}
+.ng-col{padding:18px}
+.ng-col h3{display:flex;align-items:center;gap:8px;font-size:1.3rem;color:#ebe5d8;margin-bottom:10px}
+.ng-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ng-col li{padding:7px 10px;border-radius:var(--r-ctl);font-size:.88rem}
+.ng-col.keep{background:linear-gradient(180deg,#17130f,#0f0c0a)}
+.ng-col.keep h3 .ph{color:#e8c675}
+.ng-col.keep li{background:rgba(200,164,86,.08);border:1px solid rgba(200,164,86,.25)}
+.ng-col.lose{background:linear-gradient(180deg,#141517,#0d0e0f)}
+.ng-col.lose h3 .ph{color:#d1573f}
+.ng-col.lose li{color:#8a857a;border:1px dashed #34373c;text-decoration:line-through;text-decoration-color:rgba(209,87,63,.5)}
+.ng-river{display:grid;place-items:center;width:56px;font-size:1.6rem;color:#8fb0e0;background:repeating-linear-gradient(180deg,#0f1a26 0 10px,#122133 10px 20px);animation:ngFlow 3s linear infinite}
+@keyframes ngFlow{to{background-position:0 40px}}
+.ng-scale{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.ng-scale-step{display:flex;gap:10px;padding:12px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface)}
+.ng-scale-step span{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#8fb0e0;color:#0d0e0f;font-weight:700;font-size:.85rem}
+.ng-scale-step p{margin:0;font-size:.88rem;color:var(--text-2)}
+.ng-prep{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:12px}
+.ng-rite{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.ng-rite input{position:absolute;opacity:0;width:1px;height:1px}
+.ng-rite:focus-within{box-shadow:var(--ring)}
+.ng-rite-box{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);color:var(--text-3)}
+.ng-rite.on{border-color:color-mix(in srgb,#8fb0e0 50%,var(--line))}
+.ng-rite.on .ng-rite-box{background:#8fb0e0;border-color:#8fb0e0;color:#0d0e0f}
+.ng-rite.on > span:last-child{color:var(--text-3)}
+@media (prefers-reduced-motion:reduce){ .ng-river,.dl-end{animation:none} }
+@media (max-width:1100px){ .dl-layout{grid-template-columns:1fr} .dl-side{position:static} }
+@media (max-width:767px){
+  .dl-board{padding:14px}
+  .dl-par{grid-template-columns:1fr}
+  .dl-par-note,.dl-wait{margin-left:0}
+  .ng-cross{grid-template-columns:1fr}
+  .ng-river{width:auto;height:44px}
+  .ng-river .ph{transform:rotate(90deg)}
+  .ng-gate{flex-direction:column;align-items:flex-start}
+}
+
 /* ---------- Market square ---------- */
 .mn-market{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);border:1px solid #2a2d31;border-radius:var(--r-panel);overflow:hidden;color:#ebe5d8;
   background:radial-gradient(ellipse at 70% 0%,rgba(200,164,86,.09),transparent 55%),linear-gradient(180deg,#141517,#0d0e0f)}
@@ -1566,6 +1692,9 @@ const SOURCES = {
   fandomBDF:{name:"Witcher Wiki: Bovine Defense Force Initiative", url:"https://witcher.fandom.com/wiki/Bovine_Defense_Force_Initiative"},
   gpmMoney:{name:"GamingProMax: Witcher 3 Remastered money exploits (29 Sep 2026)", url:"https://gamingpromax.com/witcher-3-wild-hunt-remastered-best-money-exploits-crown-farming-guide/"},
   srPang:{name:"Screen Rant: Pang of Conscience glitch not patched (Dec 2021)", url:"https://screenrant.com/witcher-3-pang-conscience-money-exploit-not-patched/"},
+  fandomHoSQ:{name:"Witcher Wiki: Hearts of Stone quests and Whatsoever a Man Soweth...", url:"https://witcher.fandom.com/wiki/Whatsoever_a_Man_Soweth..."},
+  fandomBaWQ:{name:"Witcher Wiki: Blood and Wine quests", url:"https://witcher.fandom.com/wiki/Blood_and_Wine_quests"},
+  fandomDecide:{name:"Witcher Wiki: The Witcher 3 decision checklist", url:"https://witcher.fandom.com/wiki/The_Witcher_3_decision_checklist"},
   fandomPatch:{name:"Witcher Wiki: patch notes 1.04 to 1.30", url:"https://witcher.fandom.com/wiki/Patch_1.07_(The_Witcher_3)"},
   fextra:   {name:"Fextralife Witcher 3 Wiki", url:"https://thewitcher3.wiki.fextralife.com/"},
   gc:       {name:"game-checklists.com Witcher 3 checklists", url:"https://game-checklists.com/witcher3/all-quests-checklist.html"},
@@ -2347,6 +2476,96 @@ const SALE_FACTS = [
   {icon:"ph-hammer", title:"Dismantling costs about 20%", body:"A craftsman charges about 20% of what an armorer or blacksmith would pay for the item. Velen craftsmen are the cheapest."},
   {icon:"ph-map-pin-area", title:"Where you sell matters", body:"Village shops usually pay least and large cities most. Skellige shops typically pay about 35% of face value."}
 ];
+/* Expansion tale trees. Main-quest order and levels from the wiki's "Hearts of Stone quests"
+   and "Blood and Wine quests" tables; decisions and outcomes from "The Witcher 3 decision
+   checklist" and "Whatsoever a Man Soweth..." (Witcher Wiki, read 2026-10).
+   A tale is a list of steps: {q, lvl} quest node, {par:[...]} parallel quests,
+   {dec} decision (choice kept in URL param d_<id>), {end} ending.
+   Options may use cases:[{when:{decId:optId}, next}] with a final {next} fallback. */
+const DLC_TALES = {
+  hos:{
+    steps:[
+      {q:"Evil's Soft First Touches", lvl:32, note:"Take Contract: Monster in the Sewers from the Seven Cats Inn board, then meet Olgierd at the Garin estate."},
+      {par:[{q:"Dead Man's Party", lvl:33}, {q:"Open Sesame!", lvl:34}], note:"Olgierd's first two wishes. Both must be done before the third."},
+      {q:"Scenes From a Marriage", lvl:35, note:"The third wish: Iris's violet rose, from the von Everec estate and the painted world."},
+      {q:"Whatsoever a Man Soweth...", lvl:36, note:"O'Dimm asks Geralt to bring Olgierd to the Temple of Lilvani. Visiting Shani leads to Professor Shakeslock, who reveals O'Dimm can be challenged to a wager."},
+      {dec:"fate"}
+    ],
+    decisions:{
+      fate:{title:"Olgierd's fate", where:"Temple of Lilvani", opts:[
+        {id:"save", label:"Wager with O'Dimm for both souls", body:"Solve O'Dimm's riddle in his twisted world before time runs out. Saving is disabled inside, but the game makes a checkpoint at the start.", next:[{end:"hos-free"}]},
+        {id:"leave", label:"Let O'Dimm take Olgierd", body:"Geralt does not dispute the pact. It is fulfilled and Olgierd's life ends.", next:[{end:"hos-pact"}]}
+      ]}
+    },
+    endings:{
+      "hos-free":{title:"The pact is dissolved", tone:"good", body:"Geralt finds the answer (the dry fountain, Aard on the cracked wall) and defeats O'Dimm. Olgierd is safe and gives Geralt his sword Iris.", rewards:["Iris (steel sword)", "Viper venomous silver sword, taken from the stone in O'Dimm's world (only on this path)"], path:{fate:"save"}},
+      "hos-pact":{title:"The pact is fulfilled", tone:"dark", body:"Olgierd dies, and O'Dimm offers Geralt a reward.", rewards:["Caparison of Lament", "Horn of Plenty", "Bottomless carafe", "5,000 crowns (10,000 since patch 4.0)", "Nothing, if you refuse", "Advice about Ciri, before The Isle of Mists or in a standalone expansion playthrough"], path:{fate:"leave"}}
+    },
+    src:["fandomHoSQ", "fandomDecide"]
+  },
+  baw:{
+    steps:[
+      {q:"Envoys, Wineboys", lvl:34, note:"Notice board at Stonecutters' Settlement in Velen."},
+      {q:"The Beast of Toussaint", lvl:35},
+      {q:"Blood Run", lvl:36},
+      {q:"La Cage au Fou", lvl:39},
+      {q:"Where Children Toil, Toys Waste Away", lvl:42},
+      {q:"Wine is Sacred", lvl:42},
+      {q:"The Man from Cintra", lvl:43},
+      {q:"Capture the Castle", lvl:47},
+      {q:"The Night of Long Fangs", lvl:47},
+      {dec:"seek"}
+    ],
+    decisions:{
+      seek:{title:"Who do you seek in Beauclair?", where:"The Night of Long Fangs", note:"Not locked in until you touch the Land of a Thousand Fables book, or tell Regis at the docks that you will seek the Unseen Elder.", opts:[
+        {id:"damien", label:"Find Damien", body:"Save Damien from a fleder and convince him to reveal where Anna Henrietta hid Syanna.", next:[
+          {q:"Beyond Hill and Dale...", lvl:47},
+          {dec:"journal"}, {dec:"story"}, {dec:"ribbon"}
+        ]},
+        {id:"orianna", label:"Find Orianna", body:"Slay an alpha garkain for Orianna, who tells Geralt how to find the Unseen Elder.", next:[
+          {q:"Blood Simple", lvl:47}, {q:"What Lies Unseen", lvl:47}, {q:"Tesham Mutna", lvl:49}, {end:"baw-both"}
+        ]}
+      ]},
+      journal:{soft:true, title:"The Court Governess' journal", where:"Beyond Hill and Dale...", opts:[
+        {id:"read", label:"Read it thoroughly", body:"One of the requirements for both sisters to survive.", next:[]},
+        {id:"skip", label:"Skip it", body:"Rules out the ending where both sisters live.", next:[]}
+      ]},
+      story:{soft:true, title:"Syanna offers her story", where:"Beyond Hill and Dale...", opts:[
+        {id:"listen", label:"Listen to her", body:"Counts toward saving both sisters.", next:[]},
+        {id:"refuse", label:"Refuse", body:"Locks Geralt out of any further meaningful inquiry into Syanna.", next:[]}
+      ]},
+      ribbon:{title:"Syanna's ribbon", where:"Little Flint Girl, Land of a Thousand Fables", opts:[
+        {id:"give", label:"Get the ribbon and return it", body:"Buy it or win it at gwent. Syanna survives the meeting and Dettlaff dies.", next:[
+          {q:"Tesham Mutna", lvl:49, note:"Dettlaff fails to kill Syanna and attacks Geralt and Regis, who must kill him."},
+          {q:"Pomp and Strange Circumstance", lvl:49}, {dec:"investigate"}
+        ]},
+        {id:"none", label:"Leave it", body:"Dettlaff kills Syanna. This is the only path where the vampire can be spared.", next:[
+          {q:"Tesham Mutna", lvl:49}, {dec:"dettlaff"}, {q:"Burlap is the New Stripe", lvl:49}, {end:"baw-anna"}
+        ]}
+      ]},
+      dettlaff:{soft:true, title:"Dettlaff after Syanna's death", where:"Tesham Mutna", opts:[
+        {id:"spare", label:"Let him leave", body:"You get none of the coin promised for killing the Beast.", next:[]},
+        {id:"kill", label:"Kill him", body:"You receive the promised reward.", next:[]}
+      ]},
+      investigate:{title:"The final murder", where:"Pomp and Strange Circumstance", opts:[
+        {id:"no", label:"Do not investigate", body:"Go straight to the ceremony.", next:[{end:"baw-tragedy"}]},
+        {id:"yes", label:"Investigate with Regis", body:"The target is the duchess. Geralt visits Syanna in confinement.", cases:[
+          {when:{journal:"read", story:"listen"}, next:[{end:"baw-reconcile"}]},
+          {next:[{end:"baw-unknown"}]}
+        ]}
+      ]}
+    },
+    endings:{
+      "baw-reconcile":{title:"The sisters reconcile", tone:"good", body:"With the journal read and Syanna's story heard, Geralt talks her down (\"Cause she turned her back on you, forgot about you.\" then \"Ever thought to forgive her?\"). The sisters argue at the ceremony, then forgive each other.", path:{seek:"damien", journal:"read", story:"listen", ribbon:"give", investigate:"yes"}},
+      "baw-tragedy":{title:"Blood at the ceremony", tone:"dark", body:"Syanna kills Anna Henrietta and is in turn killed by Damien.", path:{seek:"damien", ribbon:"give", investigate:"no"}},
+      "baw-anna":{title:"The duchess mourns", tone:"mid", body:"Dettlaff kills Syanna. Anna Henrietta lives.", path:{seek:"damien", ribbon:"none"}},
+      "baw-both":{title:"Both sisters die", tone:"dark", body:"Dettlaff is summoned to Tesham Mutna and attacks. Both Syanna and Anna Henrietta die.", path:{seek:"orianna"}},
+      "baw-unknown":{title:"Outcome not documented", tone:"unknown", hidden:true, body:"You investigated but missed the journal or Syanna's story. The wiki's decision checklist does not describe this outcome, so it is not shown here."}
+    },
+    epilogue:{q:"Be It Ever So Humble...", lvl:49, note:"Listed by the wiki as the last Blood and Wine main quest, at Corvo Bianco."},
+    src:["fandomBaWQ", "fandomDecide"]
+  }
+};
 const QUEST_EXTRA = {"Lilac and Gooseberries": {"start": "Begins automatically after the prologue, riding with Vesemir toward White Orchard", "steps": ["Clear the ghouls in the forest clearing, then ride with Vesemir toward White Orchard.", "Enter the White Orchard tavern and question the patrons about Yennefer; Aldert Geert teaches you Gwent.", "Ride along the river to the Nilfgaardian garrison and climb the tower to meet the commander.", "Accept his deal: complete The Beast of White Orchard to learn where Yennefer is.", "Return to the tavern to meet Vesemir and deal with the brawl that breaks out."], "rewards": "150 XP", "src": "https://thewitcher3.wiki.fextralife.com/Lilac+and+Gooseberries"}, "The Beast of White Orchard": {"start": "Nilfgaardian garrison commander, White Orchard", "steps": ["Visit Tomira the herbalist, then dive in the nearby river to collect buckthorn as griffin bait.", "Track down Mislav the hunter with Witcher Senses and help him drive off wild dogs.", "Examine the soldiers' remains and follow the trail to the griffin nest for clues.", "Meet Vesemir, brew Thunderbolt, and fight the griffin at the bait site using the crossbow.", "Pursue the wounded griffin to finish it, then claim your reward at the garrison."], "rewards": "Griffin trophy; 250 crowns and 240 XP if you take the coin, or 400 XP if you refuse", "src": "https://thewitcher3.wiki.fextralife.com/The+Beast+of+White+Orchard"}, "The Incident at White Orchard": {"start": "White Orchard tavern, after The Beast of White Orchard", "steps": ["Return to the White Orchard tavern and talk to Vesemir.", "Defeat the drunken troublemakers who pick a fight.", "Head outside and watch the cutscenes that carry you onward to Vizima."], "rewards": "300 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Incident+at+White+Orchard"}, "Imperial Audience": {"start": "Royal Palace in Vizima, directly after The Incident at White Orchard", "steps": ["Answer Morvran Voorhis's questions about past games while you are groomed; these set world-state flags.", "Dress, then follow the chamberlain through the palace to the emperor.", "Hear the emperor's proposal, then return to the apartment and speak with Yennefer.", "Collect your gear from the chamberlain and set off for Velen."], "src": "https://thewitcher3.wiki.fextralife.com/Imperial+Audience"}, "The Nilfgaardian Connection": {"start": "Starts on arrival in Velen near the Hanged Man's Tree, after Imperial Audience", "level": 5, "steps": ["Visit the Inn at the Crossroads and ask the innkeeper about Hendrik.", "Ride to the ruined village, kill the dogs, and speak with the survivor.", "Search Hendrik's hut with Witcher Senses, take his key, and open the trapdoor under the rug.", "In the cellar, use the candlestick to reveal a hidden cupboard and read the ledger."], "rewards": "100 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Nilfgaardian+Connection"}, "Bloody Baron": {"start": "Crow's Perch, Velen (lead from Hendrik's ledger)", "level": 6, "steps": ["Ride to Crow's Perch and approach the castle gate guarded by the Baron's men.", "If the guards admit you, follow the sergeant directly to the Baron.", "If refused, find the old villager who points you to a cave under the castle.", "Swim through the cave, defeat the water hag, and climb the old well into the gardens.", "Talk to the Baron to finish the quest."], "src": "https://thewitcher3.wiki.fextralife.com/Bloody+Baron"}, "Family Matters": {"start": "The Baron at Crow's Perch", "level": 6, "steps": ["Search the Baron's chamber with Witcher Senses and follow the wine scent to a hidden talisman.", "Show the talisman to the Baron, then find the pellar near Blackbough and recover his goat.", "Return to Crow's Perch, help at the burning stables, and confront the Baron.", "At midnight, deal with the botchling at the grave; choose to kill it or lift the curse.", "Follow the trail of clues, report back to the Baron, then visit Tamara in Oxenfurt."], "rewards": "200 XP; Letter of Safe Conduct", "src": "https://thewitcher3.wiki.fextralife.com/Family+Matters"}, "Ladies of the Wood": {"start": "Keira Metz, after Hunting a Witch; Crookback Bog", "level": 6, "steps": ["Follow the trail of sweets from the shrine through the woods to the bog hamlet.", "Play hide and seek with the children so they distract Gran, then question the boy.", "Track Johnny in the bog, then clear the harpy nest to retrieve his voice bottle.", "Follow Johnny back and speak with the crones, who send you to Downwarren.", "Complete The Whispering Hillock, then bring the requested payment back to the crones."], "rewards": "200 XP", "src": "https://thewitcher3.wiki.fextralife.com/Ladies+of+the+Wood"}, "The Whispering Hillock": {"start": "Triggered on reaching the hillock near Downwarren during Ladies of the Wood", "level": 5, "steps": ["Use Witcher Senses to follow the whispering voice to the great oak, fighting wolves en route.", "Watch for the werewolf near the cave; enter the cave and swim to the spirit.", "Hear the spirit out and decide whether to free it or kill it.", "If freeing it, gather raven feathers, a bone from its grave, and a wild black horse.", "Report back to the Downwarren quest giver to wrap up."], "src": "https://thewitcher3.wiki.fextralife.com/The+Whispering+Hillock"}, "Pyres of Novigrad": {"start": "Novigrad, after Imperial Audience (Baron's letter or Oxenfurt access helps cross the river)", "level": 10, "steps": ["Enter Novigrad, watch the Hierarch Square scene, and visit Triss's house to question the looters.", "Bribe beggars or tail thieves to find the King of Beggars' hideout.", "Get past the doorman, meet Triss, and follow her to a smuggler.", "Dive in the river for Triss's lost parcel and return it.", "Place rat traps in the granary, then fight off the witch hunters and leave."], "rewards": "200 XP", "src": "https://thewitcher3.wiki.fextralife.com/Pyres+of+Novigrad"}, "Get Junior": {"start": "Sigi Reuven's bathhouse, Novigrad", "level": 12, "steps": ["Visit the bathhouse, leave your gear, and meet Sigi Reuven; defend yourself when assassins attack.", "Investigate Whoreson Junior's house on Temple Isle and his casino in Gildorf.", "Fight your way through the sewer arena and search Igor's hidden stash for a letter.", "Meet Vernon Roche in Oxenfurt, then speak with King Radovid to learn Junior's location.", "Storm the Oxenfurt mansion, find Junior, and question him; decide whether to spare him."], "src": "https://thewitcher3.wiki.fextralife.com/Get+Junior"}, "A Favor for Radovid": {"start": "Redanian guard outside Whoreson Junior's Oxenfurt house", "level": 9, "steps": ["Leave Junior's Oxenfurt hideout; a Redanian guard escorts you to Radovid's ship.", "Speak with King Radovid, which starts Redania's Most Wanted.", "Complete Redania's Most Wanted to close out this quest."], "src": "https://thewitcher3.wiki.fextralife.com/A+Favor+for+Radovid"}, "The Play's the Thing": {"start": "Priscilla at the Kingfisher Inn, Novigrad (after Get Junior and Count Reuven's Treasure)", "level": 11, "steps": ["Tell Priscilla about Dudu at the Kingfisher Inn and write the play's script together.", "Bring the script to Irina Renarde at the Butchers' Yard.", "Clear the thugs harassing the Puffins and hire Sofus the Bull's men as ushers.", "Cast the play with Irina, then perform it, choosing fitting lines in each act.", "Meet Dudu in Irina's room afterward and share the rescue plan."], "rewards": "369 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Plays+the+Thing"}, "Destination: Skellige": {"start": "Novigrad docks, after Imperial Audience", "level": 16, "steps": ["Look for a ship at Novigrad's docks; find Captain Wolverstone at the Golden Sturgeon.", "Pay for passage, then help the crew fight off pirates during the voyage.", "After the wreck, talk to Steingrim on the beach and follow the road to Kaer Trolde harbor.", "Meet Yennefer at the harbor, attend the funeral, and speak with Crach an Craite."], "rewards": "250 XP", "src": "https://thewitcher3.wiki.fextralife.com/Destination+Skellige"}, "The King is Dead - Long Live the King": {"start": "Kaer Trolde, Skellige (follows Destination: Skellige)", "level": 16, "steps": ["Change into formal clothes in Yennefer's room and meet her at the keep entrance.", "Join the wake in Kaer Trolde; optionally accept Cerys's race up the mountain.", "Sneak with Yennefer into Ermion's workshop and examine items with Witcher Senses.", "Put the goblet in the statue's hand to open the hidden passage, then defeat the earth elemental.", "Return to the wake and agree to help Crach with his three tasks."], "rewards": "600 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+King+is+Dead+-+Long+Live+the+King"}, "Echoes of the Past": {"start": "Yennefer, at the magic cataclysm site near the Druids' Camp, Skellige", "level": 17, "steps": ["Travel to the Druids' Camp and meet Yennefer and Ermion.", "Help Yennefer kill the foglets, then don the Mask of Uroboros when prompted.", "Follow Yennefer through the site, using the mask at each spot to view past events.", "Return the mask to Ermion and search south for a body under a fallen tree."], "rewards": "500 XP", "src": "https://thewitcher3.wiki.fextralife.com/Echoes+of+the+Past"}, "Ugly Baby": {"start": "Starts after finishing the main Ciri leads in Velen, Novigrad and Skellige", "level": 19, "steps": ["Return to Crow's Perch and ask about Uma via the Baron or his sergeant.", "Collect Uma from the stablemaster in the courtyard.", "Ride to Vizima when stopped by soldiers and report to the emperor.", "Travel with Yennefer to Kaer Morhen and greet Vesemir.", "Complete Disturbance, To Bait a Forktail and The Final Trial to resume the quest."], "rewards": "1500 XP", "src": "https://thewitcher3.wiki.fextralife.com/Ugly+Baby"}, "The Isle of Mists": {"start": "Avallac'h's guide orb, Skellige (after Ugly Baby); finish recruiting allies first", "level": 22, "steps": ["Sail through the mists off Undvik to reach the Isle of Mists, avoiding sirens and rocks.", "Follow the firefly to the hillside hut and talk with the dwarves there.", "Search for Ivo on the coast, Ferenc to the south, and Gaspard in the lighthouse.", "Wake Gaspard and escort him safely back to the hut through the foglets.", "Enter the hut and talk with the person you've been searching for."], "rewards": "1000 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Isle+of+Mists"}, "The Battle of Kaer Morhen": {"start": "Kaer Morhen, immediately after The Isle of Mists", "level": 24, "steps": ["Hold the council in the keep; choose potions or traps and how to use the tools.", "Stock up on bombs and potions, then join Lambert outside the walls.", "Close the Wild Hunt portals in the woods using dimeritium bombs or Yrden.", "Fall back inside, close the main gate, and defend the courtyards alongside your allies.", "Keep closing portals and helping Triss until the final scene plays."], "rewards": "1000 XP; potion choice can grant Superior Swallow", "src": "https://thewitcher3.wiki.fextralife.com/The+Battle+of+Kaer+Morhen"}, "Bald Mountain": {"start": "Bald Mountain in Velen, following Blood on the Battlefield", "level": 26, "steps": ["Arrive with Ciri and ask the locals about the gathering; you are sent to Thecla.", "Find Thecla in her tent; dive for her thrown coin using Witcher Senses.", "Return the coin, then defeat Fugas near the mountain entrance.", "As Ciri, fight the Crones in their cave, then switch back to Geralt.", "Climb to the summit bonfire, prepare, and defeat Imlerith; talk to Ciri when ready."], "rewards": "1000 XP", "src": "https://thewitcher3.wiki.fextralife.com/Bald+Mountain+(Quest)"}, "Of Swords and Dumplings": {"start": "Hattori, at his house northwest of the Glory Gate in Novigrad", "level": 24, "steps": ["Meet Hattori at the docks after dusk and help negotiate with his supplier.", "Escape the ambush, then recruit Sukrus outside the Golden Sturgeon as a bodyguard.", "Settle Sukrus's debt problem by persuading the Skellige merchant or smashing his mead barrels.", "Meet Sukrus at van Hoorn's warehouse after dark and mark three crates with Witcher Senses.", "Defeat van Hoorn's thugs nearby, then return to Hattori later for your sword."], "rewards": "Blade from the Bits; Hattori becomes available as a master swordsmith", "src": "https://thewitcher3.wiki.fextralife.com/Of+Swords+and+Dumplings"}, "Master Armorers": {"start": "Fergus the blacksmith, Crow's Perch, Velen", "level": 24, "steps": ["Ask Fergus at Crow's Perch whether he can craft master-level armor.", "Sail to Undvik, climb to the Clan Tordarroch cave, and defeat the rock troll guarding the tools.", "Bring the tools back to Fergus; his assistant Yoana asks for an archgriffin acid gland.", "Deliver the gland to Yoana, then help test the armors for the general."], "rewards": "Witch Hunter's Armor; ability to craft mastercrafted witcher gear", "src": "https://thewitcher3.wiki.fextralife.com/Master+Armorers"}, "Contract: Devil by the Well": {"start": "Notice board in White Orchard; contract giver Odolan", "steps": ["Talk to Odolan about the contract and agree on payment.", "Investigate the abandoned village well and ruined houses with Witcher Senses.", "Read the diary, follow the drag marks, and dive into the well for the bracelet.", "Light a fire to burn the remains and bracelet, summoning the noonwraith.", "Defeat the noonwraith, take its trophy, and return to Odolan."], "rewards": "Noonwraith trophy; crowns based on haggling (or an amethyst if you refuse payment)", "src": "https://thewitcher3.wiki.fextralife.com/Contract:+Devil+by+the+Well"}, "Contract: Patrol Gone Missing": {"start": "Quartermaster Tavar Eggebracht or notice board, Nilfgaardian Army Group Center camp, Velen", "level": 7, "steps": ["Pick up the contract at the Nilfgaardian camp in southeast Velen.", "Travel to the abandoned campsite and inspect it with Witcher Senses.", "Follow the footprints and green residue to the patrol's remains.", "Kill the wyvern responsible and take its trophy.", "Optionally investigate further, then report back to the quartermaster."], "rewards": "Wyvern trophy; 10 XP and 50 crowns if paid, or 35 XP if you refuse", "src": "https://witcher.fandom.com/wiki/Contract:_Patrol_Gone_Missing"}, "Contract: Jenny o' the Woods": {"start": "Notice board in Midcopse, Velen", "steps": ["Speak with the Midcopse ealdorman, then question the witnesses.", "Search the fields with Witcher Senses and follow the dragged body to a shallow grave.", "Read the letter found there and ask the ealdorman about the lovers.", "Burn the letter and the blood from the knife to summon the monster.", "Defeat it, using Yrden heavily, take its trophy, and collect your reward."], "rewards": "240 XP; crowns depend on haggling", "src": "https://thewitcher3.wiki.fextralife.com/Contract:+Jenny+O'+the+Woods"}, "Contract: Missing Miners": {"start": "Notice board in Blandare, Skellige (elder Gjarr), or by finding a body west of Miners' Camp", "level": 27, "steps": ["Read the Blandare notice and speak with the village elder about the missing miners.", "Travel to the miners' camp and investigate with Witcher Senses.", "Follow the tracks past a body to a cave and enter it.", "Confront the rock troll Wham-a-Wham and decide whether to kill or spare him.", "Report back to the elder in Blandare for your reward."], "rewards": "Kill: 200 XP, 203 crowns, troll trophy, Caroline, troll mutagen. Spare: 100 XP, 50 crowns plus a small bonus", "src": "https://witcher.fandom.com/wiki/Contract:_Missing_Miners"}, "Gwent: Big City Players": {"start": "Notice board in Hierarch Square, Novigrad, or challenging Vimme Vivaldi", "steps": ["Beat Vimme Vivaldi at his bank on Hierarch Square.", "Beat Sigi Reuven at his bathhouse; mind his availability during later main quests.", "Beat Marquise Serenity at the Passiflora.", "Beat the Scoia'tael merchant in the woods south of Novigrad."], "rewards": "Unique Gwent cards (Vesemir, Esterad Thyssen, Morvran Voorhis, Cirilla, Francesca Findabair); 25 XP per win and 100 XP", "src": "https://thewitcher3.wiki.fextralife.com/Gwent:+Big+City+Players"}, "High Stakes": {"start": "Notice board near St. Gregory's Bridge, Novigrad; register with the scribe at the Passiflora", "level": 26, "steps": ["Read the tournament notice in Novigrad and go to the Passiflora.", "Pay the 1,000 crown entry fee to the scribe; your deck needs enough cards.", "Chat with the other entrants before play begins; stay near the Passiflora or the quest fails.", "Play the tournament matches, adjusting your deck between rounds as needed."], "rewards": "Leader cards from opponents (Foltest, Emhyr, Francesca, Eredin) plus XP; winning needed for Collect 'Em All", "src": "https://witcher.fandom.com/wiki/High_Stakes"}, "Evil's Soft First Touches": {"start": "Notice board outside the Seven Cats Inn, near Oxenfurt (Hearts of Stone)", "level": 32, "steps": ["Check the notice board outside the Seven Cats Inn.", "Visit Olgierd von Everec at the Garin estate to accept the contract.", "Enter the Oxenfurt sewers and search with Witcher Senses, clearing drowners.", "Find the key to the lower level, locate the monster's lair, and kill it.", "Meet Master Mirror at midnight at the crossroads, then go see Olgierd."], "rewards": "Up to 1,450 XP; 450 crowns", "src": "https://thewitcher3.wiki.fextralife.com/Evil's+Soft+First+Touches"}, "Open Sesame!": {"start": "Borsodi Brothers' Auction House, Oxenfurt (Hearts of Stone)", "level": 34, "steps": ["Visit the Borsodi auction house in Oxenfurt and ask for the owner.", "Go to the herbalist's hut near Oxenfurt, give the password, and talk to the stranger.", "Recruit the crew via Witcher Seasonings, Breaking and Entering, and The Safecracker.", "Meet at the auction house gate around midnight and fight your way to the vault.", "Take Maximilian Borsodi's House, find the secret exit, and bring it to Olgierd."], "rewards": "1,150 XP", "src": "https://thewitcher3.wiki.fextralife.com/Open+Sesame!"}, "Envoys, Wineboys": {"start": "Notice board in Velen (Blood and Wine; after A Poet Under Pressure)", "level": 34, "steps": ["Take the new contract from a notice board in Velen.", "Ride to Holloway and meet the two knights from Toussaint.", "Choose to help them fight the bandits or talk them out of it.", "Travel with Palmerin and Milton to Toussaint."], "rewards": "50 XP", "src": "https://thewitcher3.wiki.fextralife.com/Envoys,+Wineboys"}, "The Beast of Toussaint": {"start": "Begins on arrival in Toussaint, after Envoys, Wineboys", "level": 35, "steps": ["Defeat the giant Golyat, then follow Milton to the riverbank crime scene.", "Search the riverbank and nets with Witcher Senses, clearing necrophages.", "Head to Corvo Bianco, defeat the bruxa, and examine the body in the cellar.", "Find Palmerin to reach the duchess, then defeat the shaelmaar.", "In the palace gardens, earn the unicorn horn and golden fish clues, then solve the riddle."], "rewards": "2,550 XP; Golyat trophy", "src": "https://thewitcher3.wiki.fextralife.com/The+Beast+of+Toussaint"}, "There Can Be Only One": {"start": "Notice board 'Test Yourself with the Trials of the Virtues!' or overhearing knights at the Tourney Grounds, Toussaint", "level": 43, "steps": ["Visit the isle on Lac Celavy and speak with the hermit.", "Prove valor, honor, compassion, generosity and wisdom through choices in other Toussaint quests.", "Return to the hermit to have your deeds judged.", "Tell him you're ready, then defeat him in a duel."], "rewards": "300 XP; Aerondight", "src": "https://thewitcher3.wiki.fextralife.com/There+Can+Be+Only+One"}, "Turn and Face the Strange": {"start": "Letter from Yennefer or Triss, delivered after The Beast of Toussaint", "level": 35, "steps": ["Search for Professor Moreau's grave at Orlemurs Cemetery and follow the robber's tracks.", "Check the map you were sent and dive into the flooded Valley of the Nine ruins.", "Navigate the traps, defeat the guardians, and hit the wall switches to open the doors.", "Defeat the gargoyle, use its paw as a weight, and pass through the portals.", "Search the laboratory, optionally restore the megascope crystals, and use Moreau's contraption."], "rewards": "500 XP; unlocks Mutations", "src": "https://thewitcher3.wiki.fextralife.com/Turn+and+Face+the+Strange"}, "Scavenger Hunt: Griffin School Gear": {"start": "Found by picking up any Griffin diagram; Velen (Hindhold area)", "steps": ["Climb Hindhold tower, clearing harpies, to find the steel sword diagram on a corpse.", "Near the Lornruk signpost, dive into the underwater cave and climb the tower for the silver sword diagram.", "Go to Dragonslayer's Grotto, clear the wraiths, and loot the remaining armor diagrams."], "rewards": "Griffin School gear diagrams (steel and silver swords, armor, boots, trousers, gauntlets)", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Griffin+School+Gear"}, "Scavenger Hunt: Cat School Gear": {"start": "Found by picking up any Cat diagram; Novigrad and Velen locations", "level": 17, "steps": ["Explore the passages under Temple Isle and read the laboratory log.", "Search the wreck of the Flying Stag and read the mage's notes.", "Explore the ruins of Est Tayiar and read Professor Gloger's note.", "Explore Drahim Castle ruins, read Prince Adrien's journal, and loot the final diagrams."], "rewards": "300 XP; Feline gear diagrams", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Cat+School+Gear"}, "Scavenger Hunt: Bear School Gear": {"start": "Found by picking up any Bear diagram or buying a map from Kaer Trolde's armorer; Skellige", "level": 20, "steps": ["Clear Fort Etnir north of Rogne and loot a skeleton for the silver sword diagram.", "At the ruined inn near Fyresdal, Aard the debris and find the steel sword diagram below.", "Climb a ledge in the sirens' cave near the Old Watchtower for the crossbow diagram.", "Search Clan Tuirseach's castle ruins near Yngvar's Fang for the remaining diagrams."], "rewards": "Ursine (Bear School) gear diagrams", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Bear+School+Gear"}, "Scavenger Hunt: Wolf School Gear": {"start": "Found by picking up any Wolf diagram or buying notes from the Lindenvale blacksmith or Hattori; Kaer Morhen", "level": 14, "steps": ["Climb the old signal tower near Kaer Morhen and read Hieronymus' notes.", "Find and mount the crystals, charging them with Aard to power the portal.", "Pass through the portal and loot the skeleton for the armor diagrams.", "Search the bastion ruins for the steel sword diagram.", "Search the ruined watchtower north of Kaer Morhen for the silver sword diagram."], "rewards": "Wolven gear diagrams (armor, boots, gauntlets, trousers, steel and silver swords)", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Wolf+School+Gear"}};
 MONSTERS.forEach(m => {
   if(MONSTER_IMG[m.id]) m.img = MONSTER_IMG[m.id];
@@ -3123,41 +3342,7 @@ function savedBuildsHtml(){
 
 /* Collectibles: see section 8i. */
 
-/* ---------- DLC and NG+ ---------- */
-VIEWS.dlc = () => {
-  const tab = P("tab", "hos");
-  return `
-  <header class="page-head"><h1>DLC and New Game+</h1><p>How to start each expansion, what it adds, and how to prepare a save for New Game+.</p></header>
-  ${tabsHtml("tab", [["hos", "Hearts of Stone"], ["baw", "Blood and Wine"], ["ng", "New Game+"]], tab)}
-  ${tab === "ng" ? ngHtml() : dlcHtml(tab)}`;
-};
-function dlcHtml(k){
-  const d = DLC[k], qs = QUESTS.filter(q => q.type === k);
-  const dq = qs.filter(q => isChecked(q.id)).length;
-  return `<div class="region-banner" style="height:240px">${art(k)}<div class="copy"><h2>${esc(d.name)}</h2><p class="muted" style="margin:4px 0 0">Recommended level <span class="mono">${esc(d.level)}</span></p></div></div>
-    <div class="region-detail">
-      <div>
-        <div class="notice info">${icon("ph-door-open")}<div><strong>How to start.</strong> ${esc(d.start)}</div></div>
-        <h3 style="margin:24px 0 10px">What it adds</h3><ul class="clean">${d.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
-        <h3 style="margin:24px 0 10px">Quests <span class="mono dim" style="font-size:.85rem">${dq}/${qs.length}</span></h3><div class="list">${qs.map(questRow).join("")}</div>
-      </div>
-      <aside class="side-panel"><div class="panel panel-pad"><span class="label">New enemies</span>
-        <div class="chips" style="margin-top:12px">${d.enemies.map(e => { const m = MONSTERS.find(x => x.name === e || e.startsWith(x.name)); return m ? `<button class="chip" data-open="monster:${m.id}">${esc(e)}</button>` : `<span class="chip" style="cursor:default">${esc(e)}</span>`; }).join("")}</div>
-        ${srcLine(d.src)}</div></aside>
-    </div>`;
-}
-function ngHtml(){
-  const done = NGPLUS.prep.filter(p => isChecked(p.id)).length;
-  return `<div class="notice info" style="margin-bottom:20px">${icon("ph-info")}<div><strong>Requirement.</strong> ${esc(NGPLUS.requirement)}</div></div>
-    <div class="two-col">
-      <section class="panel panel-pad"><h3 style="margin-bottom:12px">Carries over</h3><ul class="clean">${NGPLUS.keeps.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>
-      <section class="panel panel-pad"><h3 style="margin-bottom:12px">Does not carry over</h3><ul class="clean">${NGPLUS.loses.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>
-    </div>
-    <section class="section"><h2>Scaling</h2><ul class="clean" style="margin-top:12px">${NGPLUS.scaling.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>
-    <section class="section"><div class="row between"><h2>Preparation checklist</h2><span class="mono dim">${done}/${NGPLUS.prep.length}</span></div>
-      <div class="list" style="margin-top:10px">${NGPLUS.prep.map(p => `<div class="item ${isChecked(p.id) ? "done" : ""}" data-row="${p.id}">${checkbox(p.id, p.text)}<div><div class="item-title">${esc(p.text)}</div></div><span></span></div>`).join("")}</div>
-      ${srcLine(NGPLUS.src)}</section>`;
-}
+/* DLC and New Game+: see section 8k. */
 
 /* ---------- My Journal (personalization) ---------- */
 VIEWS.journal = () => {
@@ -4977,6 +5162,128 @@ function mnRefresh(){
 <script>
 "use strict";
 /* =====================================================================
+   8k. EXPANSION TALES (DLC and New Game+)
+   Each expansion's main quests as a tale tree: choose at each decision
+   and the path runs on to its ending; picking an ending fills in the
+   choices that reach it. NG+ is laid out as a crossing ledger.
+   ===================================================================== */
+const DL_ICON = {hos:"ph-heart-break", baw:"ph-wine", ng:"ph-arrows-clockwise"};
+const dlQuest = name => QUESTS.find(q => q.name === name);
+const dlChoice = id => P("d_" + id);
+
+/* Walk a tale with the current choices: returns {html, ends:Set of reachable ending ids, reached} */
+function dlWalk(t, steps, depth = 0){
+  let html = "", reached = null, open = false;
+  for(const s of steps){
+    if(open) break;
+    if(s.q){ html += dlNode(s); continue; }
+    if(s.par){ html += `<div class="dl-par">${s.par.map(dlNode).join("")}</div>${s.note ? `<p class="dl-par-note">${esc(s.note)}</p>` : ""}`; continue; }
+    if(s.end){ reached = s.end; html += dlEnd(t, s.end, true); continue; }
+    if(s.dec){
+      const d = t.decisions[s.dec], pick = dlChoice(s.dec), o = d.opts.find(x => x.id === pick);
+      html += `<div class="dl-dec ${o ? "made" : ""} ${d.soft ? "soft" : ""}" role="group" aria-label="${esc(d.title)}">
+        <div class="dl-dec-head">${icon("ph-git-fork")}<div><b>${esc(d.title)}</b><span>${esc(d.where)}</span></div></div>
+        ${d.note ? `<p class="dl-dec-note">${esc(d.note)}</p>` : ""}${d.soft && !o ? `<p class="dl-dec-note">Optional for the path; it only changes details or later outcomes.</p>` : ""}
+        <div class="dl-opts">${d.opts.map(x => `<button class="dl-opt" aria-pressed="${x.id === pick}" data-action="dl-pick" data-d="${s.dec}" data-v="${x.id}"><b>${esc(x.label)}</b><span>${esc(x.body)}</span></button>`).join("")}</div>
+      </div>`;
+      if(!o){ if(d.soft) continue; open = true; break; }
+      let next = o.next;
+      if(o.cases){
+        const keys = [...new Set(o.cases.flatMap(c => Object.keys(c.when || {})))], unset = keys.filter(k => !dlChoice(k));
+        if(unset.length){ html += `<div class="dl-wait">${icon("ph-hand-pointing")}This outcome depends on: ${unset.map(k => esc(t.decisions[k].title)).join(" and ")}. Choose above.</div>`; open = true; break; }
+        const c = o.cases.find(c => !c.when || Object.entries(c.when).every(([k, v]) => dlChoice(k) === v)); next = c ? c.next : [];
+      }
+      const r = dlWalk(t, next || [], depth + 1);
+      html += r.html; if(r.reached) reached = r.reached; if(r.open) open = true;
+    }
+  }
+  return {html, reached, open};
+}
+function dlNode(s){
+  const q = dlQuest(s.q), on = q && isChecked(q.id);
+  return `<div class="dl-node ${on ? "done" : ""}">
+    ${q ? `<label class="dl-seal" title="${on ? "Completed" : "Mark complete"}"><input type="checkbox" data-check="${esc(q.id)}" ${on ? "checked" : ""} aria-label="${esc(s.q)} completed">${icon(on ? "ph-check" : "ph-scroll")}</label>` : `<span class="dl-seal off" aria-hidden="true">${icon("ph-scroll")}</span>`}
+    <div class="dl-node-body"><div class="row" style="gap:8px;flex-wrap:wrap">${q ? `<button class="linkish dl-qname" data-open="quest:${q.id}">${esc(s.q)}</button>` : `<b class="dl-qname">${esc(s.q)}</b>`}${s.lvl ? `<span class="mono dl-lvl">Lv ${s.lvl}</span>` : ""}${q && q.missable ? `<span class="dl-miss">${icon("ph-hourglass-medium")}Missable</span>` : ""}</div>
+      ${s.note ? `<p>${esc(s.note)}</p>` : ""}</div>
+  </div>`;
+}
+function dlEnd(t, id, live){
+  const e = t.endings[id];
+  return `<div class="dl-end ${e.tone} ${live ? "live" : ""}">${icon(e.tone === "good" ? "ph-sun-horizon" : e.tone === "unknown" ? "ph-question" : e.tone === "mid" ? "ph-scales" : "ph-skull")}
+    <div><span class="label">${live ? "Your ending" : "Ending"}</span><b>${esc(e.title)}</b><p>${esc(e.body)}</p>
+    ${e.rewards ? `<ul>${e.rewards.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}</div></div>`;
+}
+function dlReachable(t, e){
+  const cur = Object.keys(t.decisions).reduce((o, k) => (dlChoice(k) && (o[k] = dlChoice(k)), o), {});
+  return Object.entries(e.path || {}).every(([k, v]) => !cur[k] || cur[k] === v);
+}
+
+VIEWS.dlc = () => {
+  const tab = ["hos", "baw", "ng"].includes(P("tab")) ? P("tab") : "hos";
+  return `
+  <header class="page-head"><h1>DLC and New Game+</h1><p>Walk each expansion's tale, make its choices and see where they lead, then prepare your save for New Game+.</p></header>
+  <div class="qx-tabs" role="tablist">${[["hos", "Hearts of Stone"], ["baw", "Blood and Wine"], ["ng", "New Game+"]].map(([k, l]) => {
+    const qs = k === "ng" ? NGPLUS.prep : QUESTS.filter(q => q.type === k), d = qs.filter(q => isChecked(q.id)).length;
+    return `<button class="qx-tab" role="tab" aria-selected="${tab === k}" data-action="set-param" data-k="tab" data-v="${k === "hos" ? "" : k}">${icon(DL_ICON[k])}<span>${l}</span><span class="mono">${d}/${qs.length}</span></button>`; }).join("")}</div>
+  ${tab === "ng" ? ngCrossing() : dlTale(tab)}`;
+};
+function dlTale(k){
+  const d = DLC[k], t = DLC_TALES[k], w = dlWalk(t, t.steps);
+  const anyChoice = Object.keys(t.decisions).some(x => dlChoice(x));
+  const ends = Object.entries(t.endings).filter(([, e]) => !e.hidden);
+  return `<div class="dl-hero">${art(k)}<div class="dl-hero-copy"><span class="label">Expansion · recommended level <span class="mono">${esc(d.level)}</span></span><h2>${esc(d.name)}</h2><p>${icon("ph-door-open")}${esc(d.start)}</p></div></div>
+  <div class="dl-layout">
+    <section class="dl-board" aria-labelledby="dlTreeTitle">
+      <div class="dl-board-head"><h2 id="dlTreeTitle">The tale</h2>${anyChoice ? `<button class="btn btn-sm" data-action="dl-reset">${icon("ph-arrow-counter-clockwise")}Clear choices</button>` : ""}</div>
+      <div class="dl-path">${w.html}${w.open && !/dl-wait/.test(w.html.slice(-400)) ? `<div class="dl-wait">${icon("ph-hand-pointing")}Choose above to continue the tale.</div>` : ""}
+        ${t.epilogue && w.reached && w.reached !== "baw-unknown" ? dlNode(t.epilogue) : ""}</div>
+    </section>
+    <aside class="dl-side">
+      <section class="dl-endings"><h3>Endings</h3><p class="dim">Pick an ending to set the choices that reach it.</p>
+        ${ends.map(([id, e]) => { const r = dlReachable(t, e), live = w.reached === id;
+          return `<button class="dl-endpick ${e.tone} ${live ? "live" : ""} ${r ? "" : "closed"}" data-action="dl-end" data-id="${id}"><b>${esc(e.title)}</b><span>${live ? "Your path ends here" : r ? "Still reachable" : "Closed by your choices"}</span></button>`; }).join("")}
+        ${w.reached === "baw-unknown" ? `<p class="dl-unknown">${icon("ph-question")}${esc(t.endings["baw-unknown"].body)}</p>` : ""}
+      </section>
+      <section class="dl-codex"><h3>What it adds</h3><ul class="clean">${d.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+        <h3 style="margin-top:16px">New enemies</h3>
+        <div class="dl-foes">${d.enemies.map(e => { const m = MONSTERS.find(x => x.name === e || e.startsWith(x.name));
+          return m ? `<button class="dl-foe" data-open="monster:${m.id}"><span class="dl-foe-pic">${m.img ? `<img src="${bxImg(m, 80)}" alt="" loading="lazy" onload="this.classList.add('ok')" onerror="this.remove()">` : ""}${icon("ph-skull")}</span>${esc(e)}</button>` : `<span class="dl-foe plain"><span class="dl-foe-pic">${icon("ph-skull")}</span>${esc(e)}</span>`; }).join("")}</div>
+      </section>
+    </aside>
+  </div>
+  ${srcLine([...t.src, ...d.src])}`;
+}
+function ngCrossing(){
+  const done = NGPLUS.prep.filter(p => isChecked(p.id)).length, pct = Math.round(done / NGPLUS.prep.length * 100);
+  return `<div class="ng-gate">
+      <div class="ng-ring" style="--p:${pct}"><span class="mono">${done}/${NGPLUS.prep.length}</span><small>ready</small></div>
+      <div><span class="label">Requirement</span><p>${esc(NGPLUS.requirement)}</p></div>
+    </div>
+    <section class="ng-cross" aria-label="What crosses into New Game+">
+      <div class="ng-col keep"><h3>${icon("ph-check-circle")}Crosses over</h3><ul>${NGPLUS.keeps.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+      <div class="ng-river" aria-hidden="true">${icon("ph-arrows-clockwise")}</div>
+      <div class="ng-col lose"><h3>${icon("ph-x-circle")}Left behind</h3><ul>${NGPLUS.loses.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+    </section>
+    <section class="section"><h2 style="margin-bottom:12px">How the world scales</h2>
+      <div class="ng-scale">${NGPLUS.scaling.map((x, i) => `<div class="ng-scale-step"><span class="mono">${i + 1}</span><p>${esc(x)}</p></div>`).join("")}</div></section>
+    <section class="section"><div class="row between"><h2>Before you cross</h2><span class="mono dim">${done}/${NGPLUS.prep.length}</span></div>
+      <div class="ng-prep">${NGPLUS.prep.map(p => { const on = isChecked(p.id);
+        return `<label class="ng-rite ${on ? "on" : ""}"><input type="checkbox" data-check="${p.id}" ${on ? "checked" : ""}><span class="ng-rite-box">${icon(on ? "ph-check" : "ph-circle")}</span><span>${esc(p.text)}</span></label>`; }).join("")}</div>
+      ${srcLine(NGPLUS.src)}</section>`;
+}
+function dlPick(d, v){ setParams({["d_" + d]: dlChoice(d) === v ? "" : v}); render(true); }
+function dlEndPick(id){
+  const k = P("tab") || "hos", t = DLC_TALES[k], e = t && t.endings[id]; if(!e) return;
+  const clear = Object.keys(t.decisions).reduce((o, x) => (o["d_" + x] = "", o), {});
+  for(const [x, v] of Object.entries(e.path)) clear["d_" + x] = v;
+  setParams(clear); render(true);
+  $(".dl-end.live")?.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+}
+function dlReset(){ const k = P("tab") || "hos", t = DLC_TALES[k]; setParams(Object.keys(t.decisions).reduce((o, x) => (o["d_" + x] = "", o), {})); render(true); }
+</script>
+<script>
+"use strict";
+/* =====================================================================
    9. INTERACTIONS (event delegation)
    ===================================================================== */
 function toggleFav(kind, id){
@@ -5110,6 +5417,9 @@ document.addEventListener("click", e => {
       const f = $(`[data-action="set-param"][data-k="${t.dataset.k}"][data-v="${CSS.escape(t.dataset.v)}"]`); f && f.focus();
       break;
     }
+    case "dl-pick": dlPick(t.dataset.d, t.dataset.v); { const b = $(`[data-action="dl-pick"][data-d="${t.dataset.d}"][data-v="${t.dataset.v}"]`); b && b.focus({preventScroll:true}); } break;
+    case "dl-end": dlEndPick(t.dataset.id); break;
+    case "dl-reset": dlReset(); break;
     case "set-params": setParams(JSON.parse(t.dataset.p)); render(true); break;
     case "clear-filters": { const keep = {}; ["tab","type","kind","r"].forEach(k => { if(route.name !== "world" && P(k)) keep[k] = P(k); }); route.params = new URLSearchParams(keep); setParams({}); render(true); break; }
     case "acc": {

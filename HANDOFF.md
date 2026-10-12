@@ -71,6 +71,19 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## Expansion tales (DLC and New Game+)
+- **Where it lives:** JS section "8k. EXPANSION TALES" replaces the old DLC view. The data is in section 1d as `DLC_TALES`. Sources are the fandom main-quest tables for each expansion, "Whatsoever a Man Soweth...", and "The Witcher 3 decision checklist" (source keys `fandomHoSQ`, `fandomBaWQ`, `fandomDecide`).
+- **Tale tree:** the main quests run on a spine with checkable seals; nodes tick off journal quests where a matching record exists. Decisions are stored in the URL as `d_<id>`, so a path can be shared.
+  - Soft decisions (journal, story, Dettlaff) don't block the walk.
+  - A decision whose outcome depends on unset soft choices asks for them first.
+  - The endings panel shows whether each ending is reachable. Clicking an ending applies its `path`.
+- **Endings covered:**
+  - **Hearts of Stone:** 2 endings (pact dissolved or fulfilled), each with its rewards.
+  - **Blood and Wine:** 4 endings (sisters reconcile, blood at the ceremony, duchess mourns, both sisters die).
+  - **Undocumented case:** investigating without the journal and story is labelled "Outcome not documented", because the checklist doesn't describe it.
+- **Quests not in the journal data:** several Blood and Wine main quests (e.g. Where Children Toil, The Man from Cintra, Beyond Hill and Dale..., Blood Simple, What Lies Unseen, Pomp and Strange Circumstance, Burlap is the New Stripe) show as uncheckable nodes. Adding them to `QUESTS` would make them checkable.
+- **New Game+ tab:** a readiness ring over the prep checklist (same `ng-*` check ids), plus the crosses-over / left-behind ledger and the scaling steps.
+
 ## Market square (money making)
 - JS section "8j. MARKET SQUARE" replaces the old money view.
 - **Data:** the selling rules live in section 1d as `SHOPS`, `SALE_PLACES`, `SALE_ITEMS` and `SALE_FACTS`. They come from these Witcher Wiki pages, with source key `fandomMerch`: The Witcher 3 merchants, Armorer, Blacksmith, Herbalist, Innkeeper and The Witcher 3 junk.
