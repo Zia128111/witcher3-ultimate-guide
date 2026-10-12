@@ -138,6 +138,26 @@ p{margin:0 0 .8em}
 .nav a[aria-current="page"]::before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:3px;background:var(--accent);border-radius:0 2px 2px 0}
 .nav a[aria-current="page"] .ph{color:var(--accent-text)}
 .nav .count{margin-left:auto;font:500 .72rem var(--font-mono);color:var(--text-3)}
+.nav-collapse{display:flex;align-items:center;gap:11px;width:100%;margin-top:auto;padding:8px 10px;border:0;border-radius:var(--r-ctl);background:none;color:var(--text-3);font:500 .9rem var(--font-body);cursor:pointer;text-align:left}
+.nav-collapse:hover{background:var(--surface);color:var(--text)}
+.nav-collapse .ph{font-size:1.2rem}
+.nav-collapse kbd{margin-left:auto}
+.nav-collapse + .sidebar-foot{margin-top:8px}
+.app{transition:grid-template-columns .28s var(--ease)}
+.reduce-motion .app{transition:none}
+@media (min-width:1025px){
+  .app.nav-collapsed{--sidebar:76px}
+  .nav-collapsed .sidebar{padding:20px 10px 18px;overflow-x:hidden}
+  .nav-collapsed .brand{justify-content:center;padding:4px 0 18px}
+  .nav-collapsed .brand-name,.nav-collapsed .nav-group > .label,.nav-collapsed .nav a > span,.nav-collapsed .sidebar-foot,.nav-collapsed .nav-collapse span,.nav-collapsed .nav-collapse kbd{display:none}
+  .nav-collapsed .nav-group{margin:0;padding:6px 0;border-top:1px solid var(--line)}
+  .nav-collapsed .nav-group:first-child{border-top:0}
+  .nav-collapsed .nav a{justify-content:center;padding:10px 0}
+  .nav-collapsed .nav a .ph{font-size:1.3rem}
+  .nav-collapsed .nav a[aria-current="page"]::before{left:-10px}
+  .nav-collapsed .nav-collapse{justify-content:center;padding:10px 0}
+}
+@media (max-width:1024px){ .nav-collapse{display:none} }
 .sidebar-foot{margin-top:auto;padding:14px 10px 0;border-top:1px solid var(--line);font-size:.8rem;color:var(--text-3);line-height:1.45}
 
 .main{min-width:0;display:flex;flex-direction:column}
@@ -348,9 +368,12 @@ td:first-child{color:var(--text)}
 @keyframes toastOut{to{opacity:0;transform:translateY(6px)}}
 
 .tooltip{position:relative}
-.tooltip[data-tip]:hover::after,.tooltip[data-tip]:focus-visible::after{
-  content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);background:var(--surface-3);color:var(--text);
-  border:1px solid var(--line-strong);padding:6px 9px;border-radius:var(--r-ctl);font-size:.78rem;white-space:nowrap;z-index:5;pointer-events:none;box-shadow:var(--shadow)}
+.tip{position:fixed;left:0;top:0;z-index:1000;max-width:min(280px,calc(100vw - 16px));padding:6px 10px;border-radius:var(--r-ctl);background:var(--surface-3);color:var(--text);border:1px solid var(--line-strong);
+  font:500 .78rem/1.35 var(--font-body);white-space:pre-line;pointer-events:none;box-shadow:var(--shadow);opacity:0;transform:translateY(3px);transition:opacity .14s,transform .14s}
+.tip.on{opacity:1;transform:none}
+.tip.right{transform:translateX(-3px)}.tip.right.on{transform:none}
+.reduce-motion .tip{transition:none}
+@media (prefers-reduced-motion:reduce){ .tip{transition:none} }
 
 /* ---------- Home ---------- */
 .hero{position:relative;min-height:min(560px,76dvh);border-radius:var(--r-panel);overflow:hidden;display:grid;align-items:end;border:1px solid var(--line);isolation:isolate}
@@ -1818,6 +1841,7 @@ html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{an
       <span class="brand-name">Ultimate Guide<small>Witcher 3 field journal</small></span>
     </a>
     <nav class="nav" id="nav"></nav>
+    <button class="nav-collapse" id="navCollapse" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Collapse sidebar"><i class="ph ph-caret-double-left" aria-hidden="true"></i><span>Collapse</span><kbd>[</kbd></button>
     <div class="sidebar-foot">Unofficial fan companion. Not affiliated with CD PROJEKT RED. Progress is saved in this browser only.</div>
   </aside>
   <div class="main">
@@ -1860,6 +1884,7 @@ html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{an
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
 </div>
 
+<div class="tip" id="tip" role="tooltip" hidden></div>
 <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
 <input type="file" id="importFile" accept="application/json,.json" hidden>
 <script>
@@ -2806,7 +2831,7 @@ function defaultState(){
     prep: {},              // alchemy recipe id -> quantity
     prepDone: {},          // ingredient name -> true
     map: {off: ["entrance", "notice", "grindstone", "armourerstable"], hideFound: false, linkedOnly: false},
-    settings: {theme: "night", reduceMotion: false, spoilers: false}
+    settings: {theme: "night", reduceMotion: false, spoilers: false, navCollapsed: false}
   };
 }
 let storageOK = true;
@@ -2861,6 +2886,7 @@ function sanitize(obj){
     d.settings.theme = obj.settings.theme === "parchment" ? "parchment" : "night";
     d.settings.reduceMotion = obj.settings.reduceMotion === true;
     d.settings.spoilers = obj.settings.spoilers === true;
+    d.settings.navCollapsed = obj.settings.navCollapsed === true;
   }
   return d;
 }
@@ -3047,8 +3073,10 @@ function renderNav(){
   const qDone = QUESTS.filter(q => isChecked(q.id)).length;
   const owned = Object.keys(state.gwent.owned).length;
   const counts = {quests:`${qDone}/${QUESTS.length}`, gwent:`${owned}/${GWENT_CARDS.filter(c => !c.token).length}`, journal: state.favorites.length ? String(state.favorites.length) : ""};
+  const countTip = {quests:`${qDone} of ${QUESTS.length} quests completed`, gwent:`${owned} of ${GWENT_CARDS.filter(c => !c.token).length} cards collected`, journal:`${state.favorites.length} saved favorite${state.favorites.length === 1 ? "" : "s"}`};
+  const rail = state.settings.navCollapsed;
   $("#nav").innerHTML = NAV.map(g => `<div class="nav-group"><span class="label">${esc(g.group)}</span>${g.items.map(i =>
-    `<a href="#/${i.id}" ${route.name === i.id ? 'aria-current="page"' : ""}>${icon(i.icon)}<span>${esc(i.label)}</span>${counts[i.id] ? `<span class="count">${counts[i.id]}</span>` : ""}</a>`).join("")}</div>`).join("");
+    `<a href="#/${i.id}" ${route.name === i.id ? 'aria-current="page"' : ""} ${rail ? `data-tip="${esc(i.label)}${counts[i.id] ? " · " + counts[i.id] : ""}" data-tip-side="right"` : ""}>${icon(i.icon)}<span>${esc(i.label)}</span>${counts[i.id] ? `<span class="count" ${rail ? "" : `data-tip="${esc(countTip[i.id])}"`}>${counts[i.id]}</span>` : ""}</a>`).join("")}</div>`).join("");
 }
 function renderCrumbs(extra){
   const c = $("#crumbs");
@@ -5689,7 +5717,59 @@ function applySettings(){
   const b = $("#themeBtn");
   b.innerHTML = icon(state.settings.theme === "night" ? "ph-moon-stars" : "ph-sun");
   b.setAttribute("aria-label", state.settings.theme === "night" ? "Switch to parchment theme" : "Switch to night theme");
+  b.dataset.tip = state.settings.theme === "night" ? "Parchment theme" : "Night theme";
+  const rail = state.settings.navCollapsed, nb = $("#navCollapse");
+  document.querySelector(".app").classList.toggle("nav-collapsed", rail);
+  nb.setAttribute("aria-expanded", String(!rail));
+  nb.setAttribute("aria-label", rail ? "Expand sidebar" : "Collapse sidebar");
+  nb.dataset.tip = rail ? "Expand sidebar  [" : "Collapse sidebar  [";
+  nb.dataset.tipSide = "right";
+  nb.querySelector(".ph").className = "ph " + (rail ? "ph-caret-double-right" : "ph-caret-double-left");
 }
+function toggleNav(){
+  if(matchMedia("(max-width:1024px)").matches) return;
+  state.settings.navCollapsed = !state.settings.navCollapsed; save(); tipHide(); applySettings(); renderNav();
+}
+
+/* Tooltips: one floating element for every [data-tip], plus icon-only controls
+   (no visible text) that carry an aria-label. Positioned in the viewport so
+   scrolling containers never clip it. */
+const TIP = {target:null, timer:0, touch:false};
+function tipText(t){
+  if(t.dataset.tip) return t.dataset.tip;
+  if(!t.textContent.trim() && t.getAttribute("aria-label")) return t.getAttribute("aria-label");
+  return "";
+}
+function tipTarget(n){
+  const t = n && n.closest ? n.closest("[data-tip], button[aria-label], a[aria-label], [role=button][aria-label]") : null;
+  return t && tipText(t) ? t : null;
+}
+function tipShow(t){
+  const el = $("#tip"), txt = tipText(t); if(!txt) return;
+  TIP.target = t; el.textContent = txt; el.hidden = false; el.className = "tip";
+  const r = t.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight, vw = innerWidth, vh = innerHeight, g = 8;
+  let side = t.dataset.tipSide || "top", x, y;
+  if(side === "right" && r.right + g + w > vw - 8) side = "top";
+  if(side === "top" && r.top - g - h < 8) side = "bottom";
+  if(side === "right"){ x = r.right + g; y = r.top + r.height / 2 - h / 2; }
+  else { x = r.left + r.width / 2 - w / 2; y = side === "top" ? r.top - g - h : r.bottom + g; }
+  x = Math.max(8, Math.min(x, vw - w - 8)); y = Math.max(8, Math.min(y, vh - h - 8));
+  el.style.left = x + "px"; el.style.top = y + "px";
+  void el.offsetWidth; el.classList.add("on", side);
+}
+function tipHide(){ clearTimeout(TIP.timer); TIP.target = null; const el = $("#tip"); el.hidden = true; el.className = "tip"; }
+document.addEventListener("pointerdown", e => { TIP.touch = e.pointerType === "touch"; tipHide(); }, true);
+document.addEventListener("mouseover", e => {
+  if(TIP.touch) return;
+  const t = tipTarget(e.target); if(t === TIP.target) return;
+  clearTimeout(TIP.timer); if(!t){ tipHide(); return; }
+  const warm = !!TIP.target;
+  TIP.timer = setTimeout(() => t.isConnected && tipShow(t), warm ? 0 : 280);
+});
+document.addEventListener("focusin", e => { const t = tipTarget(e.target); if(t && t.matches(":focus-visible")) tipShow(t); else tipHide(); });
+document.addEventListener("focusout", () => tipHide());
+window.addEventListener("scroll", () => TIP.target && tipHide(), true);
+window.addEventListener("resize", () => TIP.target && tipHide());
 function planSaveDialog(){
   const name = ($("#planName") && $("#planName").value.trim()) || state.planner.name;
   openModal(modalShell("Save build", `
@@ -5946,6 +6026,8 @@ document.addEventListener("keydown", e => {
   }
   if(mod){ if(e.key === "Escape"){ e.preventDefault(); closeModal(); } else trapFocus(e, $("#modal")); return; }
   if(e.key === "Escape" && $("#sidebar").classList.contains("open")){ closeDrawer(); $("#menuBtn").focus(); return; }
+  if(e.key === "Escape" && TIP.target){ tipHide(); }
+  if(e.key === "[" && !typing && !e.ctrlKey && !e.metaKey && !e.altKey){ e.preventDefault(); toggleNav(); return; }
   if((e.key === "/" && !typing) || (e.key.toLowerCase() === "k" && (e.ctrlKey || e.metaKey))){ e.preventDefault(); openPalette(); return; }
   if((e.key === "Enter" || e.key === " ") && e.target.dataset && e.target.dataset.action === "reveal"){ e.preventDefault(); e.target.click(); }
 });
@@ -5953,9 +6035,10 @@ $("#paletteOverlay").addEventListener("mousedown", e => { if(e.target.id === "pa
 $("#modalOverlay").addEventListener("mousedown", e => { if(e.target.id === "modalOverlay") closeModal(); });
 $("#searchBtn").addEventListener("click", () => openPalette());
 $("#themeBtn").addEventListener("click", () => { state.settings.theme = state.settings.theme === "night" ? "parchment" : "night"; save(); applySettings(); if(route.name === "journal") render(true); });
+$("#navCollapse").addEventListener("click", toggleNav);
 $("#menuBtn").addEventListener("click", () => $("#sidebar").classList.contains("open") ? closeDrawer() : openDrawer());
 $("#scrim").addEventListener("click", closeDrawer);
-window.addEventListener("hashchange", () => { closeModal(); closePaletteIfOpen(); render(); window.scrollTo(0, 0); $("#view").focus({preventScroll:true}); });
+window.addEventListener("hashchange", () => { tipHide(); closeModal(); closePaletteIfOpen(); render(); window.scrollTo(0, 0); $("#view").focus({preventScroll:true}); });
 function closePaletteIfOpen(){ if(!$("#paletteOverlay").hidden) closePalette(); }
 window.addEventListener("storage", e => { if(e.key === STORE_KEY){ state = load(); applySettings(); render(true); } });
 

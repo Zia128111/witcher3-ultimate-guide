@@ -71,6 +71,19 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## Sidebar rail and tooltips
+- **Collapsible sidebar:** on desktop (1025px and wider), the sidebar folds into a 76px icon rail.
+  - Toggle with the "Collapse" button at the foot of the nav, or the `[` key when not typing.
+  - The state is saved as `state.settings.navCollapsed` and validated in `sanitize`. `applySettings()` applies the `.app.nav-collapsed` class and updates the button's label, icon and `aria-expanded`.
+  - In rail mode, nav links get right-side tooltips with their label and count.
+  - Below 1025px the toggle is hidden and the mobile drawer is unchanged.
+- **Tooltips:** one floating `#tip` element (fixed position, so scroll containers never clip it) replaces the old CSS `::after` tooltips.
+  - It shows for any `[data-tip]`, and automatically for icon-only buttons and links that have an `aria-label` and no visible text.
+  - `data-tip-side="right"` places it to the right. It flips to below when there's no room above and is clamped to the viewport.
+  - It shows on hover after a short delay, or immediately on keyboard focus (`:focus-visible`). It hides on scroll, resize, route change, Escape or touch.
+- **Tooltips added:** nav counts ("12 of 115 quests completed") and the theme toggle.
+- **Test note:** in a hidden or background browser pane, CSS transitions freeze, so measured widths can lag one toggle behind. With reduced motion on, every toggle measured correctly.
+
 ## The medallion (home)
 - JS section "8m. THE MEDALLION" replaces the old home view.
 - **Medallion:** the hero holds a progress medallion. The core ring is the average of the nine `computeProgress()` categories, shown with one decimal below 10%. Each category node sits on a spoke whose gold length is its percentage.
