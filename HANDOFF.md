@@ -63,6 +63,14 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - Satchel: `state.prep` and `state.prepDone`, same keys as before. `prepHtml` and `prepTotals` keep their names, and all prep actions refresh through `alRefresh()`, so the bestiary "Add kit" still works.
 - No icon on the wiki: Water Hag and Chort decoctions, and the monster mutagens (their colour isn't confirmed, so they show a DNA emblem).
 
+## Trophy hall (collectibles)
+- JS section "8i. TROPHY HALL" replaces the old collectibles view. There are three tabs, stored in the URL as `tab`.
+- **Places of Power:** 27 sign runes grouped by region. The sign is parsed from each location's name. The ability-point total feeds the skill planner through the "Use N in skill planner" action (`cl-sendpop`, which sets `state.planner.pop`). There is a Map button on each stone linked in `LOCATION_PINS`.
+- **Treasure ledger:** per-map cards with found/total counts for the guarded, hidden, spoils and smugglers markers. These counts come from the markers you tick on the interactive map. The tab also lists named treasures and diagram-hunt quests.
+- **Trophy hall:** 41 achievement medals on shelves for the base game, HoS and BaW. Icons come from `ACH_ICON` in section 1d. The base game has separate locked and unlocked art; DLC icons have no locked variant, so they are grayscaled when locked. Filter with `af`: unlocked, locked or missable.
+- The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
+- Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
+
 ## Armory (gear)
 - JS section "8g. ARMORY" replaces the old accordion and compare modal. It has three tabs (URL `tab`: empty, `weapons`, `crafting`).
 - Armory: a school crest rail (`s`) and an armor stand. The stand shows the set render (Griffin, Manticore, Viper) or the selected tier's inventory icon, over the school-gear quest screenshot, with grandmaster sword icons. The upgrade path is drawn as tier medallions with icons (`t` selects a tier) and a crafted toggle (`gear:<set>:<tier>`, as before). "Forged by" links to Yoana, Hattori and Lafargue map pins. Comparison is inline (`vs`).
