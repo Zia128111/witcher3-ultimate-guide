@@ -6,6 +6,18 @@ An unofficial, single-file companion site for **The Witcher 3: Wild Hunt**, **He
 
 To run it locally, open `index.html` directly in a modern browser. There is no build step and no dependencies. Progress, favorites, saved builds and settings are stored in your browser (`localStorage`) and can be exported or imported as JSON from **My Journal**.
 
+## Editing the site
+
+`index.html` is generated, so don't edit it directly. The source is the parts in `src/`:
+
+```bash
+python build.py            # rebuild index.html from src/ and run the checks
+python build.py --check    # check the current index.html only
+python -m http.server 5517 # preview at http://localhost:5517
+```
+
+`CLAUDE.md` has the project rules, workflow and decisions. `HANDOFF.md` documents every section in detail.
+
 ## What's inside
 
 - **Interactive map** of White Orchard, Velen and Novigrad, Skellige, Kaer Morhen and Toussaint, with 1,219 markers and found-tracking

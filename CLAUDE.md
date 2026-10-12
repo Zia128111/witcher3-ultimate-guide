@@ -1,5 +1,53 @@
 # Project Rules — The Witcher 3 Ultimate Guide
 
+## READ FIRST: current state of the project (overrides the stack rules below)
+
+The owner explicitly chose a **single-file vanilla HTML/CSS/JS site** instead of the Next.js + shadcn plan described further down. Those stack, shadcn-preset and seven-phase rules are **superseded** and kept only for history. The visual direction, data-accuracy and code-quality rules still apply.
+
+- **Live site:** https://witcher3-ultimate-guide.vercel.app (Vercel project `witcher3-ultimate-guide` in team "Zia's projects"). Every push to `main` auto-deploys to production.
+- **Repo:** https://github.com/Zia128111/witcher3-ultimate-guide (public, branch `main`).
+- **Full feature docs:** `HANDOFF.md`. Read it before changing a section.
+
+### How to work on it
+1. **Never edit `index.html` by hand.** It is generated. Edit the parts in `src/`, then run `python build.py`. That joins the parts in order and checks the JS syntax with `node --check` and that there are no em or en dashes.
+2. **Where things live:**
+   - CSS is in `src/01_head.html`, one commented block per section (e.g. `/* ---------- Atlas (World Explorer) ---------- */`).
+   - Game data is in `src/03*.js`.
+   - Each immersive section is its own file, `src/05b…05o_*.js`, with a header comment numbered `8b`–`8o`.
+   - Events are in `src/06_events.js`.
+   - The part order is listed in `build.py`.
+3. **Test in a browser** before committing. Serve the folder (`python -m http.server 5517`) and check:
+   - every touched route at 1440px and 375px;
+   - no horizontal overflow and no console errors.
+
+   Then clear the test `localStorage` (key `w3guide:v1`).
+4. **Commit and push only when the owner asks.** Pushes go to the owner's personal GitHub account:
+   - Run `gh auth switch -u Zia128111` before pushing, commit as `Zia128111 <mziaali128111@gmail.com>`, then switch back with `gh auth switch -u ziaali-dotcom`.
+   - Update `HANDOFF.md` with every feature change.
+
+### Conventions
+- **Architecture:**
+  - Hash router: `#/route?params`, with views in `VIEWS.<route>` and optional `VIEWS.<route>_list` for filterable lists in `#list`.
+  - Use URL params for shareable state: `setParams()` then `render(true)`.
+  - Actions use event delegation through `data-action` / `data-open="kind:id"` / `data-check="id"`.
+- **State:** `state` (checks, favorites, builds, planner, gwent, prep, settings) is validated by `sanitize()` on load and import. New settings must be added to the defaults and to `sanitize`.
+- **Look and feel:** the house style is "immersive like the skill tree":
+  - dark engraved boards (`linear-gradient(#141517,#0d0e0f)`) with a sticky inspector;
+  - ring/progress medallions via `conic-gradient`;
+  - antique gold `#c8a456` / `#e8c675` and crimson `#7a2822` / `#a8362c`;
+  - tree colours from `TREE_META`;
+  - Phosphor icons only; verify an icon exists before use (`ph-scorpion` and `ph-anvil` do not).
+- **Text:** no em/en dashes, plain wording, and verification tags on facts (`vTag`: wiki / guide / unverified / rec).
+- **Images:** hotlinked from the fandom CDN through helpers (`wikiImg`, `bxImg`, `gImg`, `art(key)`), with an `onerror` fallback to an icon. witcher3map.com blocks hotlinking; tiles come from raw.githubusercontent / jsDelivr.
+- **Tooltips:** add `data-tip="..."` (and `data-tip-side="right"` if needed). Icon-only buttons with an `aria-label` get a tooltip automatically.
+- **Accuracy:** never invent stats, coordinates, rewards or exploit status. Research comes from the fandom MediaWiki API (`action=parse`, `prop=wikitext`) via `curl`; WebFetch on fandom returns 402. Label anything single-sourced or undocumented.
+
+### Decisions already made (do not re-litigate without the owner)
+- **Hosting:** stay on Vercel Hobby (free, non-commercial). Move to Cloudflare Pages if the site ever becomes commercial or outgrows 100 GB a month.
+- **No ads for now.** The witcher3map data is CC BY-NC-SA (non-commercial). CD PROJEKT RED does not allow monetising its IP without permission. The wallpapercave art is used as non-commercial.
+- **Donations instead:** optional, never paywalled. The owner is in Pakistan, where PayPal and Stripe are unavailable, so Ko-fi and Buy Me a Coffee are not viable. The plan is **Patreon paid out through Payoneer** (the owner already has Payoneer), then to a Pakistani bank.
+- **Pending:** when the owner shares the Patreon URL, add a "Support this guide" button: sidebar footer (an icon in the collapsed rail), a home page card, and the My Journal backup tab, with the note "The guide is and will stay free."
+
 ## Project purpose
 
 Build a premium, responsive, interactive companion website for **The Witcher 3: Wild Hunt**, including **Hearts of Stone** and **Blood and Wine**.

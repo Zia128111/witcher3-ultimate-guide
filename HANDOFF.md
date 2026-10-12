@@ -1,7 +1,9 @@
 # Handoff: The Witcher 3 Ultimate Guide
 
 ## What exists
-- `index.html` is the whole site: HTML, CSS and vanilla JS in one file, with no build step. Open it directly in a browser.
+- `index.html` is the whole site: HTML, CSS and vanilla JS in one file. Open it directly in a browser.
+- **It is generated.** The source is the 23 parts in `src/`. Edit those, then run `python build.py` (joins them in order, then checks JS syntax and dashes). `python build.py --check` checks the current `index.html` only. The part order and a one-line description of each part are in `build.py`.
+- Live at https://witcher3-ultimate-guide.vercel.app. Vercel auto-deploys every push to `main`.
 - The JS sections are labelled in order: 1 Data, 2 State and persistence, 3 Utilities, 4 Modals, 5 Navigation and routing, 6 Search, 7 Detail modals, 8 Views, 9 Interactions, 10 Init.
 - Progress is stored in `localStorage` under the key `w3guide:v1` (versioned). JSON export and import go through `sanitize()`, which validates and drops anything malformed.
 
@@ -186,3 +188,46 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 
 ## Artwork
 Witcher 3 wallpapers are hotlinked from wallpapercave.com at the user's request, for personal use. Each falls back to a picsum.photos photo, then to a CSS gradient. Don't deploy publicly without replacing them with licensed art.
+
+## Project history (in order)
+Each item below was built, browser-tested at desktop and 375px with no console errors, and pushed. Commit messages carry the details.
+1. Single-file site: all sections, localStorage, and validated import/export.
+2. Wallpapercave artwork, then the interactive map (witcher3map tiles and markers), then World Explorer locations linked to map pins.
+3. Remastered skill trees from Fextralife and fandom, as an immersive planner with a hit forecast.
+4. Immersive redesigns, one section at a time, in the "like the skill tree" style:
+   - bestiary (real monster images), Gwent (real card art), quests, gear, alchemy (pushed to GitHub after this one);
+   - collectibles (trophy hall), money (market square with patch-note-backed exploits), DLC (tale trees with every documented ending);
+   - World Explorer (atlas with tile charts), home (progress medallion), My Journal (tome), builds (Witchers' hall).
+5. Exploits: every Witcher 3 patch note on fandom (1.01 to 5.01) was read. "Reported working" entries are separated from "patched" ones and are not verified in game.
+6. Collapsible sidebar rail and the site-wide tooltip system.
+7. Deployed to Vercel, with the live link in the README.
+8. Sources moved into `src/` with `build.py`, so work can continue on any PC.
+
+## Research notes kept for later
+- **Latest game patch** when last checked: 5.01 (8 Oct 2026, Remastered). Re-check the "Reported working" exploits after new patches.
+- **Hosting, free tiers (2026 comparison blogs, verify on official pages):**
+  - Vercel Hobby: 100 GB a month, non-commercial only.
+  - Cloudflare Pages: unmetered static bandwidth, 500 builds a month, commercial use OK.
+  - GitHub Pages: about 100 GB a month soft cap.
+  - Netlify: credit-based, roughly 15 to 30 GB a month.
+- **Ads (not pursued):**
+  - Blockers:
+    - witcher3map data is CC BY-NC-SA.
+    - CDPR "never allow[s] monetization of our IP without our direct permission".
+    - The wallpapercave and fandom-hosted art is CD PROJEKT RED's.
+    - Vercel Hobby is non-commercial.
+  - If ever pursued, ads would need:
+    - a custom domain;
+    - a privacy policy;
+    - a Google-certified TCF consent banner for the EEA, UK and Switzerland;
+    - `ads.txt`;
+    - ad slots refreshed on every hash-route change.
+- **Donations from Pakistan:**
+  - PayPal and Stripe are unavailable, which rules out Ko-fi and Buy Me a Coffee payouts (BMC dropped Payoneer in 2024).
+  - Patreon supports Payoneer ("Payoneer Wallet", or "Bank transfer processed by Payoneer"). The owner already has Payoneer.
+  - Rough costs:
+    - Patreon takes about 10% plus processing.
+    - A third-party source puts the Patreon-to-Payoneer Wallet payout at about $1 (minimum $25).
+    - Payoneer charges about 2% to convert to PKR and withdraw to a bank.
+  - Don't use Payoneer's "Request a payment" as a tip jar; it is meant for invoices.
+  - Patreon needs a W-8BEN form.

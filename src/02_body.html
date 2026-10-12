@@ -1,0 +1,55 @@
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Primary">
+    <a class="brand" href="#/home" aria-label="The Witcher 3 Ultimate Guide, home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-name">Ultimate Guide<small>Witcher 3 field journal</small></span>
+    </a>
+    <nav class="nav" id="nav"></nav>
+    <button class="nav-collapse" id="navCollapse" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Collapse sidebar"><i class="ph ph-caret-double-left" aria-hidden="true"></i><span>Collapse</span><kbd>[</kbd></button>
+    <div class="sidebar-foot">Unofficial fan companion. Not affiliated with CD PROJEKT RED. Progress is saved in this browser only.</div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon menu-btn" id="menuBtn" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><i class="ph ph-list" aria-hidden="true"></i></button>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+      <button class="search-trigger" id="searchBtn" aria-label="Search the guide" aria-haspopup="dialog">
+        <i class="ph ph-magnifying-glass" aria-hidden="true"></i><span>Search quests, monsters, gear</span><kbd>/</kbd>
+      </button>
+      <div class="top-actions">
+        <button class="btn btn-ghost btn-icon tooltip" id="themeBtn" data-tip="Switch theme" aria-label="Switch between night and parchment theme"><i class="ph ph-moon-stars" aria-hidden="true"></i></button>
+      </div>
+    </header>
+    <main id="view" class="view" tabindex="-1"></main>
+    <footer class="site-foot">
+      <span>The Witcher 3 Ultimate Guide. A fan-made journal. The Witcher is a trademark of CD PROJEKT S.A.; artwork belongs to its owners.</span>
+      <span><a href="#/sources">Sources and data status</a></span>
+    </footer>
+  </div>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- Command palette -->
+<div class="overlay" id="paletteOverlay" hidden>
+  <div class="modal palette" role="dialog" aria-modal="true" aria-label="Search the guide">
+    <div class="palette-input">
+      <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+      <label for="paletteInput" class="sr-only">Search</label>
+      <input id="paletteInput" type="search" autocomplete="off" placeholder="Search quests, monsters, gear, recipes, cards" role="combobox" aria-expanded="true" aria-controls="paletteResults" aria-autocomplete="list">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="palette-filters" id="paletteFilters" role="group" aria-label="Filter results by type"></div>
+    <div class="palette-results" id="paletteResults" role="listbox" aria-label="Results"></div>
+    <div class="palette-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span id="paletteCount" aria-live="polite"></span></div>
+  </div>
+</div>
+
+<!-- Generic modal -->
+<div class="overlay" id="modalOverlay" hidden>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
+</div>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<input type="file" id="importFile" accept="application/json,.json" hidden>
