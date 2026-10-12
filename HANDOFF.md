@@ -71,6 +71,24 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## Market square (money making)
+- JS section "8j. MARKET SQUARE" replaces the old money view.
+- **Data:** the selling rules live in section 1d as `SHOPS`, `SALE_PLACES`, `SALE_ITEMS` and `SALE_FACTS`. They come from these Witcher Wiki pages, with source key `fandomMerch`: The Witcher 3 merchants, Armorer, Blacksmith, Herbalist, Innkeeper and The Witcher 3 junk.
+- **Sale calculator:** URL params are `it` (item type), `pl` (where you sell) and `val` (face value, updated live without a re-render via `mnRefresh`).
+  - Each stall's estimate is face value × shop tier × the wiki's bonus. The tiers are village 20%, Skellige 35% and large city 41.5%. The bonuses are armorer and blacksmith +20%, innkeeper +5–12% on food and +5–15% on junk.
+  - The herbalist has no figure on the wiki, so the stall says "Top price" instead of a number. Every estimate is labelled as an estimate.
+- **Coin trails:** the early and late methods from `MONEY`. The 1.12 tip (Skellige prices drop 10% after The Lord of Undvik) was added.
+- **Exploit notice board:** 15 entries, each with a `kind`. Filter by `ek` (type) and `ex` (status).
+  - Every "patched" entry quotes a fandom patch-notes page (1.04 to 1.30). I read all 31 Witcher 3 patch pages, including 4.x and 5.x, for exploit lines.
+  - The two "unverified" entries have no evidence either way.
+  - **"Reported working" status (18 entries now):**
+    - **Pang of Conscience sword respawn:** fandom lists it as a bug, and no patch from 1.01 to 5.01 mentions a fix. One guide (GamingProMax, 29 Sep 2026) says it survived Remastered 5.0. It is not reported on 5.01 and was not tested by us.
+    - **White Orchard chort farm:** fandom says only one chort spawns at a time now; no version is named.
+    - Each reported notice shows its steps, the last reported version and its source links.
+  - Also added: the cow-hide farm, countered in 1.05 by the Bovine Defense Force.
+  - **Rejected for weak evidence:** the Hanse base bandit loot farm, which only one guide claims respawns. The PC `addmoney` console command is not an exploit.
+  - **Latest patch is 5.01** (8 Oct 2026). Re-check the reported entries when new reports appear.
+
 ## Armory (gear)
 - JS section "8g. ARMORY" replaces the old accordion and compare modal. It has three tabs (URL `tab`: empty, `weapons`, `crafting`).
 - Armory: a school crest rail (`s`) and an armor stand. The stand shows the set render (Griffin, Manticore, Viper) or the selected tier's inventory icon, over the school-gear quest screenshot, with grandmaster sword icons. The upgrade path is drawn as tier medallions with icons (`t` selects a tier) and a crafted toggle (`gear:<set>:<tier>`, as before). "Forged by" links to Yoana, Hattori and Lafargue map pins. Comparison is inline (`vs`).

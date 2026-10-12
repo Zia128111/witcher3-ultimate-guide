@@ -537,6 +537,100 @@ ul.clean{margin:0;padding-left:1.1em;color:var(--text-2)} ul.clean li{margin-bot
   .cl-counts{grid-template-columns:1fr}
 }
 
+/* ---------- Market square ---------- */
+.mn-market{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);border:1px solid #2a2d31;border-radius:var(--r-panel);overflow:hidden;color:#ebe5d8;
+  background:radial-gradient(ellipse at 70% 0%,rgba(200,164,86,.09),transparent 55%),linear-gradient(180deg,#141517,#0d0e0f)}
+.mn-market .muted,.mn-market .label{color:#8a857a}
+.mn-controls{padding:20px;border-right:1px solid #2a2d31;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,.2)}
+.mn-controls h2{color:#ebe5d8;font-size:1.6rem}
+.mn-controls .muted{margin:0 0 6px;font-size:.9rem}
+.mn-controls .label{margin-top:6px}
+.mn-items{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mn-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--r-ctl);border:1px solid #2f3236;background:#16171a;color:#b3ad9f;cursor:pointer;font-size:.84rem;text-align:left;transition:all .2s}
+.mn-item .ph{font-size:1.1rem;color:#8a857a}
+.mn-item:hover{border-color:#4a4d52;color:#ebe5d8}
+.mn-item[aria-pressed="true"]{border-color:#c8a456;color:#ebe5d8;background:linear-gradient(180deg,rgba(200,164,86,.14),transparent),#16171a}
+.mn-item[aria-pressed="true"] .ph{color:#e8c675}
+.mn-val{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:var(--r-ctl);border:1px solid #3c4046;background:#0d0e0f}
+.mn-val:focus-within{border-color:#c8a456;box-shadow:0 0 0 3px rgba(200,164,86,.2)}
+.mn-coin{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:1.15rem;color:#2a1f0c;
+  background:radial-gradient(circle at 35% 30%,#f4dc9a,#c8a456 55%,#8a6a2a);box-shadow:inset 0 -2px 0 rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.5)}
+.mn-val input{flex:1;min-width:0;border:0;background:none;color:#ebe5d8;font:600 1.4rem var(--font-mono,monospace);outline:none;padding:4px 0}
+.mn-places{display:flex;flex-direction:column;gap:6px}
+.mn-place{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 12px;border-radius:var(--r-ctl);border:1px solid #2f3236;background:#16171a;color:#ebe5d8;cursor:pointer;text-align:left}
+.mn-place span{font-size:.76rem;color:#8a857a}
+.mn-place:hover{border-color:#4a4d52}
+.mn-place[aria-pressed="true"]{border-color:#c8a456;background:linear-gradient(90deg,rgba(200,164,86,.12),transparent 80%),#16171a}
+.mn-board{padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.mn-stalls{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mn-stall{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:var(--r-panel);border:1px solid #24272b;background:rgba(0,0,0,.28);transition:border-color .3s,opacity .3s}
+.mn-stall.none{opacity:.5}
+.mn-stall.buys{border-color:#3c4046}
+.mn-stall.best{border-color:color-mix(in srgb,#c8a456 60%,#24272b);background:radial-gradient(ellipse at 0% 0%,rgba(200,164,86,.16),transparent 60%),rgba(0,0,0,.28);box-shadow:0 0 24px rgba(200,164,86,.12)}
+.mn-sign{position:relative;width:52px;height:52px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 28%,#2c2e33,#111214 72%);border:1.5px solid #3a3d43}
+.mn-stall.best .mn-sign{border-color:#c8a456;box-shadow:0 0 16px rgba(200,164,86,.35)}
+.mn-sign img{position:absolute;max-width:62%;max-height:62%;opacity:0;transition:opacity .3s}
+.mn-sign img.ok{opacity:1}
+.mn-sign > .ph{font-size:1.3rem;color:#8a857a}
+.mn-sign img.ok + .ph{display:none}
+.mn-stall-body{flex:1;min-width:0}
+.mn-stall-body b{font:600 1.1rem var(--font-display);color:#ebe5d8}
+.mn-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;color:#8a857a;white-space:nowrap}
+.mn-stall.best .mn-tag{color:#e8c675}
+.mn-est{margin-top:6px;font-size:1.35rem;font-weight:600;color:#ebe5d8}
+.mn-stall.best .mn-est{color:#e8c675}
+.mn-est small{font-size:.76rem;font-weight:400;color:#8a857a;font-family:var(--font-body,inherit)}
+.mn-bar{height:4px;border-radius:999px;background:#24272b;margin-top:6px;overflow:hidden}
+.mn-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8a6a2a,#e8c675);transition:width .4s var(--ease)}
+.mn-stall-body p{margin:8px 0 0;font-size:.8rem;line-height:1.4;color:#8a857a}
+.mn-note{display:flex;gap:8px;align-items:flex-start;margin:0;font-size:.8rem;color:#8a857a}
+.mn-note .ph{flex:none;margin-top:2px}
+.mn-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mn-fact{display:flex;gap:12px;padding:14px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface)}
+.mn-fact > .ph{font-size:1.4rem;color:var(--rare);flex:none;margin-top:2px}
+.mn-fact b{display:block;margin-bottom:2px}
+.mn-fact p{margin:0;font-size:.84rem;color:var(--text-2)}
+.mn-trails{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mn-trail{padding:18px;border:1px solid #2b241c;border-radius:var(--r-panel);color:#ebe5d8;background:radial-gradient(ellipse at 0% 0%,rgba(200,164,86,.08),transparent 55%),linear-gradient(180deg,#17130f,#0f0c0a)}
+.mn-trail h3{display:flex;align-items:center;gap:8px;color:#ebe5d8;font-size:1.35rem;margin-bottom:14px}
+.mn-trail h3 .ph{color:#e8c675}
+.mn-trail ol{list-style:none;margin:0;padding:0;position:relative}
+.mn-trail ol::before{content:"";position:absolute;left:17px;top:18px;bottom:18px;border-left:2px dashed #4a3e30}
+.mn-trail li{position:relative;display:flex;gap:14px;padding-bottom:16px}
+.mn-trail li:last-child{padding-bottom:0}
+.mn-step{position:relative;width:36px;height:36px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#2a1f0c;
+  background:radial-gradient(circle at 35% 30%,#f4dc9a,#c8a456 55%,#8a6a2a);box-shadow:inset 0 -2px 0 rgba(0,0,0,.3),0 2px 8px rgba(0,0,0,.6)}
+.mn-trail b{color:#ebe5d8}
+.mn-trail p{margin:4px 0 0;font-size:.86rem;color:#a39d90}
+.mn-notices{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;padding:22px 18px;border-radius:var(--r-panel);border:1px solid #2b241c;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 80px),linear-gradient(180deg,#2a1f15,#1c150f)}
+.mn-notice{position:relative;padding:22px 16px 16px;border-radius:2px;color:#2a221a;transform:rotate(var(--tilt));transition:transform .25s var(--ease);
+  background:linear-gradient(180deg,#e7dcc4,#d6c8a8);box-shadow:0 8px 16px rgba(0,0,0,.45);min-height:140px;display:flex;flex-direction:column;gap:6px}
+.mn-notice:hover{transform:rotate(0) translateY(-3px)}
+.mn-nail{position:absolute;top:8px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#9a9a9a,#3a3a3a);box-shadow:0 1px 2px rgba(0,0,0,.6)}
+.mn-kind{font:600 .66rem var(--font-mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:#7a6a52}
+.mn-notice h3{font:600 1.08rem/1.25 var(--font-display);color:#2a221a}
+.mn-notice p{margin:0;font-size:.8rem;color:#5a4e3e}
+.mn-stamp{align-self:flex-end;margin-top:auto;padding:3px 10px;border:2px solid currentColor;border-radius:4px;font:700 .78rem var(--font-mono,monospace);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-6deg)}
+.mn-notice.patched .mn-stamp{color:#8e2a22}
+.mn-notice.unverified .mn-stamp{color:#9a6a12}
+.mn-notice.reported .mn-stamp{color:#2f6b3a}
+.mn-notice.reported{background:linear-gradient(180deg,#e9e2c8,#d5cba6);grid-column:span 2}
+.mn-steps{color:#2a221a !important;font-size:.84rem !important}
+.mn-ver{font:600 .72rem var(--font-mono,monospace) !important;color:#2f6b3a !important}
+.mn-srcs{font-size:.72rem !important}
+.mn-srcs a{color:#5a3e1e;text-decoration:underline}
+@media (max-width:767px){ .mn-notice.reported{grid-column:auto} }
+@media (prefers-reduced-motion:reduce){ .mn-notice{transform:none} .mn-bar i{transition:none} }
+@media (max-width:1100px){ .mn-market{grid-template-columns:1fr} .mn-controls{border-right:0;border-bottom:1px solid #2a2d31} .mn-facts{grid-template-columns:1fr 1fr} }
+@media (max-width:767px){
+  .mn-controls,.mn-board{padding:14px}
+  .mn-stalls{grid-template-columns:1fr}
+  .mn-trails,.mn-facts{grid-template-columns:1fr}
+  .mn-notices{padding:16px 12px}
+}
+
 /* ---------- Alchemist's workbench ---------- */
 .al-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 .al-tabs .qx-tab .ph{color:var(--ac);border-color:color-mix(in srgb,var(--ac) 50%,transparent);background:color-mix(in srgb,var(--ac) 10%,transparent)}
@@ -1467,7 +1561,12 @@ const SOURCES = {
   fextraGw: {name:"Fextralife: Gwent Cards", url:"https://thewitcher3.wiki.fextralife.com/Gwent+Cards"},
   fandomAch:{name:"Witcher Wiki: The Witcher 3 achievements", url:"https://witcher.fandom.com/wiki/The_Witcher_3_achievements"},
   fandomNG: {name:"Witcher Wiki: New Game +", url:"https://witcher.fandom.com/wiki/New_Game_%2B"},
-  fandomPatch:{name:"Witcher Wiki: patch notes 1.05 to 1.22", url:"https://witcher.fandom.com/wiki/Patch_1.07_(The_Witcher_3)"},
+  fandomMerch:{name:"Witcher Wiki: The Witcher 3 merchants (and Armorer, Blacksmith, Herbalist, Innkeeper, junk pages)", url:"https://witcher.fandom.com/wiki/The_Witcher_3_merchants"},
+  fandomPang:{name:"Witcher Wiki: Pang of Conscience (Bugs section)", url:"https://witcher.fandom.com/wiki/Pang_of_Conscience"},
+  fandomBDF:{name:"Witcher Wiki: Bovine Defense Force Initiative", url:"https://witcher.fandom.com/wiki/Bovine_Defense_Force_Initiative"},
+  gpmMoney:{name:"GamingProMax: Witcher 3 Remastered money exploits (29 Sep 2026)", url:"https://gamingpromax.com/witcher-3-wild-hunt-remastered-best-money-exploits-crown-farming-guide/"},
+  srPang:{name:"Screen Rant: Pang of Conscience glitch not patched (Dec 2021)", url:"https://screenrant.com/witcher-3-pang-conscience-money-exploit-not-patched/"},
+  fandomPatch:{name:"Witcher Wiki: patch notes 1.04 to 1.30", url:"https://witcher.fandom.com/wiki/Patch_1.07_(The_Witcher_3)"},
   fextra:   {name:"Fextralife Witcher 3 Wiki", url:"https://thewitcher3.wiki.fextralife.com/"},
   gc:       {name:"game-checklists.com Witcher 3 checklists", url:"https://game-checklists.com/witcher3/all-quests-checklist.html"},
   gcPop:    {name:"game-checklists.com Places of Power", url:"https://game-checklists.com/witcher3/all-places-of-power-checklist.html"},
@@ -2095,7 +2194,7 @@ const ACHIEVEMENTS = [
 /* ---------- Money ---------- */
 const MONEY = {
   early:[
-    {title:"Sell to the right merchant type", body:"Armorers pay for armor, blacksmiths for weapons, herbalists for alchemy goods. Patch 1.07 made all merchants accept junk loot.", v:"guide", src:["fandomPatch"]},
+    {title:"Sell to the right merchant type", body:"Armorers pay 20% extra for armor, blacksmiths 20% extra for weapons, herbalists the most for ingredients, innkeepers the most for junk. Patch 1.07 made all merchants accept junk loot.", v:"wiki", src:["fandomMerch", "fandomPatch"]},
     {title:"Haggle contract rewards", body:"Push the haggle slider to just below the point where the client gets annoyed.", v:"rec", src:["rec"]},
     {title:"Clear treasure and guarded loot", body:"Treasure hunts and question-mark locations yield crowns, relic gear and resale goods.", v:"rec", src:["rec"]},
     {title:"Win Gwent stakes", body:"Some players stake crowns. A strong Northern Realms or Monsters deck pays for itself.", v:"rec", src:["rec"]}
@@ -2103,18 +2202,32 @@ const MONEY = {
   late:[
     {title:"Spread sales across merchants", body:"Merchants have limited gold that refills over time. Guides commonly report larger gold pools in Toussaint (unverified).", v:"unverified", src:["rec"]},
     {title:"Dismantle versus sell", body:"Dismantle relic gear you do not need into crafting materials, then sell surplus components to craftsmen.", v:"rec", src:["rec"]},
+    {title:"Take credit in The Lord of Undvik", body:"Since patch 1.12, prices of goods throughout Skellige drop by 10% after Geralt kills the giant and agrees to take all the credit for it.", v:"wiki", src:["fandomPatch"]},
     {title:"High-level contracts", body:"Late contracts such as The Creature from Oxenfurt Forest (level 35) and Blood and Wine contracts pay more.", v:"rec", src:["rec"]}
   ],
   exploits:[
-    {name:"Infinite drowner respawn farm", status:"patched", patch:"1.05", note:"Wiki pages for 1.04 and 1.05 list the same notes, so the exact patch is ambiguous.", src:["fandomPatch"]},
-    {name:"Buy sea shells, sell the pearls", status:"patched", patch:"1.05", note:"Same 1.04/1.05 ambiguity.", src:["fandomPatch"]},
-    {name:"Loan shark currency loop (sell foreign currency at Vivaldi Bank)", status:"patched", patch:"1.07", src:["fandomPatch"]},
-    {name:"Re-looting gold from the same chest", status:"patched", patch:"1.07", src:["fandomPatch"]},
-    {name:"Infinite rune and glyph upgrades", status:"patched", patch:"1.12", src:["fandomPatch"]},
-    {name:"Path of Warriors XP exploit", status:"patched", patch:"1.10 / 1.22", note:"Listed in both patch notes.", src:["fandomPatch"]},
-    {name:"Aard a beehive at Willis's forge (White Orchard)", status:"patched", patch:"1.22", src:["fandomPatch"]},
-    {name:"Ofieri merchant money trick", status:"unverified", patch:null, note:"No patch-note evidence found either way.", src:[]},
-    {name:"Crow's Perch or Novigrad water/vendor resale trick", status:"unverified", patch:null, note:"No patch-note evidence found either way. Untested on next-gen 4.x.", src:[]}
+    {name:"Pang of Conscience sword respawn (Kaer Morhen)", kind:"money", status:"reported", ver:"Remastered 5.0 (one guide, Sep 2026)",
+      steps:"At the old signal tower south of the Kaer Morhen fast travel point, loot only the Pang of Conscience from the skeleton and leave the letter. Save, reload, and the sword can respawn. Sell the swords to a blacksmith, who pays 20% extra for weapons.",
+      note:"The wiki lists the respawn as a bug. No patch note from 1.01 to 5.01 mentions a fix. Not tested here, and no report covers 5.01 yet.", src:["fandomPang", "gpmMoney", "srPang"]},
+    {name:"Chort farming at the White Orchard cow pen", kind:"money", status:"reported", ver:"No version stated",
+      steps:"Kill six cows in White Orchard village to summon the level 27 chort (the Bovine Defense Force). Chort hide is worth more than double a cow hide.",
+      note:"The wiki says this was partly patched: only one chort appears at a time, and it may not return until you leave White Orchard and come back. The patch is not named.", src:["fandomBDF"]},
+    {name:"Cow hide farm in White Orchard", kind:"money", status:"patched", patch:"1.05", note:"Countered by the Bovine Defense Force chort rather than removed. Hearts of Stone's taxman jokes about it.", src:["fandomBDF"]},
+    {name:"Infinite drowner respawn farm", kind:"money", status:"patched", patch:"1.05", note:"Wiki pages for 1.04 and 1.05 list the same notes, so the exact patch is ambiguous.", src:["fandomPatch"]},
+    {name:"Buy sea shells, sell the pearls", kind:"money", status:"patched", patch:"1.05", note:"Same 1.04/1.05 ambiguity.", src:["fandomPatch"]},
+    {name:"Loan shark currency loop (sell foreign currency at Vivaldi Bank)", kind:"money", status:"patched", patch:"1.07", src:["fandomPatch"]},
+    {name:"Re-looting gold from the same chest", kind:"money", status:"patched", patch:"1.07", src:["fandomPatch"]},
+    {name:"Endless haggling in Contract: Deadly Delights", kind:"money", status:"patched", patch:"1.10", note:"Patch notes call it an issue entailing infinite haggling.", src:["fandomPatch"]},
+    {name:"Crookback Bog fiend respawning after every meditation", kind:"xp", status:"patched", patch:"1.10", note:"Listed as an issue, not an exploit, but it allowed repeat kills.", src:["fandomPatch"]},
+    {name:"Path of Warriors XP exploit", kind:"xp", status:"patched", patch:"1.10 / 1.22", note:"Listed in both patch notes.", src:["fandomPatch"]},
+    {name:"Infinite rune and glyph upgrades", kind:"money", status:"patched", patch:"1.12", src:["fandomPatch"]},
+    {name:"Tissue Transmutation alchemy skill exploit", kind:"combat", status:"patched", patch:"1.12", note:"The notes do not describe how it worked.", src:["fandomPatch"]},
+    {name:"Superior White Raffard's Decoction with Delayed Recovery", kind:"combat", status:"patched", patch:"1.12", note:"The notes do not describe how it worked.", src:["fandomPatch"]},
+    {name:"Pressing O for unlimited Decoy gwent cards", kind:"gwent", status:"patched", patch:"1.22", src:["fandomPatch"]},
+    {name:"Aard a beehive at Willis's forge (White Orchard)", kind:"money", status:"patched", patch:"1.22", src:["fandomPatch"]},
+    {name:"Second Life mutation infinite health regeneration", kind:"combat", status:"patched", patch:"1.30", note:"A Blood and Wine mutation bug under certain circumstances.", src:["fandomPatch"]},
+    {name:"Ofieri merchant money trick", kind:"money", status:"unverified", patch:null, note:"No patch-note evidence found either way.", src:[]},
+    {name:"Crow's Perch or Novigrad water/vendor resale trick", kind:"money", status:"unverified", patch:null, note:"No patch-note evidence found either way. Untested on next-gen 4.x.", src:[]}
   ]
 };
 
@@ -2190,6 +2303,50 @@ const GEAR_IMG = {"sets": {"feline": {"bg": "6/6c/Tw3_cat_school_gear_main.jpg",
 const ALC_ICON = {"r:p-swallow": "c/c2/Tw3_potion_swallow.png", "r:p-thunder": "1/1a/Tw3_potion_thunderbolt.png", "r:p-cat": "8/8f/Tw3_potion_cat.png", "r:p-owl": "b/b1/Tw3_potion_tawny_owl.png", "r:p-honey": "4/4c/Tw3_potion_white_honey.png", "r:p-moon": "b/b6/Tw3_potion_full_moon.png", "r:p-blizzard": "c/c6/Tw3_potion_blizzard.png", "r:p-oriole": "0/04/Tw3_potion_golden_oriole.png", "r:p-maribor": "7/77/Tw3_potion_maribor_forest.png", "r:p-whale": "d/dc/Tw3_potion_killer_whale.png", "r:p-blackblood": "e/e4/Tw3_potion_black_blood.png", "r:p-petri": "3/38/Tw3_potion_petris_philter.png", "r:d-ekimmara": "4/49/Tw3_decoction_ekimmara.png", "r:d-griffin": "e/e9/Tw3_decoction_griffin.png", "r:d-troll": "8/85/Tw3_decoction_troll.png", "r:d-werewolf": "4/41/Tw3_decoction_werewolf.png", "r:d-katakan": "4/40/Tw3_decoction_katakan.png", "r:d-alghoul": "8/81/Tw3_decoction_alghoul.png", "r:o-necro": "7/73/Tw3_oil_necrophage.png", "r:o-specter": "8/81/Tw3_oil_specter.png", "r:o-beast": "9/9c/Tw3_oil_beast.png", "r:o-cursed": "4/4e/Tw3_oil_cursed.png", "r:o-draconid": "0/0f/Tw3_oil_draconid.png", "r:o-elementa": "0/02/Tw3_oil_elementa.png", "r:o-hybrid": "a/a9/Tw3_oil_hybrid.png", "r:o-insectoid": "f/f8/Tw3_oil_insectoid.png", "r:o-ogroid": "4/42/Tw3_oil_ogroid.png", "r:o-relict": "4/4e/Tw3_oil_relict.png", "r:o-vampire": "d/d1/Tw3_oil_vampire.png", "r:o-hanged": "6/6e/Tw3_oil_hanged_mans_venom.png", "r:b-samum": "8/8f/Tw3_bomb_samum.png", "r:b-grapeshot": "7/79/Tw3_bomb_grapeshot.png", "r:b-star": "e/ea/Tw3_bomb_dancing_star.png", "r:b-puffball": "0/05/Tw3_bomb_devils_puffball.png", "r:b-dimeritium": "5/5b/Tw3_bomb_dimeritium.png", "r:b-moondust": "f/f3/Tw3_bomb_moon_dust.png", "r:b-northern": "7/70/Tw3_bomb_northern_wind.png", "i:Alghoul Bone Marrow": "3/34/Tw3_alghoul_bone_marrow.png", "i:Arachas Venom": "6/65/Tw3_arachas_venom.png", "i:Arenaria": "f/f1/Tw3_arenaria.png", "i:Balisse Fruit": "c/ce/Tw3_balisse_fruit.png", "i:Bear Fat": "d/d2/Tw3_bear_fat.png", "i:Beggartick Blossoms": "8/86/Tw3_beggartick_blossoms.png", "i:Berbercane Fruit": "3/36/Tw3_berbercane_fruit.png", "i:Blowball": "c/ca/Tw3_blowball.png", "i:Bryonia": "b/b4/Tw3_bryonia.png", "i:Buckthorn": "d/d9/Tw3_buckthorn.png", "i:Calcium Equum": "2/2e/Tw3_calcium_equum.png", "i:Celandine": "3/3e/Tw3_celandine.png", "i:Cortinarius": "4/49/Tw3_cortinarius.png", "i:Crow's Eye": "1/1d/Tw3_crows_eye.png", "i:Dark Essence": "9/9f/Tw3_dark_essence.png", "i:Dog Tallow": "4/4d/Tw3_dog_tallow.png", "i:Drowner Brain": "7/7e/Tw3_drowner_brain.png", "i:Drowner Tongue": "3/3c/Tw3_drowner_tongue.png", "i:Ducal Water": "0/02/Tw3_ducal_water.png", "i:Dwarven Spirit": "d/d7/Tw3_dwarven_spirit.png", "i:Endrega Embryo": "7/71/Tw3_endrega_embryo.png", "i:Ergot Seeds": "c/c6/Tw3_ergot_seeds.png", "i:Ghoul's Blood": "9/9d/Tw3_ghouls_blood.png", "i:Ginatia Petals": "f/f8/Tw3_ginatia_petals.png", "i:Golem's Heart": "d/dc/Tw3_golems_heart.png", "i:Honeysuckle": "9/9d/Tw3_honeysuckle.png", "i:Hop Umbels": "7/7e/Tw3_hop_umbels.png", "i:Lesser Red Mutagen": "5/5a/Tw3_mutagen_red_lesser.png", "i:Light Essence": "1/1b/Tw3_light_essence.png", "i:Mandrake Root": "c/c0/Tw3_mandrake_root.png", "i:Mistletoe": "8/8f/Tw3_mistletoe.png", "i:Oil": "a/a4/Tw3_oil.png", "i:Optima Mater": "0/08/Tw3_optima_mater.png", "i:Phosphorus": "a/ac/Tw3_phosphorus.png", "i:Powdered Pearl": "3/32/Tw3_powdered_pearl.png", "i:Puffball": "6/6f/Tw3_puffball.png", "i:Quicksilver Solution": "d/d5/Tw3_quicksilver_solution.png", "i:Ranogrin": "1/1b/Tw3_ranogrin.png", "i:Saltpeter": "7/7c/Tw3_saltpeter.png", "i:Sewant Mushrooms": "e/e8/Tw3_sewant_mushrooms.png", "i:Specter Dust": "f/fc/Tw3_specter_dust.png", "i:Sulfur": "f/f9/Tw3_sulfur.png", "i:Verbena": "9/9b/Tw3_verbena.png", "i:Water Essence": "d/d4/Tw3_water_essence.png", "i:White Myrtle": "6/69/Tw3_white_myrtle_petals.png", "i:White Myrtle Petals": "6/69/Tw3_white_myrtle_petals.png", "i:Wolf's Liver": "4/43/Tw3_wolfs_liver.png", "i:Wolfsbane": "f/fa/Tw3_wolfsbane.png", "i:Allspice": "e/e0/Tw3_allspice_root.png", "r:b-dream": "e/e8/Tw3_dragons_dream_bomb.png"};
 /* Achievement icons on the fandom CDN: on = unlocked art, off = locked art where the wiki has one. */
 const ACH_ICON = {"ac-friend": {"on": "4/4d/Tw3_achievements_friend_in_need_unlocked.png", "off": "7/78/Tw3_achievements_friend_in_need_locked.png"}, "ac-allin": {"on": "3/34/Tw3_achievements_all_in_unlocked.png", "off": "d/d2/Tw3_achievements_all_in_locked.png"}, "ac-brawler": {"on": "8/8f/Tw3_achievements_brawler_unlocked.png", "off": "5/50/Tw3_achievements_brawler_locked.png"}, "ac-brawlmaster": {"on": "3/30/Tw3_achievements_brawl_master_unlocked.png", "off": "2/26/Tw3_achievements_brawl_master_locked.png"}, "ac-cards": {"on": "3/33/Tw3_achievements_card_collector_unlocked.png", "off": "4/40/Tw3_achievements_card_collector_locked.png"}, "ac-gwentmaster": {"on": "3/3d/Tw3_achievements_gwent_master_unlocked.png", "off": "8/8a/Tw3_achievements_gwent_master_locked.png"}, "ac-fullcrew": {"on": "c/cf/Tw3_achievements_full_crew_unlocked.png", "off": "5/50/Tw3_achievements_full_crew_locked.png"}, "ac-fast": {"on": "3/31/Tw3_achievements_fast_and_furious_unlocked.png", "off": "7/7a/Tw3_achievements_fast_and_furious_locked.png"}, "ac-pro": {"on": "5/58/Tw3_achievements_geralt_the_professional_unlocked.png", "off": "9/96/Tw3_achievements_geralt_the_professional_locked.png"}, "ac-king": {"on": "2/2a/Tw3_achievements_kingmaker_unlocked.png", "off": "a/ac/Tw3_achievements_kingmaker_locked.png"}, "ac-doppler": {"on": "2/2a/Tw3_achievements_the_doppler_effect_unlocked.png", "off": "b/b3/Tw3_achievements_the_doppler_effect_locked.png"}, "ac-keira": {"on": "a/a5/Tw3_achievements_friends_with_benefits_unlocked.png", "off": "8/8f/Tw3_achievements_friends_with_benefits_locked.png"}, "ac-xeno": {"on": "0/04/Tw3_achievements_xenonaut_unlocked.png", "off": "1/11/Tw3_achievements_xenonaut_locked.png"}, "ac-assassin": {"on": "8/80/Tw3_achievements_assassin_of_kings_unlocked.png", "off": "1/15/Tw3_achievements_assassin_of_kings_locked.png"}, "ac-munchkin": {"on": "0/0f/Tw3_achievements_munchkin_unlocked.png", "off": "5/50/Tw3_achievements_munchkin_locked.png"}, "ac-mutant": {"on": "a/a0/Tw3_achievements_mutant_unlocked.png", "off": "b/bf/Tw3_achievements_mutant_locked.png"}, "ac-dendro": {"on": "a/a6/Tw3_achievements_dendrologist_unlocked.png", "off": "8/87/Tw3_achievements_dendrologist_locked.png"}, "ac-armed": {"on": "e/e8/Tw3_achievements_armed_and_dangerous_unlocked.png", "off": "3/3d/Tw3_achievements_armed_and_dangerous_locked.png"}, "ac-pest": {"on": "a/ab/Tw3_achievements_pest_control_unlocked.png", "off": "0/0b/Tw3_achievements_pest_control_locked.png"}, "ac-globe": {"on": "c/c0/Tw3_achievements_globetrotter_unlocked.png", "off": "a/ae/Tw3_achievements_globetrotter_locked.png"}, "ac-power": {"on": "2/2a/Tw3_achievements_power_overwhelming_unlocked.png", "off": "7/74/Tw3_achievements_power_overwhelming_locked.png"}, "ac-book": {"on": "7/7a/Tw3_achievements_bookworm_unlocked.png", "off": "4/40/Tw3_achievements_bookworm_locked.png"}, "ac-trial": {"on": "1/12/Tw3_achievements_passed_the_trial_unlocked.png", "off": "7/7d/Tw3_achievements_passed_the_trial_locked.png"}, "ac-path": {"on": "1/1c/Tw3_achievements_walked_the_path_unlocked.png", "off": "f/fd/Tw3_achievements_walked_the_path_locked.png"}, "ac-hos-end": {"on": "d/db/Tw3_achievements_Pacta_Sunt_Servanda.png", "off": null}, "ac-shop": {"on": "2/2b/Tw3_achievements_Shopaholic.png", "off": null}, "ac-wedding": {"on": "5/5d/Tw3_achievements_Let_the_Good_Times_Roll.png", "off": null}, "ac-curator": {"on": "e/e4/Tw3_achievements_Curator_of_Nightmares.png", "off": null}, "ac-ofieri": {"on": "6/69/Tw3_achievements_I_Wore_Ofieri_Before_It_Was_Cool.png", "off": null}, "ac-killed": {"on": "e/e2/Tw3_achievements_Killed_It.png", "off": null}, "ac-toad": {"on": "8/8e/Tw3_achievements_Im_Not_Kissing_That.png", "off": null}, "ac-south": {"on": "4/45/Tw3_baw_achievement_The_Witchers_Gone_South.png", "off": null}, "ac-virtues": {"on": "b/b7/Tw3_baw_achievement_Embodiment_of_the_Five_Virtues.png", "off": null}, "ac-knight": {"on": "e/e1/Tw3_baw_achievement_A_Knight_to_Remember.png", "off": null}, "ac-golyat": {"on": "a/a2/Tw3_baw_achievement_David_and_Golyat.png", "off": null}, "ac-gwentprob": {"on": "8/83/Tw3_baw_achievement_I_Have_a_Gwent_Problem.png", "off": null}, "ac-house": {"on": "d/dd/Tw3_baw_achievement_Playing_House.png", "off": null}, "ac-stone": {"on": "e/e5/Tw3_baw_achievement_Turned_Every_Stone.png", "off": null}, "ac-grapes": {"on": "2/2b/Tw3_baw_achievement_The_Grapes_of_Wrath_Stomped.png", "off": null}, "ac-vitis": {"on": "a/ab/Tw3_baw_achievement_Last_Action_Hero.png", "off": null}, "ac-weaponw": {"on": "c/c7/Tw3_baw_achievement_Weapon_W.png", "off": null}};
+/* Selling rules from the Witcher fandom wiki (The Witcher 3 merchants, Armorer,
+   Blacksmith, Herbalist, Innkeeper, The Witcher 3 junk pages, read 2026-10).
+   Percentages are the wiki's; the calculator turns them into estimates only. */
+const SHOPS = [
+  {id:"armorer", name:"Armorer", icon:"6/6e/Tw3_icon_armorer.png"},
+  {id:"blacksmith", name:"Blacksmith", icon:"1/1f/Tw3_icon_blacksmith.png"},
+  {id:"herbalist", name:"Herbalist", icon:"9/9b/Tw3_icon_herbalist.png"},
+  {id:"alchemist", name:"Alchemist", icon:"5/5a/Tw3_icon_alchemy_supplies.png"},
+  {id:"innkeeper", name:"Innkeeper", icon:"6/69/Tw3_icon_innkeep.png"},
+  {id:"merchant", name:"Merchant", icon:"4/4f/Tw3_icon_shopkeeper.png"}
+];
+/* rate: share of face value a shop tier pays. The wiki gives tiers from 20% to about 41.5%,
+   with continental villages usually lowest, large cities highest and Skellige about 35%. */
+const SALE_PLACES = [
+  {id:"village", name:"Continental village", rate:0.20, note:"Usually the lowest tier (20%)"},
+  {id:"skellige", name:"Skellige", rate:0.35, note:"Typically about 35%"},
+  {id:"city", name:"Large city", rate:0.415, note:"Usually the highest tier (about 41.5%)"}
+];
+/* For each item type: shops the wiki names, with the bonus it gives. best = top buyer.
+   bonus is a [low, high] multiplier; null means the wiki gives no figure. */
+const SALE_ITEMS = [
+  {id:"armor", name:"Armor", icon:"ph-shield", buyers:{armorer:{best:true, bonus:[1.2, 1.2], why:"Armorers pay an extra 20% for armor and upgrades."}}},
+  {id:"weapon", name:"Weapons", icon:"ph-sword", buyers:{blacksmith:{best:true, bonus:[1.2, 1.2], why:"Blacksmiths pay an extra 20% for weapons, upgrades and horse equipment."}}},
+  {id:"upgrade", name:"Runes and glyphs", icon:"ph-diamond", buyers:{
+    armorer:{best:true, bonus:[1.2, 1.2], why:"Armorers pay an extra 20% for upgrades."},
+    blacksmith:{best:true, bonus:[1.2, 1.2], why:"Blacksmiths pay an extra 20% for upgrades."}}},
+  {id:"horse", name:"Horse equipment", icon:"ph-horse", buyers:{blacksmith:{best:true, bonus:[1.2, 1.2], why:"Blacksmiths pay an extra 20% for horse equipment."}}},
+  {id:"ingredient", name:"Alchemy ingredients", icon:"ph-flower-tulip", buyers:{
+    herbalist:{best:true, bonus:null, why:"Herbalists pay the highest prices for alchemical ingredients, higher even than alchemists. The wiki gives no figure."},
+    alchemist:{best:false, bonus:null, why:"Alchemists buy ingredients, but below herbalists."},
+    merchant:{best:false, bonus:[1, 1], why:"General merchants buy alchemical ingredients, except monster loot such as mutagens and trophies."}}},
+  {id:"food", name:"Food and drink", icon:"ph-beer-stein", buyers:{
+    innkeeper:{best:true, bonus:[1.05, 1.12], why:"Innkeepers pay 5 to 12% more for food and drink, but carry fewer crowns."},
+    merchant:{best:false, bonus:[1, 1], why:"General merchants buy food and drink."}}},
+  {id:"junk", name:"Junk", icon:"ph-package", buyers:{
+    innkeeper:{best:true, bonus:[1.05, 1.15], why:"Innkeepers usually pay about 5 to 15% more for junk. Hidden item flags make this hard to pin down."},
+    merchant:{best:false, bonus:[1, 1], why:"General merchants pay more for junk than most other shop types (keys and currencies excepted)."}}}
+];
+const SALE_FACTS = [
+  {icon:"ph-hourglass", title:"Cash refills in 5 days", body:"Waiting or meditating for 5 whole days refreshes a merchant's supply of crowns."},
+  {icon:"ph-coins", title:"Innkeepers run dry", body:"Innkeepers pay well for odds and ends, but tend to hold fewer crowns."},
+  {icon:"ph-hammer", title:"Dismantling costs about 20%", body:"A craftsman charges about 20% of what an armorer or blacksmith would pay for the item. Velen craftsmen are the cheapest."},
+  {icon:"ph-map-pin-area", title:"Where you sell matters", body:"Village shops usually pay least and large cities most. Skellige shops typically pay about 35% of face value."}
+];
 const QUEST_EXTRA = {"Lilac and Gooseberries": {"start": "Begins automatically after the prologue, riding with Vesemir toward White Orchard", "steps": ["Clear the ghouls in the forest clearing, then ride with Vesemir toward White Orchard.", "Enter the White Orchard tavern and question the patrons about Yennefer; Aldert Geert teaches you Gwent.", "Ride along the river to the Nilfgaardian garrison and climb the tower to meet the commander.", "Accept his deal: complete The Beast of White Orchard to learn where Yennefer is.", "Return to the tavern to meet Vesemir and deal with the brawl that breaks out."], "rewards": "150 XP", "src": "https://thewitcher3.wiki.fextralife.com/Lilac+and+Gooseberries"}, "The Beast of White Orchard": {"start": "Nilfgaardian garrison commander, White Orchard", "steps": ["Visit Tomira the herbalist, then dive in the nearby river to collect buckthorn as griffin bait.", "Track down Mislav the hunter with Witcher Senses and help him drive off wild dogs.", "Examine the soldiers' remains and follow the trail to the griffin nest for clues.", "Meet Vesemir, brew Thunderbolt, and fight the griffin at the bait site using the crossbow.", "Pursue the wounded griffin to finish it, then claim your reward at the garrison."], "rewards": "Griffin trophy; 250 crowns and 240 XP if you take the coin, or 400 XP if you refuse", "src": "https://thewitcher3.wiki.fextralife.com/The+Beast+of+White+Orchard"}, "The Incident at White Orchard": {"start": "White Orchard tavern, after The Beast of White Orchard", "steps": ["Return to the White Orchard tavern and talk to Vesemir.", "Defeat the drunken troublemakers who pick a fight.", "Head outside and watch the cutscenes that carry you onward to Vizima."], "rewards": "300 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Incident+at+White+Orchard"}, "Imperial Audience": {"start": "Royal Palace in Vizima, directly after The Incident at White Orchard", "steps": ["Answer Morvran Voorhis's questions about past games while you are groomed; these set world-state flags.", "Dress, then follow the chamberlain through the palace to the emperor.", "Hear the emperor's proposal, then return to the apartment and speak with Yennefer.", "Collect your gear from the chamberlain and set off for Velen."], "src": "https://thewitcher3.wiki.fextralife.com/Imperial+Audience"}, "The Nilfgaardian Connection": {"start": "Starts on arrival in Velen near the Hanged Man's Tree, after Imperial Audience", "level": 5, "steps": ["Visit the Inn at the Crossroads and ask the innkeeper about Hendrik.", "Ride to the ruined village, kill the dogs, and speak with the survivor.", "Search Hendrik's hut with Witcher Senses, take his key, and open the trapdoor under the rug.", "In the cellar, use the candlestick to reveal a hidden cupboard and read the ledger."], "rewards": "100 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Nilfgaardian+Connection"}, "Bloody Baron": {"start": "Crow's Perch, Velen (lead from Hendrik's ledger)", "level": 6, "steps": ["Ride to Crow's Perch and approach the castle gate guarded by the Baron's men.", "If the guards admit you, follow the sergeant directly to the Baron.", "If refused, find the old villager who points you to a cave under the castle.", "Swim through the cave, defeat the water hag, and climb the old well into the gardens.", "Talk to the Baron to finish the quest."], "src": "https://thewitcher3.wiki.fextralife.com/Bloody+Baron"}, "Family Matters": {"start": "The Baron at Crow's Perch", "level": 6, "steps": ["Search the Baron's chamber with Witcher Senses and follow the wine scent to a hidden talisman.", "Show the talisman to the Baron, then find the pellar near Blackbough and recover his goat.", "Return to Crow's Perch, help at the burning stables, and confront the Baron.", "At midnight, deal with the botchling at the grave; choose to kill it or lift the curse.", "Follow the trail of clues, report back to the Baron, then visit Tamara in Oxenfurt."], "rewards": "200 XP; Letter of Safe Conduct", "src": "https://thewitcher3.wiki.fextralife.com/Family+Matters"}, "Ladies of the Wood": {"start": "Keira Metz, after Hunting a Witch; Crookback Bog", "level": 6, "steps": ["Follow the trail of sweets from the shrine through the woods to the bog hamlet.", "Play hide and seek with the children so they distract Gran, then question the boy.", "Track Johnny in the bog, then clear the harpy nest to retrieve his voice bottle.", "Follow Johnny back and speak with the crones, who send you to Downwarren.", "Complete The Whispering Hillock, then bring the requested payment back to the crones."], "rewards": "200 XP", "src": "https://thewitcher3.wiki.fextralife.com/Ladies+of+the+Wood"}, "The Whispering Hillock": {"start": "Triggered on reaching the hillock near Downwarren during Ladies of the Wood", "level": 5, "steps": ["Use Witcher Senses to follow the whispering voice to the great oak, fighting wolves en route.", "Watch for the werewolf near the cave; enter the cave and swim to the spirit.", "Hear the spirit out and decide whether to free it or kill it.", "If freeing it, gather raven feathers, a bone from its grave, and a wild black horse.", "Report back to the Downwarren quest giver to wrap up."], "src": "https://thewitcher3.wiki.fextralife.com/The+Whispering+Hillock"}, "Pyres of Novigrad": {"start": "Novigrad, after Imperial Audience (Baron's letter or Oxenfurt access helps cross the river)", "level": 10, "steps": ["Enter Novigrad, watch the Hierarch Square scene, and visit Triss's house to question the looters.", "Bribe beggars or tail thieves to find the King of Beggars' hideout.", "Get past the doorman, meet Triss, and follow her to a smuggler.", "Dive in the river for Triss's lost parcel and return it.", "Place rat traps in the granary, then fight off the witch hunters and leave."], "rewards": "200 XP", "src": "https://thewitcher3.wiki.fextralife.com/Pyres+of+Novigrad"}, "Get Junior": {"start": "Sigi Reuven's bathhouse, Novigrad", "level": 12, "steps": ["Visit the bathhouse, leave your gear, and meet Sigi Reuven; defend yourself when assassins attack.", "Investigate Whoreson Junior's house on Temple Isle and his casino in Gildorf.", "Fight your way through the sewer arena and search Igor's hidden stash for a letter.", "Meet Vernon Roche in Oxenfurt, then speak with King Radovid to learn Junior's location.", "Storm the Oxenfurt mansion, find Junior, and question him; decide whether to spare him."], "src": "https://thewitcher3.wiki.fextralife.com/Get+Junior"}, "A Favor for Radovid": {"start": "Redanian guard outside Whoreson Junior's Oxenfurt house", "level": 9, "steps": ["Leave Junior's Oxenfurt hideout; a Redanian guard escorts you to Radovid's ship.", "Speak with King Radovid, which starts Redania's Most Wanted.", "Complete Redania's Most Wanted to close out this quest."], "src": "https://thewitcher3.wiki.fextralife.com/A+Favor+for+Radovid"}, "The Play's the Thing": {"start": "Priscilla at the Kingfisher Inn, Novigrad (after Get Junior and Count Reuven's Treasure)", "level": 11, "steps": ["Tell Priscilla about Dudu at the Kingfisher Inn and write the play's script together.", "Bring the script to Irina Renarde at the Butchers' Yard.", "Clear the thugs harassing the Puffins and hire Sofus the Bull's men as ushers.", "Cast the play with Irina, then perform it, choosing fitting lines in each act.", "Meet Dudu in Irina's room afterward and share the rescue plan."], "rewards": "369 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Plays+the+Thing"}, "Destination: Skellige": {"start": "Novigrad docks, after Imperial Audience", "level": 16, "steps": ["Look for a ship at Novigrad's docks; find Captain Wolverstone at the Golden Sturgeon.", "Pay for passage, then help the crew fight off pirates during the voyage.", "After the wreck, talk to Steingrim on the beach and follow the road to Kaer Trolde harbor.", "Meet Yennefer at the harbor, attend the funeral, and speak with Crach an Craite."], "rewards": "250 XP", "src": "https://thewitcher3.wiki.fextralife.com/Destination+Skellige"}, "The King is Dead - Long Live the King": {"start": "Kaer Trolde, Skellige (follows Destination: Skellige)", "level": 16, "steps": ["Change into formal clothes in Yennefer's room and meet her at the keep entrance.", "Join the wake in Kaer Trolde; optionally accept Cerys's race up the mountain.", "Sneak with Yennefer into Ermion's workshop and examine items with Witcher Senses.", "Put the goblet in the statue's hand to open the hidden passage, then defeat the earth elemental.", "Return to the wake and agree to help Crach with his three tasks."], "rewards": "600 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+King+is+Dead+-+Long+Live+the+King"}, "Echoes of the Past": {"start": "Yennefer, at the magic cataclysm site near the Druids' Camp, Skellige", "level": 17, "steps": ["Travel to the Druids' Camp and meet Yennefer and Ermion.", "Help Yennefer kill the foglets, then don the Mask of Uroboros when prompted.", "Follow Yennefer through the site, using the mask at each spot to view past events.", "Return the mask to Ermion and search south for a body under a fallen tree."], "rewards": "500 XP", "src": "https://thewitcher3.wiki.fextralife.com/Echoes+of+the+Past"}, "Ugly Baby": {"start": "Starts after finishing the main Ciri leads in Velen, Novigrad and Skellige", "level": 19, "steps": ["Return to Crow's Perch and ask about Uma via the Baron or his sergeant.", "Collect Uma from the stablemaster in the courtyard.", "Ride to Vizima when stopped by soldiers and report to the emperor.", "Travel with Yennefer to Kaer Morhen and greet Vesemir.", "Complete Disturbance, To Bait a Forktail and The Final Trial to resume the quest."], "rewards": "1500 XP", "src": "https://thewitcher3.wiki.fextralife.com/Ugly+Baby"}, "The Isle of Mists": {"start": "Avallac'h's guide orb, Skellige (after Ugly Baby); finish recruiting allies first", "level": 22, "steps": ["Sail through the mists off Undvik to reach the Isle of Mists, avoiding sirens and rocks.", "Follow the firefly to the hillside hut and talk with the dwarves there.", "Search for Ivo on the coast, Ferenc to the south, and Gaspard in the lighthouse.", "Wake Gaspard and escort him safely back to the hut through the foglets.", "Enter the hut and talk with the person you've been searching for."], "rewards": "1000 XP", "src": "https://thewitcher3.wiki.fextralife.com/The+Isle+of+Mists"}, "The Battle of Kaer Morhen": {"start": "Kaer Morhen, immediately after The Isle of Mists", "level": 24, "steps": ["Hold the council in the keep; choose potions or traps and how to use the tools.", "Stock up on bombs and potions, then join Lambert outside the walls.", "Close the Wild Hunt portals in the woods using dimeritium bombs or Yrden.", "Fall back inside, close the main gate, and defend the courtyards alongside your allies.", "Keep closing portals and helping Triss until the final scene plays."], "rewards": "1000 XP; potion choice can grant Superior Swallow", "src": "https://thewitcher3.wiki.fextralife.com/The+Battle+of+Kaer+Morhen"}, "Bald Mountain": {"start": "Bald Mountain in Velen, following Blood on the Battlefield", "level": 26, "steps": ["Arrive with Ciri and ask the locals about the gathering; you are sent to Thecla.", "Find Thecla in her tent; dive for her thrown coin using Witcher Senses.", "Return the coin, then defeat Fugas near the mountain entrance.", "As Ciri, fight the Crones in their cave, then switch back to Geralt.", "Climb to the summit bonfire, prepare, and defeat Imlerith; talk to Ciri when ready."], "rewards": "1000 XP", "src": "https://thewitcher3.wiki.fextralife.com/Bald+Mountain+(Quest)"}, "Of Swords and Dumplings": {"start": "Hattori, at his house northwest of the Glory Gate in Novigrad", "level": 24, "steps": ["Meet Hattori at the docks after dusk and help negotiate with his supplier.", "Escape the ambush, then recruit Sukrus outside the Golden Sturgeon as a bodyguard.", "Settle Sukrus's debt problem by persuading the Skellige merchant or smashing his mead barrels.", "Meet Sukrus at van Hoorn's warehouse after dark and mark three crates with Witcher Senses.", "Defeat van Hoorn's thugs nearby, then return to Hattori later for your sword."], "rewards": "Blade from the Bits; Hattori becomes available as a master swordsmith", "src": "https://thewitcher3.wiki.fextralife.com/Of+Swords+and+Dumplings"}, "Master Armorers": {"start": "Fergus the blacksmith, Crow's Perch, Velen", "level": 24, "steps": ["Ask Fergus at Crow's Perch whether he can craft master-level armor.", "Sail to Undvik, climb to the Clan Tordarroch cave, and defeat the rock troll guarding the tools.", "Bring the tools back to Fergus; his assistant Yoana asks for an archgriffin acid gland.", "Deliver the gland to Yoana, then help test the armors for the general."], "rewards": "Witch Hunter's Armor; ability to craft mastercrafted witcher gear", "src": "https://thewitcher3.wiki.fextralife.com/Master+Armorers"}, "Contract: Devil by the Well": {"start": "Notice board in White Orchard; contract giver Odolan", "steps": ["Talk to Odolan about the contract and agree on payment.", "Investigate the abandoned village well and ruined houses with Witcher Senses.", "Read the diary, follow the drag marks, and dive into the well for the bracelet.", "Light a fire to burn the remains and bracelet, summoning the noonwraith.", "Defeat the noonwraith, take its trophy, and return to Odolan."], "rewards": "Noonwraith trophy; crowns based on haggling (or an amethyst if you refuse payment)", "src": "https://thewitcher3.wiki.fextralife.com/Contract:+Devil+by+the+Well"}, "Contract: Patrol Gone Missing": {"start": "Quartermaster Tavar Eggebracht or notice board, Nilfgaardian Army Group Center camp, Velen", "level": 7, "steps": ["Pick up the contract at the Nilfgaardian camp in southeast Velen.", "Travel to the abandoned campsite and inspect it with Witcher Senses.", "Follow the footprints and green residue to the patrol's remains.", "Kill the wyvern responsible and take its trophy.", "Optionally investigate further, then report back to the quartermaster."], "rewards": "Wyvern trophy; 10 XP and 50 crowns if paid, or 35 XP if you refuse", "src": "https://witcher.fandom.com/wiki/Contract:_Patrol_Gone_Missing"}, "Contract: Jenny o' the Woods": {"start": "Notice board in Midcopse, Velen", "steps": ["Speak with the Midcopse ealdorman, then question the witnesses.", "Search the fields with Witcher Senses and follow the dragged body to a shallow grave.", "Read the letter found there and ask the ealdorman about the lovers.", "Burn the letter and the blood from the knife to summon the monster.", "Defeat it, using Yrden heavily, take its trophy, and collect your reward."], "rewards": "240 XP; crowns depend on haggling", "src": "https://thewitcher3.wiki.fextralife.com/Contract:+Jenny+O'+the+Woods"}, "Contract: Missing Miners": {"start": "Notice board in Blandare, Skellige (elder Gjarr), or by finding a body west of Miners' Camp", "level": 27, "steps": ["Read the Blandare notice and speak with the village elder about the missing miners.", "Travel to the miners' camp and investigate with Witcher Senses.", "Follow the tracks past a body to a cave and enter it.", "Confront the rock troll Wham-a-Wham and decide whether to kill or spare him.", "Report back to the elder in Blandare for your reward."], "rewards": "Kill: 200 XP, 203 crowns, troll trophy, Caroline, troll mutagen. Spare: 100 XP, 50 crowns plus a small bonus", "src": "https://witcher.fandom.com/wiki/Contract:_Missing_Miners"}, "Gwent: Big City Players": {"start": "Notice board in Hierarch Square, Novigrad, or challenging Vimme Vivaldi", "steps": ["Beat Vimme Vivaldi at his bank on Hierarch Square.", "Beat Sigi Reuven at his bathhouse; mind his availability during later main quests.", "Beat Marquise Serenity at the Passiflora.", "Beat the Scoia'tael merchant in the woods south of Novigrad."], "rewards": "Unique Gwent cards (Vesemir, Esterad Thyssen, Morvran Voorhis, Cirilla, Francesca Findabair); 25 XP per win and 100 XP", "src": "https://thewitcher3.wiki.fextralife.com/Gwent:+Big+City+Players"}, "High Stakes": {"start": "Notice board near St. Gregory's Bridge, Novigrad; register with the scribe at the Passiflora", "level": 26, "steps": ["Read the tournament notice in Novigrad and go to the Passiflora.", "Pay the 1,000 crown entry fee to the scribe; your deck needs enough cards.", "Chat with the other entrants before play begins; stay near the Passiflora or the quest fails.", "Play the tournament matches, adjusting your deck between rounds as needed."], "rewards": "Leader cards from opponents (Foltest, Emhyr, Francesca, Eredin) plus XP; winning needed for Collect 'Em All", "src": "https://witcher.fandom.com/wiki/High_Stakes"}, "Evil's Soft First Touches": {"start": "Notice board outside the Seven Cats Inn, near Oxenfurt (Hearts of Stone)", "level": 32, "steps": ["Check the notice board outside the Seven Cats Inn.", "Visit Olgierd von Everec at the Garin estate to accept the contract.", "Enter the Oxenfurt sewers and search with Witcher Senses, clearing drowners.", "Find the key to the lower level, locate the monster's lair, and kill it.", "Meet Master Mirror at midnight at the crossroads, then go see Olgierd."], "rewards": "Up to 1,450 XP; 450 crowns", "src": "https://thewitcher3.wiki.fextralife.com/Evil's+Soft+First+Touches"}, "Open Sesame!": {"start": "Borsodi Brothers' Auction House, Oxenfurt (Hearts of Stone)", "level": 34, "steps": ["Visit the Borsodi auction house in Oxenfurt and ask for the owner.", "Go to the herbalist's hut near Oxenfurt, give the password, and talk to the stranger.", "Recruit the crew via Witcher Seasonings, Breaking and Entering, and The Safecracker.", "Meet at the auction house gate around midnight and fight your way to the vault.", "Take Maximilian Borsodi's House, find the secret exit, and bring it to Olgierd."], "rewards": "1,150 XP", "src": "https://thewitcher3.wiki.fextralife.com/Open+Sesame!"}, "Envoys, Wineboys": {"start": "Notice board in Velen (Blood and Wine; after A Poet Under Pressure)", "level": 34, "steps": ["Take the new contract from a notice board in Velen.", "Ride to Holloway and meet the two knights from Toussaint.", "Choose to help them fight the bandits or talk them out of it.", "Travel with Palmerin and Milton to Toussaint."], "rewards": "50 XP", "src": "https://thewitcher3.wiki.fextralife.com/Envoys,+Wineboys"}, "The Beast of Toussaint": {"start": "Begins on arrival in Toussaint, after Envoys, Wineboys", "level": 35, "steps": ["Defeat the giant Golyat, then follow Milton to the riverbank crime scene.", "Search the riverbank and nets with Witcher Senses, clearing necrophages.", "Head to Corvo Bianco, defeat the bruxa, and examine the body in the cellar.", "Find Palmerin to reach the duchess, then defeat the shaelmaar.", "In the palace gardens, earn the unicorn horn and golden fish clues, then solve the riddle."], "rewards": "2,550 XP; Golyat trophy", "src": "https://thewitcher3.wiki.fextralife.com/The+Beast+of+Toussaint"}, "There Can Be Only One": {"start": "Notice board 'Test Yourself with the Trials of the Virtues!' or overhearing knights at the Tourney Grounds, Toussaint", "level": 43, "steps": ["Visit the isle on Lac Celavy and speak with the hermit.", "Prove valor, honor, compassion, generosity and wisdom through choices in other Toussaint quests.", "Return to the hermit to have your deeds judged.", "Tell him you're ready, then defeat him in a duel."], "rewards": "300 XP; Aerondight", "src": "https://thewitcher3.wiki.fextralife.com/There+Can+Be+Only+One"}, "Turn and Face the Strange": {"start": "Letter from Yennefer or Triss, delivered after The Beast of Toussaint", "level": 35, "steps": ["Search for Professor Moreau's grave at Orlemurs Cemetery and follow the robber's tracks.", "Check the map you were sent and dive into the flooded Valley of the Nine ruins.", "Navigate the traps, defeat the guardians, and hit the wall switches to open the doors.", "Defeat the gargoyle, use its paw as a weight, and pass through the portals.", "Search the laboratory, optionally restore the megascope crystals, and use Moreau's contraption."], "rewards": "500 XP; unlocks Mutations", "src": "https://thewitcher3.wiki.fextralife.com/Turn+and+Face+the+Strange"}, "Scavenger Hunt: Griffin School Gear": {"start": "Found by picking up any Griffin diagram; Velen (Hindhold area)", "steps": ["Climb Hindhold tower, clearing harpies, to find the steel sword diagram on a corpse.", "Near the Lornruk signpost, dive into the underwater cave and climb the tower for the silver sword diagram.", "Go to Dragonslayer's Grotto, clear the wraiths, and loot the remaining armor diagrams."], "rewards": "Griffin School gear diagrams (steel and silver swords, armor, boots, trousers, gauntlets)", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Griffin+School+Gear"}, "Scavenger Hunt: Cat School Gear": {"start": "Found by picking up any Cat diagram; Novigrad and Velen locations", "level": 17, "steps": ["Explore the passages under Temple Isle and read the laboratory log.", "Search the wreck of the Flying Stag and read the mage's notes.", "Explore the ruins of Est Tayiar and read Professor Gloger's note.", "Explore Drahim Castle ruins, read Prince Adrien's journal, and loot the final diagrams."], "rewards": "300 XP; Feline gear diagrams", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Cat+School+Gear"}, "Scavenger Hunt: Bear School Gear": {"start": "Found by picking up any Bear diagram or buying a map from Kaer Trolde's armorer; Skellige", "level": 20, "steps": ["Clear Fort Etnir north of Rogne and loot a skeleton for the silver sword diagram.", "At the ruined inn near Fyresdal, Aard the debris and find the steel sword diagram below.", "Climb a ledge in the sirens' cave near the Old Watchtower for the crossbow diagram.", "Search Clan Tuirseach's castle ruins near Yngvar's Fang for the remaining diagrams."], "rewards": "Ursine (Bear School) gear diagrams", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Bear+School+Gear"}, "Scavenger Hunt: Wolf School Gear": {"start": "Found by picking up any Wolf diagram or buying notes from the Lindenvale blacksmith or Hattori; Kaer Morhen", "level": 14, "steps": ["Climb the old signal tower near Kaer Morhen and read Hieronymus' notes.", "Find and mount the crystals, charging them with Aard to power the portal.", "Pass through the portal and loot the skeleton for the armor diagrams.", "Search the bastion ruins for the steel sword diagram.", "Search the ruined watchtower north of Kaer Morhen for the silver sword diagram."], "rewards": "Wolven gear diagrams (armor, boots, gauntlets, trousers, steel and silver swords)", "src": "https://thewitcher3.wiki.fextralife.com/Scavenger+Hunt:+Wolf+School+Gear"}};
 MONSTERS.forEach(m => {
   if(MONSTER_IMG[m.id]) m.img = MONSTER_IMG[m.id];
@@ -2960,24 +3117,7 @@ function savedBuildsHtml(){
 
 /* Alchemy: see section 8h. */
 
-/* ---------- Money ---------- */
-VIEWS.money = () => {
-  const block = (arr) => `<div class="stack" style="gap:18px">${arr.map(m => `<div><div class="row" style="gap:8px;margin-bottom:4px"><h4>${esc(m.title)}</h4>${vTag(m.v)}</div><p class="muted" style="margin:0">${esc(m.body)}</p></div>`).join("")}</div>`;
-  return `
-  <header class="page-head"><h1>Money Making</h1><p>Reliable ways to earn crowns, and an honest record of which exploits were patched. No crown amounts are quoted because none were verified.</p></header>
-  <div class="two-col">
-    <section class="panel panel-pad"><h2 style="margin-bottom:18px">Early game</h2>${block(MONEY.early)}</section>
-    <section class="panel panel-pad"><h2 style="margin-bottom:18px">Late game</h2>${block(MONEY.late)}</section>
-  </div>
-  <section class="section" aria-labelledby="exTitle">
-    <h2 id="exTitle">Exploits and patch status</h2>
-    <div class="notice danger" style="margin:14px 0 18px">${icon("ph-warning-octagon")}<div><strong>Do not expect these to work.</strong> Patched entries are confirmed fixed by official patch notes. Unverified entries have no evidence either way and were not tested on the current next-gen 4.x version.</div></div>
-    <div class="table-wrap"><table><thead><tr><th scope="col">Exploit</th><th scope="col">Status</th><th scope="col">Patch</th><th scope="col">Notes</th></tr></thead><tbody>
-      ${MONEY.exploits.map(e => `<tr><td>${esc(e.name)}</td><td>${e.status === "patched" ? '<span class="tag tag-ok">Patched</span>' : '<span class="tag tag-warn">Unverified</span>'}</td><td class="mono">${e.patch ? esc(e.patch) : "n/a"}</td><td>${esc(e.note || "")}</td></tr>`).join("")}
-    </tbody></table></div>
-    ${srcLine(["fandomPatch"])}
-  </section>`;
-};
+/* Money: see section 8j. */
 
 /* Gwent: see section 8e. */
 
@@ -4748,6 +4888,95 @@ function hallHtml(){
 <script>
 "use strict";
 /* =====================================================================
+   8j. MARKET SQUARE (Money making)
+   A sale calculator over the six shop types (wiki percentages turned into
+   labelled estimates), coin trails for early and late methods, and a
+   notice board of exploits stamped with their patch status.
+   ===================================================================== */
+const EX_KIND = {money:"Money", xp:"Experience", combat:"Combat", gwent:"Gwent"};
+const fmtCr = n => Math.round(n).toLocaleString("en-US");
+function mnVal(){ const v = parseInt(P("val"), 10); return Number.isFinite(v) && v > 0 ? Math.min(v, 99999) : 100; }
+
+VIEWS.money = () => {
+  const it = SALE_ITEMS.find(i => i.id === P("it")) || SALE_ITEMS[0];
+  const pl = SALE_PLACES.find(p => p.id === P("pl")) || SALE_PLACES[2];
+  const ex = P("ex");
+  const ek = P("ek");
+  const exList = MONEY.exploits.filter(e => (!ex || e.status === ex) && (!ek || e.kind === ek));
+  return `
+  <header class="page-head"><h1>Money Making</h1><p>Find the shop that pays most for what you carry, follow proven ways to earn crowns, and check which exploits were patched.</p></header>
+  <section class="mn-market" aria-labelledby="mnTitle">
+    <div class="mn-controls">
+      <h2 id="mnTitle">Market square</h2>
+      <p class="muted">Pick what you are selling and where. The stalls show who pays most.</p>
+      <span class="label">Item type</span>
+      <div class="mn-items" role="group" aria-label="Item type">${SALE_ITEMS.map(i => `<button class="mn-item" aria-pressed="${i.id === it.id}" data-action="set-param" data-k="it" data-v="${i.id === SALE_ITEMS[0].id ? "" : i.id}">${icon(i.icon)}<span>${esc(i.name)}</span></button>`).join("")}</div>
+      <label class="label" for="mnVal">Item face value (crowns)</label>
+      <div class="mn-val"><span class="mn-coin" aria-hidden="true">${icon("ph-coin")}</span><input id="mnVal" type="number" min="1" max="99999" inputmode="numeric" value="${mnVal()}"></div>
+      <span class="label">Where you sell</span>
+      <div class="mn-places" role="group" aria-label="Where you sell">${SALE_PLACES.map(p => `<button class="mn-place" aria-pressed="${p.id === pl.id}" data-action="set-param" data-k="pl" data-v="${p.id === "city" ? "" : p.id}"><b>${esc(p.name)}</b><span>${esc(p.note)}</span></button>`).join("")}</div>
+    </div>
+    <div class="mn-board">
+      <div id="mnStalls" class="mn-stalls" aria-live="polite">${stallsHtml(it, pl, mnVal())}</div>
+      <p class="mn-note">${icon("ph-info")}Estimates only: face value × shop tier × the wiki's bonus. Real prices also depend on hidden item flags, area discounts earned through quests, and each shop's crowns on hand.</p>
+    </div>
+  </section>
+  <p class="src" style="margin-top:8px">Selling rules: Witcher Wiki pages for merchants, armorers, blacksmiths, herbalists, innkeepers and junk. ${srcLine(["fandomMerch"]).replace(/^<p class="src">|<\/p>$/g, "")}</p>
+
+  <div class="mn-facts section">${SALE_FACTS.map(f => `<div class="mn-fact">${icon(f.icon)}<div><b>${esc(f.title)}</b><p>${esc(f.body)}</p></div></div>`).join("")}</div>
+
+  <section class="section" aria-labelledby="trailTitle">
+    <h2 id="trailTitle" style="margin-bottom:14px">Coin trails</h2>
+    <div class="mn-trails">
+      ${[["Early game", "ph-plant", MONEY.early], ["Late game", "ph-crown-simple", MONEY.late]].map(([t, ic, arr]) => `<div class="mn-trail"><h3>${icon(ic)}${t}</h3><ol>${arr.map((m, i) => `<li><span class="mn-step mono" aria-hidden="true">${i + 1}</span><div><div class="row" style="gap:8px;flex-wrap:wrap"><b>${esc(m.title)}</b>${vTag(m.v)}</div><p>${esc(m.body)}</p></div></li>`).join("")}</ol></div>`).join("")}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="exTitle">
+    <div class="row between" style="flex-wrap:wrap;gap:10px;margin-bottom:12px"><h2 id="exTitle">Exploit notice board</h2>
+      <div class="row" style="gap:8px;flex-wrap:wrap">${chipsHtml("ek", [["", "All types"], ...Object.entries(EX_KIND)], ek, "Exploit type")}${chipsHtml("ex", [["", "Any status"], ["reported", "Reported working"], ["patched", "Patched"], ["unverified", "Unverified"]], ex, "Exploit status")}</div></div>
+    <div class="notice danger" style="margin-bottom:16px">${icon("ph-warning-octagon")}<div><strong>None of these were tested here.</strong> Patched entries are confirmed fixed by official patch notes. Reported working means no patch note fixes it and a source says it worked on a recent version; it may still fail on the current Remastered 5.01. Unverified entries have no evidence either way.</div></div>
+    <div class="mn-notices">${exList.map((e, i) => `<article class="mn-notice ${e.status}" style="--tilt:${[-1.2, .8, -.5, 1.1, -.9, .6][i % 6]}deg">
+      <span class="mn-nail" aria-hidden="true"></span>
+      <span class="mn-kind">${esc(EX_KIND[e.kind] || "Other")}</span>
+      <h3>${esc(e.name)}</h3>
+      ${e.steps ? `<p class="mn-steps">${esc(e.steps)}</p>` : ""}
+      ${e.note ? `<p>${esc(e.note)}</p>` : ""}
+      ${e.ver ? `<p class="mn-ver">Last reported: ${esc(e.ver)}</p>` : ""}
+      ${e.status === "reported" ? `<p class="mn-srcs">${e.src.map(k => SOURCES[k]).filter(Boolean).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(" · ")}</p>` : ""}
+      <span class="mn-stamp">${e.status === "patched" ? `Patched${e.patch ? " · " + esc(e.patch) : ""}` : e.status === "reported" ? "Reported working" : "Unverified"}</span>
+    </article>`).join("") || `<p class="muted">No exploits match this filter.</p>`}</div>
+    ${srcLine(["fandomPatch"])}
+  </section>`;
+};
+function stallsHtml(it, pl, val){
+  const rank = s => { const b = it.buyers[s.id]; return b ? (b.best ? 0 : 1) : 2; };
+  return [...SHOPS].sort((a, b) => rank(a) - rank(b)).map(s => {
+    const b = it.buyers[s.id];
+    let est = "", bar = 0, state = "none", tag = "No bonus listed";
+    if(b){
+      state = b.best ? "best" : "buys"; tag = b.best ? "Best buyer" : "Also buys";
+      if(b.bonus){ const lo = val * pl.rate * b.bonus[0], hi = val * pl.rate * b.bonus[1];
+        est = Math.round(lo) === Math.round(hi) ? `≈ ${fmtCr(lo)}` : `≈ ${fmtCr(lo)} to ${fmtCr(hi)}`; bar = Math.min(100, hi / val * 200); }
+      else est = b.best ? "Top price" : "Below herbalist";
+    }
+    return `<div class="mn-stall ${state}">
+      <span class="mn-sign">${gImg(s.icon, 64, "", "")}${icon("ph-storefront")}</span>
+      <div class="mn-stall-body"><div class="row between" style="gap:6px"><b>${esc(s.name)}</b><span class="mn-tag">${b && b.best ? icon("ph-crown-simple ph-fill") : ""}${tag}</span></div>
+        <div class="mn-est mono">${est ? `${est}${b.bonus ? ` <small>crowns</small>` : ""}` : `<small>The wiki names no special rate for ${esc(it.name.toLowerCase())}</small>`}</div>
+        ${bar ? `<div class="mn-bar" aria-hidden="true"><i style="width:${bar.toFixed(1)}%"></i></div>` : ""}
+        ${b ? `<p>${esc(b.why)}</p>` : ""}</div>
+    </div>`;
+  }).join("");
+}
+function mnRefresh(){
+  const it = SALE_ITEMS.find(i => i.id === P("it")) || SALE_ITEMS[0], pl = SALE_PLACES.find(p => p.id === P("pl")) || SALE_PLACES[2];
+  const box = $("#mnStalls"); if(box) box.innerHTML = stallsHtml(it, pl, mnVal());
+}
+</script>
+<script>
+"use strict";
+/* =====================================================================
    9. INTERACTIONS (event delegation)
    ===================================================================== */
 function toggleFav(kind, id){
@@ -5060,6 +5289,7 @@ document.addEventListener("input", e => {
   if(el.dataset.filter && el.type !== "checkbox" && el.tagName !== "SELECT") onFilterInput(el);
   if(el.id === "paletteInput") runPalette();
   if(el.id === "mapSearch"){ $("#mapResults").innerHTML = mapResultsHtml(MV.mid, el.value); setParams({mq:el.value.trim()}); }
+  if(el.id === "mnVal"){ const v = parseInt(el.value, 10); setParams({val: Number.isFinite(v) && v > 0 && v !== 100 ? Math.min(v, 99999) : ""}); mnRefresh(); }
   if(el.id === "planName"){ state.planner.name = el.value.slice(0, 60); save(); }
 });
 document.addEventListener("submit", e => {
