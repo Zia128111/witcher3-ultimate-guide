@@ -71,6 +71,17 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## Atlas (World Explorer)
+- JS section "8l. ATLAS" replaces the old World Explorer view.
+- **Region selector:** a bar of region medallions with progress rings (URL param `r`). With no region chosen, each region gets a large card with art, a progress ring and per-type counts.
+- **Field chart:** built from the interactive map's zoom-2 tiles. It reuses `TILE_HOSTS`, `tileFile`, `unitBounds` and `toUnits`, with a fallback host on error.
+  - Signposts are faint dots, and journal locations with a `LOCATION_PINS` link are type-coloured pins.
+  - Clicking a pin sets `sel`, and the legend chips filter pins by type (`t`).
+  - Velen and Novigrad share one chart.
+  - Vizima and Isle of Mists have no map in the data, so they show an artwork panel saying so.
+- **Inspector:** a sticky panel. It shows the region summary, or the selected place with a visited toggle, map buttons (one per pin), a favourite button and how the map link was made.
+- **Field ledger:** location cards with the same filters as before (`q`, `t`, `hide`, `onmap`) through `#list`/`world_list`. A card's name selects it on the chart, switching region if needed. Regions with no locations show a backlog empty state.
+
 ## Expansion tales (DLC and New Game+)
 - **Where it lives:** JS section "8k. EXPANSION TALES" replaces the old DLC view. The data is in section 1d as `DLC_TALES`. Sources are the fandom main-quest tables for each expansion, "Whatsoever a Man Soweth...", and "The Witcher 3 decision checklist" (source keys `fandomHoSQ`, `fandomBaWQ`, `fandomDecide`).
 - **Tale tree:** the main quests run on a spine with checkable seals; nodes tick off journal quests where a matching record exists. Decisions are stored in the URL as `d_<id>`, so a path can be shared.

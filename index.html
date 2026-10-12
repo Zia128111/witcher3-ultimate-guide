@@ -537,6 +537,120 @@ ul.clean{margin:0;padding-left:1.1em;color:var(--text-2)} ul.clean li{margin-bot
   .cl-counts{grid-template-columns:1fr}
 }
 
+/* ---------- Atlas (World Explorer) ---------- */
+.wx-ring{--p:0;--s:64px;position:relative;flex:none;width:var(--s);height:var(--s);border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(closest-side,#111214 78%,transparent 80%),conic-gradient(#c8a456 calc(var(--p)*1%),#2a2d31 0)}
+.wx-ring b{font-size:calc(var(--s)*.26);color:#ebe5d8;font-weight:600}
+.wx-ring small{font-size:.6em;color:#8a857a}
+.wx-realms{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px;margin-bottom:16px}
+.wx-realm{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px 10px;border-radius:var(--r-panel);border:1px solid #2a2d31;background:linear-gradient(180deg,#141517,#0d0e0f);color:#ebe5d8;cursor:pointer;text-align:center;transition:all .22s var(--ease)}
+.wx-realm:hover{transform:translateY(-2px);border-color:#4a4d52}
+.wx-realm[aria-pressed="true"]{border-color:#c8a456;box-shadow:0 0 22px rgba(200,164,86,.18)}
+.wx-realm-art{position:relative;width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid #3c4046;display:grid;place-items:center;background:#16171a;font-size:1.8rem;color:#8fb0e0}
+.wx-realm[aria-pressed="true"] .wx-realm-art{border-color:#c8a456}
+.wx-realm-art .img{position:absolute;inset:0}
+.wx-realm-art .img img{width:100%;height:100%;object-fit:cover}
+.wx-realm .wx-ring{position:absolute;top:6px;right:6px;--s:30px}
+.wx-realm .wx-ring b{font-size:.56rem}
+.wx-realm .wx-ring small{display:none}
+.wx-realm b{font:600 .98rem/1.15 var(--font-display)}
+.wx-realm small{font-size:.72rem;color:#8a857a}
+.wx-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:16px;align-items:start}
+.wx-board{padding:16px;border-radius:var(--r-panel);border:1px solid #2b241c;color:#ebe5d8;background:linear-gradient(180deg,#17130f,#0f0c0a)}
+.wx-board .label{color:#8a857a}
+.wx-board-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:12px}
+.wx-board-head h2{color:#ebe5d8;font-size:1.6rem}
+.wx-legend{display:flex;flex-wrap:wrap;gap:6px}
+.wx-key{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;border:1px solid #3a2e22;background:rgba(0,0,0,.3);color:#b3ad9f;font-size:.76rem;cursor:pointer}
+.wx-key .ph{color:var(--tc)}
+.wx-key[aria-pressed="true"]{border-color:var(--tc);color:#ebe5d8;background:color-mix(in srgb,var(--tc) 14%,transparent)}
+.wx-chart{position:relative;width:100%;max-height:70vh;margin:0 auto;border-radius:6px;overflow:hidden;border:1px solid #3a2e22;background:#1b2125;
+  box-shadow:inset 0 0 60px rgba(0,0,0,.65),0 10px 26px rgba(0,0,0,.5)}
+.wx-tiles,.wx-dots,.wx-pins{position:absolute;inset:0}
+.wx-tile{position:absolute;display:block;max-width:none;filter:sepia(.25) saturate(.8) brightness(.85)}
+.wx-chart::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(10,8,6,.6))}
+.wx-dot{position:absolute;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:rgba(244,239,228,.45)}
+.wx-pin{--tc:#c8a456;position:absolute;z-index:1;width:30px;height:30px;margin:-15px 0 0 -15px;padding:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:.95rem;color:#fbf6ee;
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--tc) 85%,#fff),color-mix(in srgb,var(--tc) 55%,#000));border:2px solid #0d0e0f;box-shadow:0 0 0 2px color-mix(in srgb,var(--tc) 60%,transparent),0 4px 10px rgba(0,0,0,.6);transition:transform .2s var(--ease)}
+.wx-pin:hover,.wx-pin:focus-visible{transform:scale(1.18);z-index:3}
+.wx-pin.done{filter:grayscale(.65) brightness(.8)}
+.wx-pin.sel{z-index:4;transform:scale(1.3);box-shadow:0 0 0 3px #f4efe4,0 0 24px var(--tc)}
+.wx-pin.sel::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid var(--tc);animation:wxPulse 1.6s ease-out infinite}
+@keyframes wxPulse{from{opacity:.9;transform:scale(.7)}to{opacity:0;transform:scale(1.5)}}
+.wx-pin-tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);white-space:nowrap;padding:3px 8px;border-radius:4px;font-size:.72rem;background:rgba(13,14,15,.92);color:#ebe5d8;opacity:0;pointer-events:none;transition:opacity .15s}
+.wx-pin.edge-l .wx-pin-tip{left:0;transform:none}.wx-pin.edge-r .wx-pin-tip{left:auto;right:0;transform:none}.wx-pin.edge-t .wx-pin-tip{bottom:auto;top:calc(100% + 6px)}
+.wx-pin:hover .wx-pin-tip,.wx-pin:focus-visible .wx-pin-tip,.wx-pin.sel .wx-pin-tip{opacity:1}
+.wx-nomap{position:relative;min-height:320px;display:grid;place-items:center;border-radius:6px;overflow:hidden;isolation:isolate;border:1px solid #3a2e22;text-align:center}
+.wx-nomap .img{position:absolute;inset:0;z-index:-2}.wx-nomap .img img{width:100%;height:100%;object-fit:cover;filter:sepia(.4) brightness(.45)}
+.wx-nomap > div{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:420px;padding:20px}
+.wx-nomap .ph{font-size:2.2rem;color:#e8c675}.wx-nomap b{font:600 1.3rem var(--font-display);color:#f4efe4}.wx-nomap span{font-size:.88rem;color:#c9c2b4}
+.wx-note{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:.8rem;color:#8a857a}
+.wx-note .ph{flex:none;margin-top:2px}
+.wx-insp{position:sticky;top:76px;padding:18px;border-radius:var(--r-panel);border:1px solid #2a2d31;color:#ebe5d8;background:linear-gradient(180deg,#141517,#0d0e0f)}
+.wx-insp .label,.wx-insp .dim,.wx-insp .src,.wx-insp .kv dt{color:#8a857a}
+.wx-insp .kv dd{color:#ebe5d8}
+.wx-insp .btn{background:#1d1f22;border-color:#3c4046;color:#ebe5d8}
+.wx-insp .btn-ghost{background:none;border-color:transparent;color:#b3ad9f}
+.wx-insp-head{display:flex;gap:14px;align-items:center}
+.wx-insp-head h3{color:#f4efe4;font-size:1.45rem;margin:2px 0}
+.wx-blurb{margin:14px 0;color:#c9c2b4;font-size:.92rem}
+.wx-hint{display:flex;gap:8px;align-items:center;margin:14px 0 10px;font-size:.84rem;color:#b3ad9f}
+.wx-hint .ph{color:#e8c675}
+.wx-visit{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-ctl);border:1px solid #3c4046;background:#16171a;cursor:pointer;font-weight:600}
+.wx-visit input{position:absolute;opacity:0;width:1px;height:1px}
+.wx-visit:focus-within{outline:2px solid #f4efe4;outline-offset:2px}
+.wx-visit .ph{font-size:1.3rem;color:#8a857a}
+.wx-visit.on{border-color:#c8a456;color:#e8c675;background:linear-gradient(90deg,rgba(200,164,86,.14),transparent),#16171a}
+.wx-visit.on .ph{color:#e8c675}
+.wx-badge{--tc:#c8a456;position:relative;flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;color:var(--tc);
+  background:radial-gradient(circle at 35% 28%,#2c2e33,#111214 72%);border:2px solid color-mix(in srgb,var(--tc) 55%,#34373c)}
+label.wx-badge{cursor:pointer}
+.wx-badge input{position:absolute;opacity:0;width:1px;height:1px}
+.wx-badge:focus-within{outline:2px solid var(--text);outline-offset:2px}
+.wx-pin.pop,.wx-badge.pop,.wx-card.pop,.wx-key.pop{--tc:#9a7ad0}
+.wx-pin.signpost,.wx-badge.signpost,.wx-card.signpost,.wx-key.signpost{--tc:#6f9fd8}
+.wx-pin.blacksmith,.wx-badge.blacksmith,.wx-card.blacksmith,.wx-key.blacksmith{--tc:#d1573f}
+.wx-pin.armorer,.wx-badge.armorer,.wx-card.armorer,.wx-key.armorer{--tc:#a5824a}
+.wx-pin.merchant,.wx-badge.merchant,.wx-card.merchant,.wx-key.merchant{--tc:#c8a456}
+.wx-pin.gwent,.wx-badge.gwent,.wx-card.gwent,.wx-key.gwent{--tc:#6aa25c}
+.wx-pin.treasure,.wx-badge.treasure,.wx-card.treasure,.wx-key.treasure{--tc:#e8c675}
+.wx-pin.nest,.wx-badge.nest,.wx-card.nest,.wx-key.nest{--tc:#a8362c}
+.wx-pin.quest,.wx-badge.quest,.wx-card.quest,.wx-key.quest{--tc:#8fb0e0}
+.wx-realm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.wx-tome{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;padding:0;border-radius:var(--r-panel);overflow:hidden;isolation:isolate;border:1px solid #2a2d31;color:#ebe5d8;text-align:left;cursor:pointer;background:#0d0e0f;transition:transform .25s var(--ease),border-color .25s}
+.wx-tome:hover{transform:translateY(-3px);border-color:#c8a456}
+.wx-tome > .img{position:absolute;inset:0;z-index:-2}
+.wx-tome > .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.wx-tome:hover > .img img{transform:scale(1.04)}
+.wx-tome::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#0d0e0f 32%,rgba(13,14,15,.6) 62%,rgba(13,14,15,.1))}
+.wx-tome-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.wx-tome-body h3{color:#f4efe4;font-size:1.5rem}
+.wx-tome-body p{margin:0;font-size:.84rem;color:#b3ad9f;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wx-tome-types{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.78rem;color:#b3ad9f}
+.wx-tome-types span{display:inline-flex;align-items:center;gap:4px}
+.wx-tome-types b{color:#ebe5d8;font-weight:500}
+.wx-tome-meta{font-size:.74rem;color:#8a857a}
+.wx-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.wx-card{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface);transition:border-color .2s}
+.wx-card:hover{border-color:color-mix(in srgb,var(--tc) 45%,var(--line))}
+.wx-card.sel{border-color:var(--tc);box-shadow:0 0 0 1px var(--tc) inset}
+.wx-card.done .wx-badge{background:var(--tc);color:#0d0e0f;border-color:var(--tc)}
+.wx-card-body{flex:1;min-width:0}
+.wx-card-name{display:block;padding:0;border:0;background:none;color:var(--text);font:600 1.05rem var(--font-display);text-align:left;cursor:pointer}
+.wx-card-name:hover{color:var(--accent-text,var(--text));text-decoration:underline}
+.wx-card.done .wx-card-name{color:var(--text-3)}
+.wx-card-meta{display:block;font-size:.76rem;color:var(--text-3);margin-top:2px}
+.wx-card p{margin:6px 0 0;font-size:.84rem;color:var(--text-2)}
+@media (prefers-reduced-motion:reduce){ .wx-pin.sel::after{animation:none} }
+@media (max-width:1100px){ .wx-stage{grid-template-columns:1fr} .wx-insp{position:static} }
+@media (max-width:767px){
+  .wx-realms{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .wx-realm{flex:0 0 116px;scroll-snap-align:start}
+  .wx-board{padding:10px}
+  .wx-pin{width:26px;height:26px;margin:-13px 0 0 -13px;font-size:.82rem}
+  .wx-cards,.wx-realm-grid{grid-template-columns:1fr}
+}
+
 /* ---------- Expansion tales ---------- */
 .dl-hero{position:relative;min-height:260px;display:flex;align-items:flex-end;border-radius:var(--r-panel);overflow:hidden;isolation:isolate;border:1px solid #2a2d31;color:#ebe5d8;margin-bottom:16px}
 .dl-hero .img{position:absolute;inset:0;z-index:-2}
@@ -3230,64 +3344,7 @@ function timeAgo(t){
   const h = Math.round(m / 60); if(h < 48) return h + "h ago"; return Math.round(h / 24) + "d ago";
 }
 
-/* ---------- World Explorer ---------- */
-VIEWS.world = () => {
-  const r = P("r");
-  const reg = REGIONS.find(x => x.id === r);
-  const typeOpts = [["", "All types"], ...Object.entries(LOCATION_TYPES).map(([k, t]) => [k, t.label])];
-  const regLocs = reg ? LOCATIONS.filter(l => l.region === reg.id) : LOCATIONS;
-  const done = regLocs.filter(l => isChecked(l.id)).length;
-  return `
-  <header class="page-head"><h1>World Explorer</h1>
-    <p>A searchable directory of regions and locations with completion checklists.</p></header>
-  <div class="notice info" style="margin-bottom:20px;align-items:center">${icon("ph-map-pin")}<div style="flex:1"><strong>Looking for exact spots?</strong> The interactive map shows the game map with community-plotted markers.</div><a class="btn btn-sm" href="#/map${reg && REGION_TO_MAP[reg.id] ? "?m=" + REGION_TO_MAP[reg.id] : ""}">Open map</a></div>
-  <div class="region-strip" role="group" aria-label="Choose a region">
-    <button class="region-card" aria-pressed="${!reg}" data-action="set-param" data-k="r" data-v="" style="background:var(--surface-2)"><span>All regions<small>${LOCATIONS.length} entries</small></span></button>
-    ${REGIONS.map(x => { const n = LOCATIONS.filter(l => l.region === x.id); return `<button class="region-card" aria-pressed="${reg && reg.id === x.id}" data-action="set-param" data-k="r" data-v="${x.id}">${art(x.art)}<span>${esc(x.name)}<small>${n.filter(l => isChecked(l.id)).length}/${n.length} visited</small></span></button>`; }).join("")}
-  </div>
-  <div class="region-detail">
-    <div>
-      ${reg ? `<div class="region-banner">${art(reg.art)}<div class="copy"><h2>${esc(reg.name)}</h2></div></div><p class="prose muted">${esc(reg.blurb)}</p>` : ""}
-      <div class="toolbar">
-        ${searchField("q", "Search locations", "Name or hint, e.g. Crow's Perch")}
-        ${selectField("t", "Type", typeOpts, P("t"))}
-        ${switchField("hide", "Hide visited")}
-        ${switchField("onmap", "On the map only")}
-      </div>
-      <div id="list" aria-live="polite">${VIEWS.world_list()}</div>
-    </div>
-    <aside class="side-panel" aria-label="Region summary">
-      <div class="panel panel-pad">
-        <span class="label">${reg ? esc(reg.name) : "All regions"}</span>
-        <div class="pct" style="margin-top:10px">${pct(done, regLocs.length)}<small>%</small></div>${meter(pct(done, regLocs.length))}
-        <p class="muted" style="margin:10px 0 0;font-size:.92rem">${done} of ${regLocs.length} listed locations visited. ${regLocs.filter(l => LOCATION_PINS[l.id]).length} are linked to map markers.</p>
-        ${reg ? `<dl class="kv" style="margin-top:16px"><dt>Suggested level</dt><dd class="mono">${esc(reg.level)}${reg.lvlNote ? ` <span class="dim">(${esc(reg.lvlNote)})</span>` : ""}</dd><dt>Places of Power</dt><dd class="mono">${reg.pop}</dd>${reg.dlc ? `<dt>Expansion</dt><dd>${esc(dlcLabel(reg.dlc))}</dd>` : ""}</dl>${reg.popNote ? `<p class="src" style="margin-top:10px">${esc(reg.popNote)}</p>` : ""}${srcLine(reg.src)}` : ""}
-      </div>
-      <div class="panel panel-pad">
-        <span class="label">By type</span>
-        <div class="stack" style="gap:8px;margin-top:12px">${Object.entries(LOCATION_TYPES).map(([k, t]) => { const n = regLocs.filter(l => l.type === k); return `<button class="row between linkish" style="display:flex;width:100%" data-action="set-param" data-k="t" data-v="${k}"><span class="row" style="gap:8px">${icon(t.icon)}${esc(t.label)}</span><span class="mono dim">${n.filter(l => isChecked(l.id)).length}/${n.length}</span></button>`; }).join("")}</div>
-      </div>
-    </aside>
-  </div>`;
-};
-VIEWS.world_list = () => {
-  const r = P("r"), t = P("t"), q = P("q").toLowerCase(), hide = P("hide"), onmap = P("onmap");
-  const list = LOCATIONS.filter(l => (!r || l.region === r) && (!t || l.type === t) && (!hide || !isChecked(l.id)) && (!onmap || LOCATION_PINS[l.id]) && (!q || (l.name + " " + l.hint).toLowerCase().includes(q)));
-  if(!list.length){
-    if(t === "nest") return emptyState("ph-skull", "No verified nest records yet", "Monster nest locations are on the content backlog. We list nothing rather than guess.");
-    return emptyState("ph-map-pin", "No locations match", "Clear the search or pick another type or region.", `<button class="btn" data-action="clear-filters">Clear filters</button>`);
-  }
-  return `<p class="dim" style="font-size:.88rem;margin-bottom:6px">${list.length} location${list.length === 1 ? "" : "s"}</p><div class="list">${list.map(l => locRow(l)).join("")}</div>`;
-};
-function locRow(l){
-  const lt = LOCATION_TYPES[l.type];
-  return `<div class="item ${isChecked(l.id) ? "done" : ""}" data-row="${esc(l.id)}">
-    ${checkbox(l.id, "Mark " + l.name + " visited")}
-    <div><div class="item-title"><button data-open="loc:${esc(l.id)}">${esc(l.name)}</button></div>
-      <div class="item-meta"><span class="row" style="gap:5px">${icon(lt.icon)}${esc(lt.label)}</span><span>${esc(regionName(l.region))}</span>${l.v === "unverified" ? vTag("unverified") : ""}</div>
-      <div class="item-meta" style="color:var(--text-2)">${esc(l.hint)}</div></div>
-    <div class="row" style="gap:6px;flex-wrap:nowrap">${LOCATION_PINS[l.id] ? `<button class="btn btn-sm btn-icon tooltip" data-action="loc-map" data-id="${esc(l.id)}" data-i="0" aria-label="Show ${esc(l.name)} on the map" data-tip="Show on map">${icon("ph-map-pin")}</button>` : ""}${favBtn("loc", l.id, l.name)}</div></div>`;
-}
+/* World Explorer: see section 8l. */
 
 /* ---------- Quests ---------- */
 /* Quests view: see section 8f. questRow is kept for other pages. */
@@ -5284,6 +5341,131 @@ function dlReset(){ const k = P("tab") || "hos", t = DLC_TALES[k]; setParams(Obj
 <script>
 "use strict";
 /* =====================================================================
+   8l. ATLAS (World Explorer)
+   Region medallions with progress rings, a field chart built from the
+   interactive map's own low-zoom tiles with the region's journal
+   locations pinned on it, an inspector for the chosen place, and a
+   filterable ledger of every location card.
+   ===================================================================== */
+const WX_Z = 2;
+function wxLocs(r){ return LOCATIONS.filter(l => !r || l.region === r); }
+function wxRing(done, total, size = 64){
+  const p = pct(done, total);
+  return `<span class="wx-ring" style="--p:${p};--s:${size}px"><b class="mono">${p}<small>%</small></b></span>`;
+}
+function wxTileErr(img){ const h = +img.dataset.h + 1; if(h < TILE_HOSTS.length){ img.dataset.h = h; img.src = TILE_HOSTS[h](img.dataset.m, WX_Z, img.dataset.x, img.dataset.y); } else img.remove(); }
+/* Pin position as % of the map's unit bounds. */
+function wxPos(mid, pinId){
+  const M = MAP_DEFS[mid], mk = markerById(pinId); if(!mk) return null;
+  const b = unitBounds(M), u = toUnits(M, mk.lat, mk.lng);
+  return [(u[0] - b[0]) / (b[2] - b[0]) * 100, (u[1] - b[1]) / (b[3] - b[1]) * 100];
+}
+function wxChart(reg, sel){
+  const mid = REGION_TO_MAP[reg.id], M = MAP_DEFS[mid];
+  if(!M) return `<div class="wx-nomap">${art(reg.art)}<div>${icon("ph-compass")}<b>No game map for ${esc(reg.name)}</b><span>The interactive map data covers White Orchard, Velen and Novigrad, Skellige, Kaer Morhen and Toussaint. Use the ledger below for this region.</span></div></div>`;
+  const b = unitBounds(M), W = b[2] - b[0], H = b[3] - b[1], s = 2 ** WX_Z, ts = 256 / s;
+  let tiles = "";
+  for(let tx = Math.floor(b[0] / ts); tx * ts < b[2]; tx++) for(let ty = Math.floor(b[1] / ts); ty * ts < b[3]; ty++){
+    const f = tileFile(M, WX_Z, tx, ty); if(!f) continue;
+    tiles += `<img class="wx-tile" alt="" loading="lazy" decoding="async" data-h="0" data-m="${mid}" data-x="${f[0]}" data-y="${f[1]}" src="${TILE_HOSTS[0](mid, WX_Z, f[0], f[1])}" onerror="wxTileErr(this)"
+      style="left:${((tx * ts - b[0]) / W * 100).toFixed(3)}%;top:${((ty * ts - b[1]) / H * 100).toFixed(3)}%;width:${(ts / W * 100).toFixed(3)}%;height:${(ts / H * 100).toFixed(3)}%">`;
+  }
+  const signs = MAP_MARKERS[mid].filter(m => m.cat === "signpost").map(m => { const p = wxPos(mid, m.id); return p ? `<i class="wx-dot" style="left:${p[0].toFixed(2)}%;top:${p[1].toFixed(2)}%"></i>` : ""; }).join("");
+  const t = P("t");
+  const pins = wxLocs(reg.id).filter(l => LOCATION_PINS[l.id] && (!t || l.type === t)).map(l => {
+    const p = wxPos(mid, LOCATION_PINS[l.id].pins[0]); if(!p) return "";
+    const on = isChecked(l.id);
+    return `<button class="wx-pin ${l.type} ${on ? "done" : ""} ${sel === l.id ? "sel" : ""} ${p[0] < 25 ? "edge-l" : p[0] > 75 ? "edge-r" : ""} ${p[1] < 12 ? "edge-t" : ""}" style="left:${p[0].toFixed(2)}%;top:${p[1].toFixed(2)}%" data-action="wx-sel" data-id="${l.id}" aria-label="${esc(l.name)}${on ? ", visited" : ""}" aria-pressed="${sel === l.id}">${icon(LOCATION_TYPES[l.type].icon)}<span class="wx-pin-tip">${esc(l.name)}</span></button>`;
+  }).join("");
+  return `<div class="wx-chart" style="aspect-ratio:${(W / H).toFixed(4)}"><div class="wx-tiles">${tiles}</div><div class="wx-dots" aria-hidden="true">${signs}</div><div class="wx-pins">${pins}</div></div>`;
+}
+function wxInspector(reg, l){
+  if(!l){
+    const ls = wxLocs(reg.id), d = ls.filter(x => isChecked(x.id)).length, linked = ls.filter(x => LOCATION_PINS[x.id]).length;
+    return `<div class="wx-insp-head">${wxRing(d, ls.length, 72)}<div><span class="label">Region</span><h3>${esc(reg.name)}</h3><span class="dim">${d} of ${ls.length} visited</span></div></div>
+      <p class="wx-blurb">${esc(reg.blurb)}</p>
+      <dl class="kv"><dt>Suggested level</dt><dd class="mono">${esc(reg.level)}${reg.lvlNote ? ` <span class="dim">(${esc(reg.lvlNote)})</span>` : ""}</dd><dt>Places of Power</dt><dd class="mono">${reg.pop}</dd>${reg.dlc ? `<dt>Expansion</dt><dd>${esc(dlcLabel(reg.dlc))}</dd>` : ""}<dt>On the chart</dt><dd class="mono">${linked} of ${ls.length}</dd></dl>
+      ${reg.popNote ? `<p class="src">${esc(reg.popNote)}</p>` : ""}
+      <p class="wx-hint">${icon("ph-hand-pointing")}Pick a pin on the chart or a card in the ledger.</p>
+      <a class="btn btn-sm" href="#/map${REGION_TO_MAP[reg.id] ? "?m=" + REGION_TO_MAP[reg.id] : ""}">${icon("ph-map-trifold")}Open the full map</a>`;
+  }
+  const lt = LOCATION_TYPES[l.type], on = isChecked(l.id), lp = LOCATION_PINS[l.id];
+  return `<div class="wx-insp-head"><span class="wx-badge ${l.type}">${icon(lt.icon)}</span><div><span class="label">${esc(lt.label)} · ${esc(regionName(l.region))}</span><h3>${esc(l.name)}</h3>${l.v === "unverified" ? vTag("unverified") : ""}</div></div>
+    <p class="wx-blurb">${esc(l.hint)}</p>
+    <label class="wx-visit ${on ? "on" : ""}"><input type="checkbox" data-check="${esc(l.id)}" ${on ? "checked" : ""}><span>${icon(on ? "ph-seal-check ph-fill" : "ph-seal")}</span>${on ? "Visited" : "Mark as visited"}</label>
+    <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px">
+      ${lp ? lp.pins.map((p, i) => `<button class="btn btn-sm" data-action="loc-map" data-id="${esc(l.id)}" data-i="${i}">${icon("ph-map-pin")}${lp.pins.length > 1 ? `Map pin ${i + 1}` : "Show on full map"}</button>`).join("") : `<span class="dim" style="font-size:.84rem">Not linked to a map marker.</span>`}
+      ${favBtn("loc", l.id, l.name, false)}
+      <button class="btn btn-sm btn-ghost" data-action="wx-sel" data-id="">${icon("ph-x")}Close</button>
+    </div>
+    ${lp ? `<p class="src" style="margin-top:12px">Map link: ${esc(lp.how)}.${lp.note ? " " + esc(lp.note) : ""}</p>` : ""}`;
+}
+
+VIEWS.world = () => {
+  const reg = REGIONS.find(x => x.id === P("r"));
+  const sel = LOCATIONS.find(l => l.id === P("sel") && (!reg || l.region === reg.id));
+  const typeOpts = [["", "All types"], ...Object.entries(LOCATION_TYPES).map(([k, t]) => [k, t.label])];
+  const all = LOCATIONS, ad = all.filter(l => isChecked(l.id)).length;
+  return `
+  <header class="page-head"><h1>World Explorer</h1><p>Travel the realms: chart each region's places, mark where you've been, and jump to the full map.</p></header>
+  <nav class="wx-realms" aria-label="Choose a region">
+    <button class="wx-realm all" aria-pressed="${!reg}" data-action="set-params" data-p='{"r":"","sel":""}'><span class="wx-realm-art">${icon("ph-globe-hemisphere-west")}</span>${wxRing(ad, all.length, 44)}<b>All realms</b><small>${ad}/${all.length}</small></button>
+    ${REGIONS.map(x => { const ls = wxLocs(x.id), d = ls.filter(l => isChecked(l.id)).length;
+      return `<button class="wx-realm" aria-pressed="${reg && reg.id === x.id}" data-action="set-params" data-p='{"r":"${x.id}","sel":""}'><span class="wx-realm-art">${art(x.art)}</span>${wxRing(d, ls.length, 44)}<b>${esc(x.name)}</b><small>${d}/${ls.length}</small></button>`; }).join("")}
+  </nav>
+  ${reg ? `<section class="wx-stage" aria-label="${esc(reg.name)} field chart">
+      <div class="wx-board">
+        <div class="wx-board-head"><div><span class="label">Field chart</span><h2>${esc(reg.name)}</h2></div>
+          <div class="wx-legend">${Object.entries(LOCATION_TYPES).filter(([k]) => wxLocs(reg.id).some(l => l.type === k && LOCATION_PINS[l.id])).map(([k, t]) => `<button class="wx-key ${k}" aria-pressed="${P("t") === k}" data-action="set-param" data-k="t" data-v="${P("t") === k ? "" : k}">${icon(t.icon)}${esc(t.label)}</button>`).join("")}</div></div>
+        ${wxChart(reg, sel && sel.id)}
+        ${REGION_TO_MAP[reg.id] ? `<p class="wx-note">${icon("ph-info")}Pins show journal locations matched to a map marker. Faint dots are signposts. ${REGION_TO_MAP[reg.id] === "velen" ? "Velen and Novigrad share one map." : ""}</p>` : ""}
+      </div>
+      <aside class="wx-insp" aria-live="polite">${wxInspector(reg, sel)}</aside>
+    </section>`
+  : `<section class="wx-realm-grid">${REGIONS.map(x => { const ls = wxLocs(x.id), d = ls.filter(l => isChecked(l.id)).length;
+      return `<button class="wx-tome" data-action="set-params" data-p='{"r":"${x.id}","sel":""}'>${art(x.art)}<div class="wx-tome-body"><div class="row between"><h3>${esc(x.name)}</h3>${wxRing(d, ls.length, 48)}</div>
+        <p>${esc(x.blurb)}</p><div class="wx-tome-types">${Object.entries(LOCATION_TYPES).map(([k, t]) => { const n = ls.filter(l => l.type === k); return n.length ? `<span>${icon(t.icon)}<b class="mono">${n.filter(l => isChecked(l.id)).length}/${n.length}</b></span>` : ""; }).join("")}</div>
+        <span class="wx-tome-meta mono">Lv ${esc(x.level)}${x.dlc ? " · " + esc(dlcLabel(x.dlc)) : ""}</span></div></button>`; }).join("")}</section>`}
+  <section class="section" aria-labelledby="ledgerTitle">
+    <h2 id="ledgerTitle" style="margin-bottom:12px">Field ledger${reg ? `: ${esc(reg.name)}` : ""}</h2>
+    <div class="toolbar">
+      ${searchField("q", "Search locations", "Name or hint, e.g. Crow's Perch")}
+      ${selectField("t", "Type", typeOpts, P("t"))}
+      ${switchField("hide", "Hide visited")}
+      ${switchField("onmap", "On the map only")}
+    </div>
+    <div id="list" aria-live="polite">${VIEWS.world_list()}</div>
+  </section>`;
+};
+VIEWS.world_list = () => {
+  const r = P("r"), t = P("t"), q = P("q").toLowerCase(), hide = P("hide"), onmap = P("onmap"), sel = P("sel");
+  const list = LOCATIONS.filter(l => (!r || l.region === r) && (!t || l.type === t) && (!hide || !isChecked(l.id)) && (!onmap || LOCATION_PINS[l.id]) && (!q || (l.name + " " + l.hint).toLowerCase().includes(q)));
+  if(!list.length){
+    if(r && !LOCATIONS.some(l => l.region === r)) return emptyState("ph-compass", "No locations recorded here yet", "This region has no verified journal locations yet. It is on the content backlog.");
+    if(t === "nest") return emptyState("ph-skull", "No verified nest records yet", "Monster nest locations are on the content backlog. We list nothing rather than guess.");
+    return emptyState("ph-map-pin", "No locations match", "Clear the search or pick another type or region.", `<button class="btn" data-action="clear-filters">Clear filters</button>`);
+  }
+  return `<p class="dim" style="font-size:.88rem;margin-bottom:8px">${list.length} location${list.length === 1 ? "" : "s"}</p>
+  <div class="wx-cards">${list.map(l => { const lt = LOCATION_TYPES[l.type], on = isChecked(l.id);
+    return `<article class="wx-card ${l.type} ${on ? "done" : ""} ${sel === l.id ? "sel" : ""}" data-row="${esc(l.id)}">
+      <label class="wx-badge ${l.type}" title="${on ? "Visited" : "Mark visited"}"><input type="checkbox" data-check="${esc(l.id)}" ${on ? "checked" : ""} aria-label="Mark ${esc(l.name)} visited">${icon(on ? "ph-check" : lt.icon)}</label>
+      <div class="wx-card-body"><button class="wx-card-name" data-action="wx-sel" data-id="${esc(l.id)}" data-r="${esc(l.region)}">${esc(l.name)}</button>
+        <span class="wx-card-meta">${esc(lt.label)} · ${esc(regionName(l.region))}${LOCATION_PINS[l.id] ? ` · ${icon("ph-map-pin")}charted` : ""}</span>
+        <p>${esc(l.hint)}</p></div>
+      ${favBtn("loc", l.id, l.name)}
+    </article>`; }).join("")}</div>`;
+};
+function wxSelect(id, r){
+  const y = window.scrollY;
+  const smooth = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  if(id && r){ setParams({r, sel:id}); render(true); $(".wx-stage")?.scrollIntoView({block:"start", behavior:smooth}); return; }
+  setParams({sel: P("sel") === id ? "" : id}); render(true); window.scrollTo(0, y);
+  const b = id && $(`.wx-pin[data-id="${CSS.escape(id)}"]`); if(b) b.focus({preventScroll:true});
+}
+</script>
+<script>
+"use strict";
+/* =====================================================================
    9. INTERACTIONS (event delegation)
    ===================================================================== */
 function toggleFav(kind, id){
@@ -5417,6 +5599,7 @@ document.addEventListener("click", e => {
       const f = $(`[data-action="set-param"][data-k="${t.dataset.k}"][data-v="${CSS.escape(t.dataset.v)}"]`); f && f.focus();
       break;
     }
+    case "wx-sel": wxSelect(t.dataset.id, t.dataset.r); break;
     case "dl-pick": dlPick(t.dataset.d, t.dataset.v); { const b = $(`[data-action="dl-pick"][data-d="${t.dataset.d}"][data-v="${t.dataset.v}"]`); b && b.focus({preventScroll:true}); } break;
     case "dl-end": dlEndPick(t.dataset.id); break;
     case "dl-reset": dlReset(); break;
