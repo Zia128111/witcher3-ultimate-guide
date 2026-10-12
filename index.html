@@ -560,6 +560,96 @@ ul.clean{margin:0;padding-left:1.1em;color:var(--text-2)} ul.clean li{margin-bot
   .cl-counts{grid-template-columns:1fr}
 }
 
+/* ---------- The witcher's tome (journal) ---------- */
+.jn-tome{display:grid;grid-template-columns:200px minmax(0,1fr);border-radius:var(--r-panel);overflow:hidden;border:1px solid #3a2e22;box-shadow:0 18px 40px rgba(0,0,0,.45);
+  background:linear-gradient(90deg,#2a1f16,#3a2b1e 6%,#2a1f16 12%,#1d1610)}
+.jn-ribbons{display:flex;flex-direction:column;gap:6px;padding:22px 0 22px 14px;border-right:3px double #4a3a28}
+.jn-ribbon{position:relative;display:flex;align-items:center;gap:10px;padding:12px 14px;border:0;border-radius:6px 0 0 6px;background:transparent;color:#b8a78a;font:600 .92rem var(--font-body);text-align:left;cursor:pointer;transition:all .2s}
+.jn-ribbon .ph{font-size:1.15rem}
+.jn-ribbon b{margin-left:auto;font-size:.72rem;font-weight:500;color:#8a7a62}
+.jn-ribbon:hover{color:#f4efe4;background:rgba(255,255,255,.04)}
+.jn-ribbon[aria-selected="true"]{color:#f4efe4;background:linear-gradient(90deg,#7a2822,#5a1d18);margin-right:-3px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.jn-ribbon[aria-selected="true"]::after{content:"";position:absolute;right:-1px;top:0;bottom:0;width:3px;background:#7a2822}
+.jn-ribbon[aria-selected="true"] b{color:#f0c9c3}
+.jn-page{min-width:0;padding:26px clamp(18px,3vw,34px) 30px;color:var(--text);background:var(--bg);background-image:radial-gradient(ellipse at 0% 0%,rgba(200,164,86,.05),transparent 50%);box-shadow:inset 6px 0 14px rgba(0,0,0,.35)}
+.jn-sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.jn-sec-head h2{font-size:1.6rem}
+.jn-acts{padding:18px;border-radius:var(--r-panel);border:1px solid #2a2d31;color:#ebe5d8;background:radial-gradient(ellipse at 50% 0%,rgba(200,164,86,.08),transparent 60%),linear-gradient(180deg,#141517,#0d0e0f)}
+.jn-acts h2{color:#ebe5d8}
+.jn-acts .dim{color:#8a857a}
+.jn-actline{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
+.jn-actline::before{content:"";position:absolute;left:8%;right:8%;top:27px;border-top:2px dashed #3c4046}
+.jn-act{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:0 4px}
+.jn-act-seal{--p:0;position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;text-decoration:none;color:#b3ad9f;font-size:.86rem;
+  background:radial-gradient(closest-side,#16171a 76%,transparent 78%),conic-gradient(#c8a456 calc(var(--p)*1%),#2a2d31 0);transition:transform .2s var(--ease)}
+.jn-act-seal:hover{transform:scale(1.08)}
+.jn-act.done .jn-act-seal{color:#1c160a;font-size:1.3rem;background:radial-gradient(circle at 35% 30%,#f4dc9a,#c8a456 60%,#8a6a2a);box-shadow:0 0 18px rgba(200,164,86,.4)}
+.jn-act.cur .jn-act-seal{box-shadow:0 0 0 3px rgba(122,40,34,.8),0 0 22px rgba(209,87,63,.35)}
+.jn-act b{font:600 .95rem/1.15 var(--font-display);color:#ebe5d8;margin-top:4px}
+.jn-act > span{font-size:.72rem;color:#8a857a}
+.jn-act em{font-style:normal;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#e0675a}
+.jn-act-next{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:18px 0 0;padding-top:14px;border-top:1px solid #2a2d31;color:#c9c2b4;font-size:.92rem}
+.jn-act-next .ph{color:#e8c675}
+.jn-act-next .linkish{color:#f4efe4;font-weight:600}
+.jn-seals{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.jn-seal{--p:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 10px 14px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface);color:var(--text);text-decoration:none;text-align:center;transition:transform .2s var(--ease),border-color .2s}
+.jn-seal:hover{transform:translateY(-3px);border-color:#7a2822}
+.jn-wax{position:relative;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;color:#8a857a;
+  background:radial-gradient(closest-side,var(--bg-2) 74%,transparent 76%),conic-gradient(#a8362c calc(var(--p)*1%),var(--line) 0)}
+.jn-seal.lit .jn-wax{color:#e0675a}
+.jn-seal.full .jn-wax{color:#fbf6ee;background:radial-gradient(circle at 38% 32%,#c4453a,#7a2822 62%,#4a1410);box-shadow:0 4px 14px rgba(122,40,34,.5),inset 0 2px 0 rgba(255,255,255,.18)}
+.jn-seal b{font:600 .95rem/1.15 var(--font-display)}
+.jn-seal .mono{font-size:.8rem;color:var(--text-3)}
+.jn-keeps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:12px}
+.jn-keep{display:flex;gap:12px;align-items:center;padding:12px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface);transition:border-color .2s}
+.jn-keep:hover{border-color:#6b5a33}
+.jn-keep > div{flex:1;min-width:0}
+.jn-keep-ico{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:1.15rem;color:#e8c675;background:radial-gradient(circle at 35% 28%,#2c2e33,#111214 72%);border:1.5px solid rgba(200,164,86,.45)}
+.jn-keep-name{display:block;padding:0;border:0;background:none;color:var(--text);font:600 1.05rem var(--font-display);text-align:left;cursor:pointer}
+.jn-keep-name:hover{text-decoration:underline}
+.jn-scrolls{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.jn-scroll{--tc:#c8a456;display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:var(--r-panel);border:1px solid #3a2e22;color:#ebe5d8;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--tc) 10%,transparent),transparent 45%),linear-gradient(180deg,#17130f,#0f0c0a);box-shadow:inset 0 3px 0 color-mix(in srgb,var(--tc) 60%,transparent)}
+.jn-scroll .dim{color:#8a857a;font-size:.8rem}
+.jn-scroll-head{display:flex;gap:12px;align-items:center}
+.jn-scroll-head h3{color:#f4efe4;font-size:1.25rem}
+.jn-scroll-sigil{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;color:var(--tc);background:#111214;border:1.5px solid color-mix(in srgb,var(--tc) 60%,transparent)}
+.jn-split{display:flex;height:10px;border-radius:999px;overflow:hidden;gap:2px;background:#0d0e0f}
+.jn-split i{display:block;height:100%}
+.jn-scroll-stats{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:#8a857a}
+.jn-scroll-stats b{color:#ebe5d8;font-size:1rem}
+.jn-scroll .btn:not(.btn-primary):not(.btn-danger){background:#1d1f22;border-color:#3c4046;color:#ebe5d8}
+.jn-runes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.jn-rune{display:flex;gap:12px;align-items:center;padding:14px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:border-color .2s}
+.jn-rune > div{flex:1;min-width:0}
+.jn-rune b{display:block}
+.jn-rune > div span{display:block;font-size:.82rem;color:var(--text-2)}
+.jn-rune-ico{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:1.15rem;color:var(--text-3);background:var(--bg-2);border:1.5px solid var(--line)}
+.jn-rune.on{border-color:color-mix(in srgb,#c8a456 50%,var(--line))}
+.jn-rune.on .jn-rune-ico{color:#e8c675;border-color:#c8a456;box-shadow:0 0 12px rgba(200,164,86,.3)}
+.jn-backup{display:flex;flex-direction:column;gap:10px}
+.jn-bk{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:14px;border-radius:var(--r-panel);border:1px solid var(--line);background:var(--surface)}
+.jn-bk > div{flex:1;min-width:200px}
+.jn-bk b{display:block;font:600 1.1rem var(--font-display)}
+.jn-bk p{margin:2px 0 0;font-size:.84rem;color:var(--text-2)}
+.jn-bk-ico{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;color:#8fb0e0;background:var(--bg-2);border:1.5px solid var(--line)}
+.jn-bk.danger{border-color:color-mix(in srgb,#a8362c 40%,var(--line))}
+.jn-bk.danger .jn-bk-ico{color:#e0675a}
+@media (max-width:900px){
+  .jn-tome{grid-template-columns:1fr}
+  .jn-ribbons{flex-direction:row;overflow-x:auto;padding:12px 12px 0;border-right:0;border-bottom:3px double #4a3a28}
+  .jn-ribbon{flex:none;border-radius:6px 6px 0 0}
+  .jn-ribbon[aria-selected="true"]{margin-right:0;margin-bottom:-3px}
+  .jn-ribbon[aria-selected="true"]::after{display:none}
+}
+@media (max-width:767px){
+  .jn-actline{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}
+  .jn-actline::before{display:none}
+  .jn-ribbon span{display:none}
+  .jn-ribbon{padding:12px 16px}
+  .jn-seals{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 /* ---------- The medallion (home) ---------- */
 .hm-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:24px;align-items:center;min-height:min(640px,86dvh);padding:clamp(22px,4vw,48px);border-radius:var(--r-panel);overflow:hidden;isolation:isolate;border:1px solid #2a2d31;color:#ebe5d8}
 .hm-hero > .img{position:absolute;inset:0;z-index:-2}
@@ -3454,38 +3544,7 @@ function savedBuildsHtml(){
 
 /* DLC and New Game+: see section 8k. */
 
-/* ---------- My Journal (personalization) ---------- */
-VIEWS.journal = () => {
-  const s = state.settings;
-  const favs = state.favorites;
-  const label = f => {
-    const map = {quest:QUESTS, monster:MONSTERS, loc:LOCATIONS, gear:GEAR_SETS, weapon:WEAPONS, alchemy:ALCHEMY, card:GWENT_CARDS, ach:ACHIEVEMENTS, build:BUILDS};
-    const x = (map[f.kind] || []).find(y => y.id === f.id); return x ? x.name : null;
-  };
-  return `
-  <header class="page-head"><h1>My Journal</h1><p>Favorites, saved builds, progress, settings and backups. Everything is stored in this browser.</p></header>
-  ${storageOK ? "" : `<div class="notice danger" style="margin-bottom:18px">${icon("ph-warning-octagon")}<div><strong>Browser storage is unavailable.</strong> Changes will last until you close this tab. Export a backup to keep them.</div></div>`}
-  <section class="panel panel-pad"><h2 style="margin-bottom:6px">Progress</h2>${completionGrid()}</section>
-  <div class="two-col section">
-    <section><h2 style="margin-bottom:12px">Favorites</h2>
-      ${favs.length ? `<div class="list">${favs.map(f => { const n = label(f); if(!n) return ""; return `<div class="item"><span class="type-ico">${icon((KIND_META[f.kind] || KIND_META.page).icon)}</span><div><div class="item-title"><button data-action="open-result" data-kind="${esc(f.kind)}" data-id="${esc(f.id)}">${esc(n)}</button></div><div class="item-meta">${esc((KIND_META[f.kind] || {}).label || f.kind)}</div></div>
-        <button class="btn btn-sm btn-icon btn-ghost" data-action="fav" data-kind="${esc(f.kind)}" data-id="${esc(f.id)}" aria-pressed="true" aria-label="Remove ${esc(n)} from favorites">${icon("ph-x")}</button></div>`; }).join("")}</div>`
-        : emptyState("ph-bookmark-simple", "No favorites yet", "Use the bookmark button on any quest, monster, recipe or card to keep it here.")}
-    </section>
-    <section><h2 style="margin-bottom:12px">Saved builds</h2>${savedBuildsHtml()}</section>
-  </div>
-  <section class="section"><h2>Settings</h2>
-    <div class="panel panel-pad" style="margin-top:12px">
-      <div class="setting-row"><div><div class="item-title">Parchment theme</div><div class="dim" style="font-size:.9rem">A light reading theme. Night is the default.</div></div><input type="checkbox" class="switch" data-setting="theme" ${s.theme === "parchment" ? "checked" : ""} aria-label="Parchment theme"></div>
-      <div class="setting-row"><div><div class="item-title">Reduce motion</div><div class="dim" style="font-size:.9rem">Turns off page and hover animations. Your system setting is always respected.</div></div><input type="checkbox" class="switch" data-setting="reduceMotion" ${s.reduceMotion ? "checked" : ""} aria-label="Reduce motion"></div>
-      <div class="setting-row"><div><div class="item-title">Spoiler shield</div><div class="dim" style="font-size:.9rem">Blurs quest rewards, consequences and walkthrough steps until you click them.</div></div><input type="checkbox" class="switch" data-setting="spoilers" ${s.spoilers ? "checked" : ""} aria-label="Spoiler shield"></div>
-    </div>
-  </section>
-  <section class="section"><h2>Backup</h2>
-    <p class="muted" style="margin:10px 0 14px">Export your progress as a JSON file, or restore one. Imports are validated; unknown or malformed fields are ignored.</p>
-    <div class="row"><button class="btn btn-primary" data-action="export">${icon("ph-download-simple")}Export progress</button><button class="btn" data-action="import">${icon("ph-upload-simple")}Import backup</button><button class="btn btn-danger" data-action="reset-all">${icon("ph-trash")}Reset all progress</button></div>
-  </section>`;
-};
+/* My Journal: see section 8n. */
 
 /* ---------- Sources and data status ---------- */
 VIEWS.sources = () => {
@@ -5633,6 +5692,95 @@ VIEWS.home = () => {
 <script>
 "use strict";
 /* =====================================================================
+   8n. THE WITCHER'S TOME (My Journal)
+   A leather journal with ribbon bookmarks: the chronicle (story acts and
+   wax-seal progress), keepsakes (favorites as cards), build scrolls (saved
+   builds with their tree split) and the binding (settings and backups).
+   ===================================================================== */
+const JN_TABS = [["chronicle", "Chronicle", "ph-book-open-text"], ["keepsakes", "Keepsakes", "ph-bookmark-simple"], ["scrolls", "Build scrolls", "ph-scroll"], ["binding", "Settings and backup", "ph-gear-six"]];
+const JN_ACTS = ["Prologue", "Act I: Velen", "Act I: Novigrad", "Act I: Skellige", "Act II", "Act III"];
+const jnFavName = f => {
+  const map = {quest:QUESTS, monster:MONSTERS, loc:LOCATIONS, gear:GEAR_SETS, weapon:WEAPONS, alchemy:ALCHEMY, card:GWENT_CARDS, ach:ACHIEVEMENTS, build:BUILDS};
+  const x = (map[f.kind] || []).find(y => y.id === f.id); return x ? x.name : null;
+};
+
+VIEWS.journal = () => {
+  const tab = JN_TABS.some(t => t[0] === P("jt")) ? P("jt") : "chronicle";
+  const n = {keepsakes: state.favorites.filter(f => jnFavName(f)).length, scrolls: state.builds.length};
+  return `
+  <header class="page-head"><h1>My Journal</h1><p>Your chronicle, keepsakes, saved builds and settings, all bound in this browser.</p></header>
+  ${storageOK ? "" : `<div class="notice danger" style="margin-bottom:18px">${icon("ph-warning-octagon")}<div><strong>Browser storage is unavailable.</strong> Changes will last until you close this tab. Export a backup to keep them.</div></div>`}
+  <div class="jn-tome">
+    <nav class="jn-ribbons" role="tablist" aria-label="Journal sections">${JN_TABS.map(([k, l, ic]) => `<button class="jn-ribbon" role="tab" aria-label="${l}" aria-selected="${tab === k}" data-action="set-param" data-k="jt" data-v="${k === "chronicle" ? "" : k}">${icon(ic)}<span>${l}</span>${n[k] ? `<b class="mono">${n[k]}</b>` : ""}</button>`).join("")}</nav>
+    <div class="jn-page">${tab === "keepsakes" ? jnKeepsakes() : tab === "scrolls" ? jnScrolls() : tab === "binding" ? jnBinding() : jnChronicle()}</div>
+  </div>`;
+};
+function jnChronicle(){
+  const ps = computeProgress(), main = QUESTS.filter(q => q.type === "main");
+  const acts = JN_ACTS.map(a => { const qs = main.filter(q => q.act === a); return {a, qs, d: qs.filter(q => isChecked(q.id)).length}; }).filter(x => x.qs.length);
+  const cur = acts.find(x => x.d < x.qs.length);
+  const checks = Object.keys(state.checks).length;
+  return `<section class="jn-acts" aria-labelledby="actsTitle">
+      <div class="jn-sec-head"><h2 id="actsTitle">The story so far</h2><span class="mono dim">${main.filter(q => isChecked(q.id)).length}/${main.length} main quests</span></div>
+      <ol class="jn-actline">${acts.map(x => { const v = pct(x.d, x.qs.length), st = v === 100 ? "done" : x === cur ? "cur" : "";
+        return `<li class="jn-act ${st}" style="--p:${v}"><a href="#/quests?type=main" class="jn-act-seal" aria-label="${esc(x.a)}: ${x.d} of ${x.qs.length}">${v === 100 ? icon("ph-check") : `<span class="mono">${v}</span>`}</a><b>${esc(x.a)}</b><span class="mono">${x.d}/${x.qs.length}</span>${x === cur ? `<em>You are here</em>` : ""}</li>`; }).join("")}</ol>
+      ${cur ? `<p class="jn-act-next">${icon("ph-crown-simple")}Next in ${esc(cur.a)}: <button class="linkish" data-open="quest:${esc(cur.qs.find(q => !isChecked(q.id)).id)}">${esc(cur.qs.find(q => !isChecked(q.id)).name)}</button></p>` : `<p class="jn-act-next">${icon("ph-seal-check")}The main story is complete.</p>`}
+    </section>
+    <section class="section" aria-labelledby="sealTitle">
+      <div class="jn-sec-head"><h2 id="sealTitle">Seals of progress</h2><span class="mono dim">${checks} entr${checks === 1 ? "y" : "ies"} ticked</span></div>
+      <div class="jn-seals">${ps.map(p => { const v = pct(p.done, p.total);
+        return `<a class="jn-seal ${v === 100 ? "full" : v ? "lit" : ""}" href="#/${p.route}" style="--p:${v}" data-tip="${p.done} of ${p.total}">
+          <span class="jn-wax">${icon(HM_ICON[p.key] || "ph-circle")}</span><b>${esc(p.label)}</b><span class="mono">${v}%</span></a>`; }).join("")}</div>
+    </section>`;
+}
+function jnKeepsakes(){
+  const all = state.favorites.map(f => ({f, name: jnFavName(f)})).filter(x => x.name);
+  const k = all.some(x => x.f.kind === P("fk")) ? P("fk") : "";
+  if(!all.length) return emptyState("ph-bookmark-simple", "No keepsakes yet", "Use the bookmark button on any quest, monster, recipe, card or place to keep it here.");
+  const kinds = [...new Set(all.map(x => x.f.kind))], list = all.filter(x => !k || x.f.kind === k);
+  return `<div class="jn-sec-head"><h2>Keepsakes</h2><span class="mono dim">${all.length} saved</span></div>
+    ${kinds.length > 1 ? chipsHtml("fk", [["", "All"], ...kinds.map(x => [x, (KIND_META[x] || {}).label || x])], k, "Filter keepsakes") : ""}
+    <div class="jn-keeps">${list.map(({f, name}) => { const m = KIND_META[f.kind] || KIND_META.page;
+      return `<article class="jn-keep ${esc(f.kind)}"><span class="jn-keep-ico">${icon(m.icon)}</span>
+        <div><span class="label">${esc(m.label)}</span><button class="jn-keep-name" data-action="open-result" data-kind="${esc(f.kind)}" data-id="${esc(f.id)}">${esc(name)}</button></div>
+        <button class="btn btn-sm btn-icon btn-ghost" data-action="fav" data-kind="${esc(f.kind)}" data-id="${esc(f.id)}" aria-pressed="true" aria-label="Remove ${esc(name)} from keepsakes">${icon("ph-x")}</button></article>`; }).join("")}</div>`;
+}
+function jnScrolls(){
+  if(!state.builds.length) return emptyState("ph-scroll", "No build scrolls yet", "Open the planner, allocate points and press Save build.", `<a class="btn" href="#/builds?tab=planner">Open planner</a>`);
+  const all = allSkills();
+  return `<div class="jn-sec-head"><h2>Build scrolls</h2><span class="mono dim">${state.builds.length} saved</span></div>
+    <div class="jn-scrolls">${state.builds.map(b => {
+      const by = {combat:0, signs:0, alchemy:0, general:0}; for(const [id, n] of Object.entries(b.alloc)) if(all[id]) by[all[id].tree] = (by[all[id].tree] || 0) + n;
+      const pts = Object.values(by).reduce((a, n) => a + n, 0), top = Object.entries(by).sort((a, c) => c[1] - a[1])[0];
+      return `<article class="jn-scroll" style="--tc:${TREE_META[top[1] ? top[0] : "general"].color}">
+        <div class="jn-scroll-head"><span class="jn-scroll-sigil">${icon(TREE_META[top[1] ? top[0] : "general"].sigil)}</span><div><h3>${esc(b.name)}</h3><span class="dim">Saved ${timeAgo(b.created)}</span></div></div>
+        <div class="jn-split" aria-label="Points by tree">${pts ? Object.entries(by).filter(([, n]) => n).map(([t, n]) => `<i style="flex:${n};background:${TREE_META[t].color}" data-tip="${esc(SKILL_TREES[t].name)}: ${n} point${n === 1 ? "" : "s"}"></i>`).join("") : `<i style="flex:1;background:var(--line)"></i>`}</div>
+        <div class="jn-scroll-stats"><span><b class="mono">${pts}</b> points</span><span><b class="mono">${b.level}</b> level</span><span><b class="mono">${b.mutations.length}</b> mutation${b.mutations.length === 1 ? "" : "s"}</span></div>
+        <div class="row" style="gap:6px"><button class="btn btn-sm btn-primary" data-action="build-load-saved" data-id="${esc(b.id)}">${icon("ph-tree-structure")}Open in planner</button><button class="btn btn-sm btn-icon btn-danger" data-action="build-del" data-id="${esc(b.id)}" aria-label="Delete ${esc(b.name)}">${icon("ph-trash")}</button></div>
+      </article>`; }).join("")}</div>`;
+}
+function jnBinding(){
+  const s = state.settings;
+  let bytes = 0; try{ bytes = (localStorage.getItem(STORE_KEY) || "").length; }catch(e){}
+  const opts = [
+    ["theme", "Parchment theme", "A light reading theme. Night is the default.", s.theme === "parchment", "ph-sun"],
+    ["reduceMotion", "Reduce motion", "Turns off page and hover animations. Your system setting is always respected.", s.reduceMotion, "ph-wind"],
+    ["spoilers", "Spoiler shield", "Blurs quest rewards, consequences and walkthrough steps until you click them.", s.spoilers, "ph-eye-slash"],
+    ["navCollapsed", "Compact sidebar", "Fold the sidebar into an icon rail on wide screens. Shortcut: [", s.navCollapsed, "ph-sidebar-simple"]
+  ];
+  return `<div class="jn-sec-head"><h2>Settings</h2></div>
+    <div class="jn-runes">${opts.map(([k, l, d, on, ic]) => `<label class="jn-rune ${on ? "on" : ""}"><span class="jn-rune-ico">${icon(ic)}</span><div><b>${esc(l)}</b><span>${esc(d)}</span></div><input type="checkbox" class="switch" data-setting="${k}" ${on ? "checked" : ""} aria-label="${esc(l)}"></label>`).join("")}</div>
+    <div class="jn-sec-head section"><h2>Backup</h2><span class="mono dim">${(bytes / 1024).toFixed(1)} KB stored</span></div>
+    <div class="jn-backup">
+      <div class="jn-bk"><span class="jn-bk-ico">${icon("ph-download-simple")}</span><div><b>Export</b><p>Save every checklist, keepsake, build, card and setting as a JSON file.</p></div><button class="btn btn-primary" data-action="export">Export progress</button></div>
+      <div class="jn-bk"><span class="jn-bk-ico">${icon("ph-upload-simple")}</span><div><b>Import</b><p>Restore a backup. Imports are validated, and unknown or malformed fields are ignored.</p></div><button class="btn" data-action="import">Import backup</button></div>
+      <div class="jn-bk danger"><span class="jn-bk-ico">${icon("ph-trash")}</span><div><b>Burn the journal</b><p>Erase all progress stored by this guide in this browser. You will be asked to confirm.</p></div><button class="btn btn-danger" data-action="reset-all">Reset all progress</button></div>
+    </div>`;
+}
+</script>
+<script>
+"use strict";
+/* =====================================================================
    9. INTERACTIONS (event delegation)
    ===================================================================== */
 function toggleFav(kind, id){
@@ -5990,7 +6138,9 @@ document.addEventListener("change", e => {
   if(el.dataset.setting){
     const k = el.dataset.setting;
     if(k === "theme") state.settings.theme = el.checked ? "parchment" : "night"; else state.settings[k] = el.checked;
-    save(); applySettings(); toast("Setting saved."); return;
+    save(); applySettings(); renderNav();
+    if(route.name === "journal"){ render(true); $(`[data-setting="${k}"]`)?.focus({preventScroll:true}); }
+    toast("Setting saved."); return;
   }
   if(el.dataset.prepDone){ if(el.checked) state.prepDone[el.dataset.prepDone] = true; else delete state.prepDone[el.dataset.prepDone]; save(); alRefresh(); return; }
   if(el.dataset.filter && el.tagName === "SELECT" || (el.dataset.filter && el.type === "checkbox")) onFilterInput(el);

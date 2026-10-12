@@ -71,6 +71,18 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## The witcher's tome (My Journal)
+- JS section "8n. THE WITCHER'S TOME" replaces the old journal view. It is a leather tome with ribbon-bookmark tabs (URL param `jt`).
+- **Chronicle:**
+  - A story act line covering the 38 main quests grouped by `act`: Prologue, Act I Velen, Novigrad and Skellige, Act II and Act III. Each act has a progress seal, a "You are here" marker and the next quest.
+  - Nine wax "seals of progress" from `computeProgress()`.
+- **Keepsakes:** favourites as cards with a kind filter (`fk`). A stale filter falls back to All.
+- **Build scrolls:** saved builds with a points-by-tree split bar (tree colours from `TREE_META`, a tooltip per segment), level, mutations, an open-in-planner button and delete.
+- **Settings and backup:**
+  - Rune toggles for theme, reduce motion, spoiler shield and the new compact sidebar setting. Changing one re-renders the page and keeps focus.
+  - Export, import and reset cards, plus the KB stored.
+- `savedBuildsHtml()` is kept for the builds page.
+
 ## Sidebar rail and tooltips
 - **Collapsible sidebar:** on desktop (1025px and wider), the sidebar folds into a 76px icon rail.
   - Toggle with the "Collapse" button at the foot of the nav, or the `[` key when not typing.
