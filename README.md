@@ -2,7 +2,9 @@
 
 An unofficial, single-file companion site for **The Witcher 3: Wild Hunt**, **Hearts of Stone** and **Blood and Wine**.
 
-Open `index.html` directly in a modern browser. There is no build step and no dependencies. Progress, favorites, saved builds and settings are stored in your browser (`localStorage`) and can be exported or imported as JSON from **My Journal**.
+**Live site: [witcher3-ultimate-guide.vercel.app](https://witcher3-ultimate-guide.vercel.app)**. It is hosted on Vercel and redeploys automatically on every push to `main`.
+
+To run it locally, open `index.html` directly in a modern browser. There is no build step and no dependencies. Progress, favorites, saved builds and settings are stored in your browser (`localStorage`) and can be exported or imported as JSON from **My Journal**.
 
 ## What's inside
 
