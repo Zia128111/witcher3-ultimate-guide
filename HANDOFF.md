@@ -71,6 +71,17 @@ The research relied on community wikis (fandom was read via its MediaWiki API, p
 - The achievement detail modal (`openDetail("ach")`) now redirects to the trophy hall.
 - Backlog: two Toussaint Places of Power and the Through Space and Time one are not listed. The achievement list is a 41-entry selection, not the full list.
 
+## The medallion (home)
+- JS section "8m. THE MEDALLION" replaces the old home view.
+- **Medallion:** the hero holds a progress medallion. The core ring is the average of the nine `computeProgress()` categories, shown with one decimal below 10%. Each category node sits on a spoke whose gold length is its percentage.
+- **Selecting a node:** sets URL param `hn`. The inspector then shows done/total and a next step from `hmNext()`: the next main quest, a missable side quest, an unclaimed Place of Power, an unvisited location (deep-links into the atlas), cards missing, a missable achievement, or an unstudied monster.
+- **Below the hero:**
+  - "The path ahead": last page, next main quest with a tick box, and the earliest missable checkpoint.
+  - "Codex" doors: a bento grid of artwork links.
+  - "Waypoints": 12 quick links.
+  - "Recent trail".
+- `completionGrid()` and `computeProgress()` are kept for My Journal.
+
 ## Atlas (World Explorer)
 - JS section "8l. ATLAS" replaces the old World Explorer view.
 - **Region selector:** a bar of region medallions with progress rings (URL param `r`). With no region chosen, each region gets a large card with art, a progress ring and per-type counts.
