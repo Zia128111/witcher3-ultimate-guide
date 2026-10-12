@@ -1,0 +1,92 @@
+# Handoff: The Witcher 3 Ultimate Guide
+
+## What exists
+- `index.html` is the whole site: HTML, CSS and vanilla JS in one file, with no build step. Open it directly in a browser.
+- The JS sections are labelled in order: 1 Data, 2 State and persistence, 3 Utilities, 4 Modals, 5 Navigation and routing, 6 Search, 7 Detail modals, 8 Views, 9 Interactions, 10 Init.
+- Progress is stored in `localStorage` under the key `w3guide:v1` (versioned). JSON export and import go through `sanitize()`, which validates and drops anything malformed.
+
+## Deviation from CLAUDE.md
+The user explicitly asked for a single vanilla HTML file with no Next.js, Tailwind or shadcn/ui. That means the shadcn preset `b3ktYM0tU` was **not applied**: this deliverable contains no shadcn setup at all. If the project later moves to the Next.js plan in `witcher_3_ultimate_guide_claude_prompts.md`, the preset has to be applied then.
+
+## Verified in the browser (local preview at 375, 746, 1180, 1366 and 1440 px)
+- Every route and tab renders with no console errors. No horizontal overflow at 375 px.
+- Checklists persist across a reload. URL filters work.
+- Search palette: keyboard navigation and opening detail views.
+- Skill planner (Remastered): unlock rules, stranding guard, rank and point caps, equip slots and mutagen groups, mutations, presets, forecast numbers, save build, share link (and a damaged link is rejected).
+- Gwent ownership, missing-card filter and deck rules (22+ units, ≤10 specials), including custom cards.
+- Alchemy prep list totals. Favorites. Night and parchment themes. Import sanitizing.
+
+## Not tested
+- Opening via `file://` in each browser. Chrome supports localStorage on file:// but this wasn't exercised.
+- The real export download dialog.
+- Screen-reader passes with NVDA or VoiceOver.
+
+## Data coverage and backlog
+See the in-app page "Sources and Data" for per-dataset verification counts. Gaps:
+- Monster nests, merchants and signposts are incomplete.
+- No crafting materials, item stats or crown amounts.
+
+The research relied on community wikis (fandom was read via its MediaWiki API, plus Fextralife and game-checklists). Records tagged "Unverified" need checking in game.
+
+## Interactive map
+- Route `#/map`, JS section "8b. INTERACTIVE MAP". It's a vanilla tile viewer, no map library: 256px TMS tiles, drag, wheel, pinch and keyboard pan/zoom, URL state (`m`, `z`, `c`, `pin`, `mq`).
+- Tiles and the 1,219 markers come from witcher3map (github.com/witcher3map/witcher3map), CC BY-NC-SA 4.0, last updated in 2016. Map data is in section "1b. MAP DATA", extracted with HTML stripped. Hearts of Stone data duplicated Velen and was dropped.
+- Projections: Web Mercator for White Orchard and Skellige, Leaflet CRS.Simple for Velen, Toussaint and Kaer Morhen. Tile y follows Leaflet 0.7 TMS rules. Alignment was checked visually (Crow's Perch, the White Orchard inn, Kaer Trolde Harbor).
+- Tile hosts: raw.githubusercontent.com, then jsDelivr. witcher3map.com sends 403 to foreign referrers (hotlink protection), so it is deliberately not used.
+- Found state is stored in `state.checks` as `m:<map>:<category>:<index>`. Hidden categories and "hide found" are in `state.map`.
+- Marker positions are community data and were not independently verified.
+- Journal links: `LOCATION_PINS` (in the map section) links 51 of 91 World Explorer entries to markers. They were generated offline and reviewed. A link is made only on an exact signpost name, a unique nearest signpost, or a quest or role named in the marker text. Each link records its reason (`how`) and any partial-coverage `note`.
+- Unlinked on purpose (ambiguous): the two White Orchard "Sawmill" and two Velen "Ancient Oak" Places of Power, the Kaer Trolde Axii and Gedyneith Places of Power (elimination only), most named Gwent players, Tomira, Yolar, Trentin, the Upper Mill smith, and the Aerondight hermit (marker contradicts our record).
+- Visited and found ticks mirror only across one-to-one links (`linkedChecks`). Multi-pin entries such as "Amateur blacksmiths" don't mirror.
+- Marker ids (`m:<map>:<cat>:<index>`) depend on the order of the embedded map data. Regenerate `LOCATION_PINS` if that data is ever re-extracted.
+
+## Skill trees (Remastered)
+- JS section "1c. SKILL TREES" (generated) and section "8c. SKILL TREE PLANNER". The classic 4.0x tree was removed.
+- Data: all 80 nodes (4 trees of 20) with 3 ranks each, per-rank effect text, per-point tree passive, and prerequisites. Parsed from the fandom wiki pages "The Witcher 3 abilities/Combat|Signs|Alchemy|General"; the prerequisites match Fextralife's Remastered tables.
+- Rules from the wiki: starting nodes are Combat's top row (Muscle Memory, Arrow Deflection), Signs' 5, Alchemy's 3, and General's 6 school nodes. Any other node needs a point in one listed prerequisite. Removing a point is refused if it would strand an invested node.
+- The x/y layout of each tree is this guide's own drawing; no in-game layout image was available. Connections are from the wiki.
+- Hit forecast: every number is regex-extracted from the current rank's text (`forecast()`). Percent bonuses are summed within a hit and procs applied on top. Armor, resistances, crits and the real stacking order are not modelled, and the UI says so.
+- Mutagen groups: slots 1-12 form 4 groups of 3; a group's bonus shows as active when all three skills match its mutagen colour. Bonus magnitudes are not stated in the source, so none are shown.
+- Not modelled: per-level slot unlock schedule (wiki: all 12 open by level 30), Ciri's abilities, and mutation colour restrictions on the extra slots.
+- Old saved builds that used classic skill ids load with those skills dropped (`cleanPlan` filters unknown ids).
+
+## Bestiary codex
+- JS section "8d. BESTIARY CODEX" replaces the old list view. It has an index rail (category, Sign weakness, search) and a specimen plate (URL param `m`).
+- The weakness wheel and hunt kit come straight from each `MONSTERS` record. Kit sockets link to `ALCHEMY` recipes by exact name, and "Add kit to prep list" increments `state.prep`.
+- Study marks: `state.checks["beast:<id>"]`, shown in the index, the plate and the progress overview.
+- Contracts are matched by whole word on the monster name (or a distinctive last word). So "Wraith" no longer matches Noonwraith, and "Griffin" doesn't claim archgriffin contracts.
+- Art: every monster has its Witcher 3 bestiary render (`MONSTER_IMG` in section 1d, fandom CDN paths, mostly `Tw3_journal_*.png`; Archespore only has its bestiary icon). Renders appear in index rows, the plate header (right side) and the centre of the weakness wheel. The category emblem shows until load and on error. Wallpapers stay behind the header for the fiend, leshen, griffin, golem and earth elemental.
+- All monster links (search, alchemy chips, DLC enemy chips) now open the codex plate instead of a modal.
+
+## Alchemist's workbench
+- JS section "8h. ALCHEMIST'S WORKBENCH" replaces the old alchemy list. Tabs for potions, decoctions, oils, bombs and ingredients (URL `kind`). The shelf of vials shows real inventory icons (`ALC_ICON` in section 1d, fandom CDN paths). The bench (`r`) shows a brewing ring with ingredient icons and quantities, a satchel stepper, and "Effective against" monster renders. The ingredient bench (`ing`) lists the recipes that use it.
+- Satchel: `state.prep` and `state.prepDone`, same keys as before. `prepHtml` and `prepTotals` keep their names, and all prep actions refresh through `alRefresh()`, so the bestiary "Add kit" still works.
+- No icon on the wiki: Water Hag and Chort decoctions, and the monster mutagens (their colour isn't confirmed, so they show a DNA emblem).
+
+## Armory (gear)
+- JS section "8g. ARMORY" replaces the old accordion and compare modal. It has three tabs (URL `tab`: empty, `weapons`, `crafting`).
+- Armory: a school crest rail (`s`) and an armor stand. The stand shows the set render (Griffin, Manticore, Viper) or the selected tier's inventory icon, over the school-gear quest screenshot, with grandmaster sword icons. The upgrade path is drawn as tier medallions with icons (`t` selects a tier) and a crafted toggle (`gear:<set>:<tier>`, as before). "Forged by" links to Yoana, Hattori and Lafargue map pins. Comparison is inline (`vs`).
+- Weapon rack: page images for 7 of 12 weapons (emblem otherwise), an inspector (`w`) and a collected toggle (`own:<id>`).
+- Craftsmen: a ladder (grandmaster, master, journeyman, amateur) classified from the location name and hint text, with map and details links.
+- `GEAR_IMG` (section 1d) holds fandom CDN paths. Ursine and Wolven have no grandmaster armor icon on the wiki, so their grandmaster medallion shows the school emblem.
+
+## Quest journal
+- JS section "8f. QUEST JOURNAL" replaces the old list view (`questRow` stays for other pages). It has three tabs (URL `tab`: empty, `board`, `journal`) and one inspector (URL `qid`; `q` remains the search box).
+- Chronicle: the main quests drawn as a path from `chronicleLayout()`. The Prologue is one trail, Act I splits into parallel Velen, Novigrad and Skellige lanes, and the path rejoins for Acts II and III. Order follows the guide's main-quest list, not a verified play order. The next unfinished main quest pulses; missable quests carry an hourglass badge. A "Points of no return" list shows open missables.
+- Notice board: contracts as parchment notices. The target monster (whole-word match against `MONSTERS`) shows its render and a "Know your foe" link to the bestiary. Contracts whose target isn't in the bestiary show no art.
+- Walkthrough steps can be ticked individually: `state.checks["qs:<questId>:<i>"]`.
+- All quest links across the site open the journal inspector instead of a modal.
+
+## Gwent cabinet
+- JS section "8e. GWENT CABINET" replaces the old Gwent view. It has a card cabinet (faction banners, filters, inspector; URL params `f`, `c`) and a deck table (leader slot, rule plaques, lanes per row, card pool).
+- `GWENT_CARDS` is the full list: 186 cards (183 collectible; Hemdall, Bovine Defense Force and Roach are flagged as tokens). It was parsed from the rendered fandom deck pages, with rows read from the row icon and `copies` counted from the source text.
+- Card art: each card's `img` is its card-face path on the fandom CDN (`static.wikia.nocookie.net/witcher/images/<img>`), loaded at a scaled width. Cards show the emblem design until the image loads, and fall back to it on error.
+- Ownership is stored as copies per card (`state.gwent.owned[id] = n`). The deck allows up to the owned copies, or all copies with "include cards I don't own". `GWENT_LEGACY` migrates old card ids, decks and favorites. The custom-card form was removed now that the list is complete.
+
+## Fextralife enrichment
+- JS section "1d. ENRICHMENT" merges research into `MONSTERS` and `QUESTS` at load time, filling gaps only: monster regions (merged), loot, tips and DLC tags; quest walkthrough steps, start, level and rewards for 38 quests. All text is paraphrased, and each record links to its Fextralife page.
+- Fixes: Water Hag Signs are Igni and Quen (confirmed on Fextralife and fandom). Conflicts are shown on the Alp and Katakan plates.
+- Fextralife region lists are thin, so regions mean "confirmed on page", not "complete".
+
+## Artwork
+Witcher 3 wallpapers are hotlinked from wallpapercave.com at the user's request, for personal use. Each falls back to a picsum.photos photo, then to a CSS gradient. Don't deploy publicly without replacing them with licensed art.

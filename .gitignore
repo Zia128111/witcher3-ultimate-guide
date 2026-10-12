@@ -1,0 +1,5 @@
+# Local tooling
+.claude/
+*.log
+.DS_Store
+Thumbs.db
